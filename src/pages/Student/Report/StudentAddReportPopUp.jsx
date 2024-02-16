@@ -104,7 +104,7 @@ function StudentAddReportPopUp({ setFetch }) {
               >
                 <option>Select receiver</option>
                 <option>Accountant</option>
-                <option>Rector</option>
+                <option>Manager</option>
               </select>
             </div>
 

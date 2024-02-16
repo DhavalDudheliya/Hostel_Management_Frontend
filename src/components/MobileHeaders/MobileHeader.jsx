@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../../UserContext";
-import RectorMobileHeader from "./RectorMobileHeader";
-import AccountantMobileHeader from "./AccountantMobileHeader";
+import ManagerMobileHeader from "./ManagerMobileHeader";
+import AdminHeader from "./AdminHeader";
 import StudentMobileHeader from "./StudentMobileHeader";
 
 function SideBar() {
   const { user } = useContext(UserContext);
   return (
     <>
-      {user && user.role === "Rector" && <RectorMobileHeader />}
-      {user && user.role === "Accountant" && <AccountantMobileHeader />}
+      {user && user.role === "Manager" && <ManagerMobileHeader />}
+      {user && user.role === "Admin" && <AdminHeader />}
       {user && user.role === "Student" && <StudentMobileHeader />}
     </>
   );

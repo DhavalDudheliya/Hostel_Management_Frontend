@@ -1,7 +1,7 @@
-import { React, useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
-import SideBar from "../../components/SideBar";
+import React from "react";
 import { UserContext } from "../../../UserContext";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 function AccountantDashboard() {
   const { user, setUser } = useContext(UserContext);
@@ -10,11 +10,7 @@ function AccountantDashboard() {
     return <Navigate to="/login" />;
   }
 
-  return (
-    <div>
-      Accountant dashboard
-    </div>
-  );
+  return <div>AccountantDashboard</div>;
 }
 
 export default AccountantDashboard;

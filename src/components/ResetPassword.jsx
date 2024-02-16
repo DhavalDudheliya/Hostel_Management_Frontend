@@ -4,6 +4,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../components/Header";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -46,7 +49,7 @@ const ResetPassword = () => {
   return (
     <>
       <Header />
-      <div className="give-height flex justify-center items-center mt-24 text-bg_white_font font-semibold text-sm">
+      <div className="flex justify-center items-center mt-24 text-bg_white_font font-semibold text-sm">
         <form
           onSubmit={handleResetPassword}
           className="bg-bg_white text-bg_dark_font rounded-md shadow-lg shadow-bg_light_section border-2 border-bg_dark_section p-7 flex flex-col justify-center items-center gap-2"
@@ -54,13 +57,11 @@ const ResetPassword = () => {
           <div className="text-xl mb-4">Reset Password</div>
 
           <div className="w-full">
-            <div className="flex">
-              <div className="grow">New Password</div>
-            </div>
-            <input
+            <Label>Password</Label>
+            <Input
               type="password"
               value={password}
-              className="mt-1 mb-2"
+              className="mt-1 mb-2 w-[300px]"
               onChange={(ev) => {
                 setPassword(ev.target.value);
               }}
@@ -69,11 +70,11 @@ const ResetPassword = () => {
             />
           </div>
           <div>
-            Confirm Password
-            <input
+            <Label>Confirm Password</Label>
+            <Input
               type="password"
               value={confirmPassword}
-              className="mt-1 mb-2"
+              className="mt-1 mb-2 w-[300px]"
               onChange={(ev) => {
                 setConfirmPassword(ev.target.value);
               }}
@@ -82,9 +83,9 @@ const ResetPassword = () => {
             />
           </div>
 
-          <button type="submit" className="btn">
+          <Button type="submit" className="btn">
             Reset Password
-          </button>
+          </Button>
         </form>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
-import SideBar from "./components/SideBar";
+import SideBar from "./components/Sidebar/SideBar";
 import React, { useContext, useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";

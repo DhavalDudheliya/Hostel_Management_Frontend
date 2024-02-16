@@ -2,10 +2,6 @@ import { useContext, useState } from "react";
 import logo from "../assets/logo2.png";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../UserContext";
-import BeforeLoginNavBtns from "./BeforeLoginNavBtns";
-import AccountantNavbar from "./AccountantSidebar";
-import StudentSidebar from "./StudentSidebar";
-import RectorSidebar from "./RectorSidebar";
 
 function Header() {
   const { user } = useContext(UserContext);
