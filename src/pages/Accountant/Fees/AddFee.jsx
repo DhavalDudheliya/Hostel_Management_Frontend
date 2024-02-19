@@ -24,13 +24,12 @@ function AddFee() {
   const [dueDate, setDueDate] = useState("");
   const [feesFor, setFeesFor] = useState("");
 
+  const { user, setUser } = useContext(UserContext);
+
+  if (!user || (user && user.role !== "Accountant")) {
+    return <Navigate to="/login" />;
+  }
   async function handleSubmit(ev) {
-    const { user, setUser } = useContext(UserContext);
-
-    if (!user || (user && user.role !== "Accountant")) {
-      return <Navigate to="/login" />;
-    }
-
     ev.preventDefault();
     try {
       await axios

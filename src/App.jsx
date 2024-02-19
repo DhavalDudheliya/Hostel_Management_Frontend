@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import * as myContants from "../myConstants";
 import { UserContextProvider } from "../UserContext";
 import { StudentProvider } from "../StudentContext";
+import { Toaster } from "@/components/ui/toaster";
 // import { ThemeProvider } from "@/components/theme-provider";
 
 import IndexPage from "./pages/IndexPage";
@@ -54,6 +55,7 @@ function App() {
     <UserContextProvider>
       <StudentProvider>
         <ToastContainer />
+        <Toaster />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<IndexPage />} />

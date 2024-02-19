@@ -9,9 +9,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+
 import { Home, User } from "lucide-react";
 
 function CollectFeeCard() {
+  const { toast } = useToast();
+
   const [rollNumber, setRollNumber] = useState("");
   const { student, setStudent } = useStudentContext();
 
@@ -21,7 +25,10 @@ function CollectFeeCard() {
       if (student) {
         setStudent("");
       } else {
-        toast.error("Please give roll number");
+        toast({
+          variant: "destructive",
+          title: "Please enter roll number please!!!",
+        });
       }
     } else {
       try {
@@ -54,7 +61,7 @@ function CollectFeeCard() {
               <Label className="m-1">Roll Number</Label>
               <div className="flex flex-row gap-2 items-center relative">
                 <Input
-                  type="rollNumber"
+                  type="number"
                   id="query"
                   name="rollNumber"
                   value={rollNumber}

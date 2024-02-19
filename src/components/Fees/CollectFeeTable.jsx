@@ -5,6 +5,7 @@ import moment from "moment";
 import { useStudentContext } from "../../../StudentContext";
 import CollectFeeDialog from "./CollectFeeDialog";
 import { Button } from "@/components/ui/button";
+import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
 
 function CollectFeeTable() {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -132,13 +133,11 @@ function CollectFeeTable() {
                         <td></td>
                         <td></td>
                         <td className="pr-2 py-4 flex flex-row items-center justify-start gap-1">
-                          <button
-                            size="sm"
-                            className="bg-red-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 hover:bg-red-500/90 flex items-center"
-                          >
-                            <Undo2 size={14} />
-                            <div className="ml-1">Revert</div>
-                          </button>
+                          <RevertFeeAlertDialogue
+                            subFeeAmount={subFee.amount}
+                            subFeeId={subFee._id}
+                            feeId={fee._id}
+                          />
                           <button
                             size="sm"
                             className="bg-cyan-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 hover:bg-cyan-500/90 flex items-center"

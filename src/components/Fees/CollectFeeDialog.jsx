@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -11,15 +12,27 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
 import { IndianRupee, Send } from "lucide-react";
-import { toast } from "react-toastify";
 import axios from "axios";
 import { useStudentContext } from "../../../StudentContext";
 
 function CollectFeeDialog({ fee }) {
+  const { toast } = useToast();
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState("");
+  const [buttonDisable, setButtonDisable] = useState(false);
   const { student, setStudent, setSubFees } = useStudentContext();
+
+  useEffect(() => {
+    // Use useEffect to set buttonDisable after the component mounts
+    if (fee.amount === fee.totalAmountPaid) {
+      setButtonDisable(true);
+    } else {
+      setButtonDisable(false);
+    }
+  }, [fee.amount, fee.totalAmountPaid]);
+
   async function addFee(ev) {
     ev.preventDefault();
 
@@ -36,12 +49,19 @@ function CollectFeeDialog({ fee }) {
             console.log("Updated: ", res.data.updatedStudent);
             setStudent(res.data.updatedStudent);
             setSubFees(res.data.feeObject.paidAmount);
-            toast.success("Payment updated successfully");
-          } else if (res.status === 400) {
-            toast.error("Please add amount less than balance amount");
+            // toast.success("Payment updated successfully");
+            toast({
+              title: "Payment Added successfully.",
+            });
           }
         });
     } catch (error) {
+      if (error.response.status === 403) {
+        toast({
+          variant: "destructive",
+          title: "Please add amount less than balance amount.",
+        });
+      }
       if (error.response.status === 400) toast.error("Submit Failed");
     }
   }
@@ -51,8 +71,11 @@ function CollectFeeDialog({ fee }) {
       <Dialog>
         <DialogTrigger asChild>
           <button
+            disabled={buttonDisable}
             size="sm"
-            className="bg-blue-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 hover:bg-blue-500/90 flex items-center"
+            className={`bg-blue-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 hover:bg-blue-500/90 flex items-center ${
+              buttonDisable ? "hover:cursor-not-allowed" : ""
+            }`}
           >
             <IndianRupee size={14} />
             <div>Collect fees</div>
@@ -99,10 +122,15 @@ function CollectFeeDialog({ fee }) {
               </div>
             </div>
             <DialogFooter>
-              <Button type="submit" className="hover:bg-red-500">
-                <Send size={18} className="mr-2" />
-                Submit
-              </Button>
+              <DialogClose asChild>
+                <Button variant="secondary">Close</Button>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button type="submit" className="hover:bg-red-500">
+                  <Send size={15} className="mr-2" />
+                  Submit
+                </Button>
+              </DialogClose>
             </DialogFooter>
           </form>
         </DialogContent>
