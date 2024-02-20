@@ -18,6 +18,8 @@ import AdminProfile from "./pages/Admin/AdminProfile";
 import StudentsProfile from "./pages/Admin/StudentsProfile";
 import AdminReport from "./pages/Admin/Report/AdminReport";
 import AddStudent from "./pages/Admin/AddStudent";
+import BlockPage from "./pages/Admin/Block/BlockPage";
+import AllocateBlocks from "./pages/Admin/Block/AllocateBlocks";
 
 // Student
 import StudentDashboard from "./pages/Student/StudentDashboard";
@@ -42,8 +44,6 @@ import ManagerProfile from "./pages/Manager/ManagerProfile";
 import AddMeal from "./pages/Manager/Meal/AddMeal";
 import AllNotices from "./pages/Manager/Notice/AllNotices";
 import ManagerReport from "./pages/Manager/Report/ManagerReport";
-import AllocateBlocks from "./pages/Manager/Block/AllocateBlocks";
-import BlockPage from "./pages/Manager/Block/BlockPage";
 
 import ResetPassword from "./components/ResetPassword";
 
@@ -67,6 +67,14 @@ function App() {
             <Route path="/admin/allnotices" element={<AllNotices />} />
             <Route path="/admin/report" element={<AdminReport />} />
             <Route path="/admin/add-student" element={<AddStudent />} />
+            <Route
+              path="/admin/allocate-blocks/:id"
+              element={<BlockPage />}
+            />
+            <Route
+              path="/admin/allocate-blocks"
+              element={<AllocateBlocks />}
+            />
             // Accountant
             <Route
               path="/accountant/dashboard"
@@ -87,14 +95,6 @@ function App() {
             <Route path="/manager/profile" element={<ManagerProfile />} />
             <Route path="/manager/report" element={<ManagerReport />} />
             <Route path="/manager/allnotices" element={<AllNotices />} />
-            <Route
-              path="/manager/allocate-blocks/:id"
-              element={<BlockPage />}
-            />
-            <Route
-              path="/manager/allocate-blocks"
-              element={<AllocateBlocks />}
-            />
             // Student
             <Route path="/student/profile" element={<StudentProfile />} />
             <Route path="/student/dashboard" element={<StudentDashboard />} />

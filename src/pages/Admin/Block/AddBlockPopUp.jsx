@@ -15,7 +15,7 @@ function AddBlockPopUp({ fetch, setFetch }) {
 
   const { user, setUser } = useContext(UserContext);
 
-  if (!user || (user && user.role !== "Manager")) {
+  if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
   }
 
@@ -39,7 +39,7 @@ function AddBlockPopUp({ fetch, setFetch }) {
       toast.error("Please provide the capacity for the rooms.");
     } else {
       axios
-        .post("/manager/allocate-block", { name, start, end, capacity })
+        .post("/admin/allocate-block", { name, start, end, capacity })
         .then((res) => {
           if (res.status === 200) {
             toast.success("Block added");

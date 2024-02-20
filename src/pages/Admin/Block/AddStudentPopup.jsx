@@ -21,7 +21,7 @@ function AddStudentPopup({
   const { user, setUser } = useContext(UserContext);
   const [loading,setLoading] = useState(false);
 
-  if (!user || (user && user.role !== "Manager")) {
+  if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
   }
 
@@ -39,7 +39,7 @@ function AddStudentPopup({
     closeModal();
     setLoading(true)
     axios
-      .post("/manager/allocate-student/" + blockId, {
+      .post("/admin/allocate-student/" + blockId, {
         rollNo,
         roomNumber: roomNo,
       })

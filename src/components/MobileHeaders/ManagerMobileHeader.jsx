@@ -145,14 +145,6 @@ function ManagerMobileHeader() {
                   <span className="text-bg_white">Today's&nbsp;Meal</span>
                 </Link>
                 <Link
-                  to={"/manager/allocate-blocks"}
-                  onClick={menuToggel}
-                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
-                >
-                  <img className="h-6" src={room} />
-                  <span className="text-bg_white">Room&nbsp;Allocation</span>
-                </Link>
-                <Link
                   onClick={menuToggel}
                   to={"/admin/allnotices"}
                   className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}

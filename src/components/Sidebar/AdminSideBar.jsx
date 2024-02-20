@@ -5,6 +5,8 @@ import axios from "axios";
 import logo from "../../assets/logo2.png";
 import report from "../../assets/report.png";
 import selected_report from "../../assets/selected_report.png";
+import room from "../../assets/room.png";
+import selected_room from "../../assets/selected_room.png";
 import fine from "../../assets/fine.png";
 import selected_fine from "../../assets/selected_fine.png";
 import notice from "../../assets/bell-plus.png";
@@ -125,6 +127,33 @@ const AdminSideBar = () => {
               }`}
             >
               Add&nbsp;Student
+            </span>
+          </Link>
+          <Link
+            to={"/admin/allocate-blocks"}
+            onClick={() => setSelectedItem("roomAllocation")}
+            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
+              selectedItem === "roomAllocation"
+                ? "bg-white duration-200"
+                : "hover:bg-white hover:bg-opacity-20 hover:scale-95 transition-all duration-75"
+            }`}
+          >
+            {selectedItem === "roomAllocation" ? (
+              <img
+                className={`h-6 rotate-[360deg] duration-500`}
+                src={selected_room}
+              />
+            ) : (
+              <img className="h-6" src={room} />
+            )}
+            <span
+              className={`${!open && "hidden"} origin-left duration-75 ${
+                selectedItem === "roomAllocation"
+                  ? "text-bg_dark_section font-semibold"
+                  : "text-bg_white"
+              }`}
+            >
+              Room&nbsp;allocation
             </span>
           </Link>
           <li

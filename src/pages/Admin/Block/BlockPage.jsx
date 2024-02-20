@@ -21,7 +21,7 @@ const BlockPage = () => {
 
   useEffect(() => {
     if (id) {
-      axios.get("/manager/get-block/" + id).then((res) => {
+      axios.get("/admin/get-block/" + id).then((res) => {
         if (res.status === 200) {
           setBlock(res.data);
           setLoading(false);
@@ -31,7 +31,7 @@ const BlockPage = () => {
     }
   }, [fetch]);
 
-  if (!user || (user && user.role !== "Manager")) {
+  if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
   }
 

@@ -14,7 +14,7 @@ function AllocateBlocks() {
   const [fetch, setFetch] = useState(false);
 
   useEffect(() => {
-    axios.get("/manager/get-blocks").then((res) => {
+    axios.get("/admin/get-blocks").then((res) => {
       if (res.status === 200) {
         setBlocks(res.data);
         setLoading(false);
@@ -23,7 +23,7 @@ function AllocateBlocks() {
     });
   }, [fetch]);
 
-  if (!user || (user && user.role !== "Manager")) {
+  if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
   }
 
@@ -46,7 +46,7 @@ function AllocateBlocks() {
   async function deleteBlock(id) {
     var a = confirm("Do you want to delete? ");
     if (a) {
-      await axios.delete("/manager/delete-block/" + id).then((res) => {
+      await axios.delete("/admin/delete-block/" + id).then((res) => {
         if (res.status === 200) {
           setFetch(true);
           toast.success("Deleted Successfully");

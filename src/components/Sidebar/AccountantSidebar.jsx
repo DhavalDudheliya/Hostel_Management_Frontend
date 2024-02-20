@@ -137,6 +137,9 @@ const AdminSideBar = () => {
           >
             <ul className="flex flex-col gap-4">
               <Link
+                onClick={() => {
+                  setSelectedItem("fees");
+                }}
                 to="accountant/fee/collectFees"
                 className="p-2 hover:underline hover:cursor-pointer"
               >

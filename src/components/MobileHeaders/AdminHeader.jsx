@@ -8,6 +8,7 @@ import report from "../../assets/report.png";
 import fine from "../../assets/fine.png";
 import notice from "../../assets/bell-plus.png";
 import addStudent from "../../assets/user-plus.png";
+import room from "../../assets/room.png";
 import MobileProfilePopup from "../MobileProfilePopUp";
 
 function AdminMobileHeader() {
@@ -117,6 +118,14 @@ function AdminMobileHeader() {
                 >
                   <img className="h-6" src={addStudent} />
                   <span className="text-bg_white">Add&nbsp;Student</span>
+                </Link>
+                <Link
+                  to={"/manager/allocate-blocks"}
+                  onClick={menuToggel}
+                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
+                >
+                  <img className="h-6" src={room} />
+                  <span className="text-bg_white">Room&nbsp;Allocation</span>
                 </Link>
                 <li
                   onClick={menuToggel}
