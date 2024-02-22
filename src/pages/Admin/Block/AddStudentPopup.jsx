@@ -1,43 +1,46 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../../../../UserContext";
 import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+
+// Components
 import Loader from "../../../components/Loader";
 import { Input } from "@/components/ui/input";
-
+import { UserContext } from "../../../../UserContext";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useToast } from "@/components/ui/use-toast";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 
 function AddStudentPopup({
   blockId,
   roomNo,
-  room,
   AllocatedRoomStudents,
   capacity,
   setFetch,
   setAllocatedRoomStudents,
 }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { toast } = useToast();
   const [rollNo, setRollNo] = useState("");
   const { user, setUser } = useContext(UserContext);
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
   }
 
- 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   async function addStudent(ev) {
     ev.preventDefault();
-    closeModal();
-    setLoading(true)
+    setLoading(true);
     axios
       .post("/admin/allocate-student/" + blockId, {
         rollNo,
@@ -45,8 +48,10 @@ function AddStudentPopup({
       })
       .then((res) => {
         if (res.status === 200) {
-          setLoading(false)
-          toast.success("Student allocated successfully");
+          setLoading(false);
+          toast({
+            title: "Student allocated successfully.",
+          });
           setRollNo("");
           setAllocatedRoomStudents(res.data.roomInfo.allocatedStudents);
           setFetch(true);
@@ -54,51 +59,51 @@ function AddStudentPopup({
       });
   }
 
-  
   return (
     <>
-      <ToastContainer />
       {AllocatedRoomStudents.length < capacity && (
-        <div
-        onClick={openModal}
-        className="flex justify-center h-full text-2xl items-center border-2 border-gray-400 rounded-md p-2 cursor-pointer hover:bg-gradient-to-t hover:from-gray-300 hover:to-gray-100"
-        >
-          {loading && (<Loader height={"200px"} />)}
-          {!loading && "+"}
-        </div>
-      )}
-      {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
-          <form
-            className="bg-bg_white text-bg_dark_font rounded-md shadow-lg shadow-bg_light_section border-2 border-bg_dark_section p-7 flex flex-col justify-center items-center gap-2"
-            onSubmit={addStudent}
-          >
-            <div className="text-xl mb-4">Add Student</div>
-
-            <div className="w-full">
-              Roll Number
-              <Input
-                type="text"
-                value={rollNo}
-                className="mt-1 mb-2"
-                onChange={(ev) => {
-                  setRollNo(ev.target.value);
-                }}
-                name="rollNo"
-                placeholder="Enter Student Roll number"
-              />
-            </div>
-            <div className="flex justify-center gap-2 w-full">
-              <button onClick={closeModal} className="btn">
-                Close
-              </button>
-              <button
-                className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:scale-95 hover:duration-200 hover:transition-all"
+        <div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <div
+                className="flex justify-center text-2xl items-center border border-gray-400/50 rounded-lg h-[104px] cursor-pointer shadow hover:bg-gradient-to-t hover:from-gray-200 hover:to-gray-100 "
               >
-                Add
-              </button>
-            </div>
-          </form>
+                {loading && <Loader height={"200px"} />}
+                {!loading && "+"}
+              </div>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Add Student</DialogTitle>
+              </DialogHeader>
+              <form onSubmit={addStudent}>
+                <Label htmlFor="name" className="text-right">
+                  Student Roll Number
+                </Label>
+                <Input
+                  required
+                  type="number"
+                  value={rollNo}
+                  className="mt-1 mb-2"
+                  onChange={(ev) => {
+                    setRollNo(ev.target.value);
+                  }}
+                  name="rollNo"
+                  placeholder="Enter Student Roll number"
+                />
+                <DialogFooter>
+                  <DialogClose asChild>
+                    <Button variant="secondary">Close</Button>
+                  </DialogClose>
+                  <DialogClose asChild>
+                    <Button type="submit" className="hover:bg-red-500">
+                      Add
+                    </Button>
+                  </DialogClose>
+                </DialogFooter>
+              </form>
+            </DialogContent>
+          </Dialog>
         </div>
       )}
     </>

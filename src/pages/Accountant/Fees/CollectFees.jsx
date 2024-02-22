@@ -3,7 +3,6 @@ import CollectFeeTable from "@/components/Fees/CollectFeeTable";
 import React from "react";
 import { UserContext } from "../../../../UserContext";
 
-
 import { useStudentContext } from "../../../../StudentContext";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
@@ -17,7 +16,6 @@ function CollectFees() {
   }
 
   return (
-    
     <>
       <div className="p-6 lg:pl-6 lg:pr-10">
         <CollectFeeCard />

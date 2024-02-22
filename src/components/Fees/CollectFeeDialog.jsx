@@ -46,7 +46,6 @@ function CollectFeeDialog({ fee }) {
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log("Updated: ", res.data.updatedStudent);
             setStudent(res.data.updatedStudent);
             setSubFees(res.data.feeObject.paidAmount);
             // toast.success("Payment updated successfully");

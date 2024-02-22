@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import axios from "axios";
-import { toast } from "react-toastify";
 import * as myConstants from "../../../myConstants";
 import { useStudentContext } from "../../../StudentContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,7 +52,7 @@ function CollectFeeCard() {
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>Collect Fees</CardTitle>
+          <CardTitle>Collect Fees </CardTitle>
         </CardHeader>
         <CardContent>
           <div>

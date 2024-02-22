@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { ReceiptIndianRupee, Undo2 } from "lucide-react";
+import { ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
 
 import { useStudentContext } from "../../../StudentContext";
 import CollectFeeDialog from "./CollectFeeDialog";
 import { Button } from "@/components/ui/button";
 import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
+import AddPaneltyDialog from "./AddPaneltyDialog";
+import ClearPaneltyAler from "./ClearPaneltyAler";
 
 function CollectFeeTable() {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -21,6 +23,9 @@ function CollectFeeTable() {
       setExpandedRow(index);
     }
   };
+
+  // async function clearPanelty() {}
+
   return (
     <div>
       <div className="relative overflow-x-auto mt-10 rounded-t-2xl border border-gray-300 shadow-sm">
@@ -81,10 +86,16 @@ function CollectFeeTable() {
                       ₹{fee.amount}
                     </td>
                     <td
-                      className="px-6 py-4"
-                      onClick={() => handleRowClick(index, fee)}
+                      className="px-6 py-2"
+                      // onClick={() => handleRowClick(index, fee)}
                     >
-                      ₹{fee.penalty}
+                      <div className="flex flex-row justify-center items-center gap-2">
+                        <span className="font-semibold">₹{fee.penalty}</span>
+                        <div className="flex flex-col">
+                          <AddPaneltyDialog fee={fee} />
+                          <ClearPaneltyAler fee={fee} />
+                        </div>
+                      </div>
                     </td>
                     <td
                       className="px-6 py-4 font-semibold"

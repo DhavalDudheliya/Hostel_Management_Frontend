@@ -17,8 +17,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Header from "@/components/Header";
+import { useToast } from "@/components/ui/use-toast";
 
 function UserLogin() {
+  const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [showPassword, setshowPassword] = useState(false);
 
@@ -50,7 +52,10 @@ function UserLogin() {
     }),
     onSubmit: async (values) => {
       if (values.email === "" || values.password === "") {
-        toast.error("Please fill all fields");
+        toast({
+          variant: "destructive",
+          title: "Please fill all fields !!",
+        });
       } else {
         try {
           await axios
@@ -80,9 +85,15 @@ function UserLogin() {
             });
         } catch (err) {
           if (err.response.status === 401)
-            toast.error("Provide correct credentials");
+            toast({
+              variant: "destructive",
+              title: "Provide correct credentials !!",
+            });
           else if (err.response.status === 404)
-            toast.error("User does not exists");
+            toast({
+              variant: "destructive",
+              title: "User does not exists !!",
+            });
           console.log(err);
         }
       }
@@ -94,19 +105,27 @@ function UserLogin() {
     setLoading(true);
     const email = formik.values.email;
     if (email === "") {
-      toast.error("Please enter your email");
+      toast({
+        variant: "destructive",
+        title: "Please enter your email !!",
+      });
       setLoading(false);
     } else {
       try {
         await axios.post("/forgot-password", { email: email }).then((res) => {
           if (res.status === 200) {
             setLoading(false);
-            toast.success("Password reset link sent to your email");
+            toast({
+              title: "Password reset link sent to your email.",
+            });
             setEmail("");
           }
         });
       } catch (error) {
-        toast.error("Could not send link");
+        toast({
+          variant: "destructive",
+          title: "Could not send link !!",
+        });
       }
     }
   }

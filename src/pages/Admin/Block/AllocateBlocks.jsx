@@ -93,7 +93,7 @@ function AllocateBlocks() {
                   </div>
                   <Link
                     className="absolute bottom-1 left-1 bg-white bg-opacity-20 text-white p-1 rounded-xl hover:bg-bg_red cursor-pointer"
-                    to={`/manager/allocate-blocks/${block._id}`}
+                    to={`/admin/allocate-blocks/${block._id}`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -117,18 +117,20 @@ function AllocateBlocks() {
                   </Link>
                 </div>
               </div>
-              <div className="text-sm font-medium pl-2">
+              <div className="text-md font-medium pl-2">
                 <span className="font-semibold">Rooms: </span>{" "}
-                {block.rooms.length}
+                <span className="">{block.rooms.length}</span>
               </div>
-              <div className="text-sm font-medium pl-2">
+              <div className="text-md font-medium pl-2">
                 <span className="font-semibold"> Range: </span>
                 {block.rooms[0].number}-
                 {block.rooms[block.rooms.length - 1].number}
               </div>
-              <div className="text-sm font-medium pl-2">
+              <div className="text-md font-medium pl-2">
                 <span className="font-semibold">vacancy: </span>{" "}
-                {calculateEmptySpaces(block.rooms)}
+                <span className="text-red-500">
+                  {calculateEmptySpaces(block.rooms)}
+                </span>
               </div>
             </div>
           ))}

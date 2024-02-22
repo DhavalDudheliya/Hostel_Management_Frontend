@@ -37,27 +37,9 @@ function IndexPage() {
       <div className="workspace">
         <div className="max-h-screen overflow-hidden">
           <Header />
-          {/* <div className="   top-0 left-0 w-full h-full bg-black opacity-50"></div> */}
         </div>
       </div >
       {/* <img src={index} alt="index" className="" /> */}
-      <Carousel className="w-full max-w-xs m-10" >
-        <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="">
-              <div className="p-1">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-4xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
     </>
   );
 }
