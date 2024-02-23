@@ -14,12 +14,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { toast } from "react-toastify";
+import { useToast } from "@/components/ui/use-toast";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import BriefStudentProfileCard from "@/components/BriefStudentProfileCard";
 
 function AddFee() {
+  const { toast } = useToast();
   const [amount, setAmount] = useState();
   const [semester, setSemester] = useState("");
   const [dueDate, setDueDate] = useState("");
@@ -47,11 +48,18 @@ function AddFee() {
         })
         .then((res) => {
           if (res.status === 200) {
-            toast.success("Fee add successfully");
+            toast({
+              title: "Fee added successfully !!",
+            });
           }
         });
     } catch (error) {
-      if (error.response.status === 400) toast.error("Submit failed");
+      if (error.response.status === 400) {
+        toast({
+          variant: "destructive",
+          title: "Oh! something went wrong. Submit Failed !! .",
+        });
+      }
     }
   }
 
