@@ -21,14 +21,14 @@ import { useStudentContext } from "../../../StudentContext";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash2 } from "lucide-react";
 
-function ClearPaneltyAler({ fee }) {
+function DeleteFee({ fee }) {
   const { student, setStudent } = useStudentContext();
   const { toast } = useToast();
 
   async function clearPanelty() {
     try {
       axios
-        .post("/accountant/clearPanelty", {
+        .post("/accountant/deleteFee", {
           studentId: student._id,
           feeId: fee._id,
         })
@@ -36,7 +36,7 @@ function ClearPaneltyAler({ fee }) {
           if (res.status === 200) {
             setStudent(res.data.updatedStudent);
             toast({
-              title: "Penalty cleared successfully !!",
+              title: "Fee Deleted successfully !!",
             });
           }
         });
@@ -63,24 +63,23 @@ function ClearPaneltyAler({ fee }) {
           <Tooltip>
             <TooltipTrigger>
               <AlertDialogTrigger asChild>
-                <span className="text-white bg-red-500 p-0.5 rounded-sm hover:ring-2 hover:ring-red-700">
+                <span className="text-white bg-red-500 p-1 mt-1 rounded-sm hover:ring-2 hover:ring-red-700">
                   <Trash2 size={16} />
                 </span>
               </AlertDialogTrigger>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Clear penalty</p>
+              <p>Delete Fee</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle className="text-red-500">
-              Are you absolutely sure to clear panelty?
+              Are you absolutely sure to delete The Fee?
             </AlertDialogTitle>
             <AlertDialogDescription>
-              This action will clear this panelty
+              This action will delete this fee
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -93,4 +92,4 @@ function ClearPaneltyAler({ fee }) {
   );
 }
 
-export default ClearPaneltyAler;
+export default DeleteFee;

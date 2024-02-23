@@ -66,7 +66,7 @@ function AddPaneltyDialog({ fee }) {
       if (error.response.status === 400) {
         toast({
           variant: "destructive",
-          title: "Uh! Something went wrong.",
+          title: "Oh! Something went wrong.",
         });
       }
     }
@@ -78,7 +78,7 @@ function AddPaneltyDialog({ fee }) {
           <Tooltip>
             <TooltipTrigger>
               <DialogTrigger asChild>
-                <span className="bg-green-400 text-white p-0.5 space-y-1 rounded-sm hover:scale-105">
+                <span className="bg-green-400 text-white p-0.5 space-y-1 rounded-sm hover:ring-2 hover:ring-green-600">
                   <Plus size={16} />
                 </span>
               </DialogTrigger>

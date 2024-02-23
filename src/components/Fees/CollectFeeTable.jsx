@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
 import AddPaneltyDialog from "./AddPaneltyDialog";
 import ClearPaneltyAler from "./ClearPaneltyAler";
+import DeleteFee from "./DeleteFee";
 
 function CollectFeeTable() {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -127,8 +128,9 @@ function CollectFeeTable() {
                         {fee.paymentStatus}
                       </button>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="flex flex-row justify-center items-center gap-2 px-2 py-4">
                       <CollectFeeDialog fee={fee} />
+                      <DeleteFee fee={fee} />
                     </td>
                   </tr>
                   {expandedRow === index &&

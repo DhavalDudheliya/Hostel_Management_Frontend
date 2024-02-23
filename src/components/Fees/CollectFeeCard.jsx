@@ -38,7 +38,10 @@ function CollectFeeCard() {
           });
       } catch (error) {
         if (error.response.status === 404)
-          toast.error("Student doea not exist");
+          toast({
+            variant: "destructive",
+            title: "Student does not exist !!!",
+          });
         if (error.response.status === 401) toast.error("Request failed");
         console.log(error);
       }
