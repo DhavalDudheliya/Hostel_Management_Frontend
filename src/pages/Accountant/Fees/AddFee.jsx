@@ -43,6 +43,7 @@ function AddFee() {
           semester,
           dueDate,
           feesFor,
+          rollNumber: query,
         })
         .then((res) => {
           if (res.status === 200) {
