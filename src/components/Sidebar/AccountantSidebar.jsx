@@ -25,6 +25,7 @@ const AdminSideBar = () => {
   const [open, setOpen] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const [selectedItem, setSelectedItem] = useState("home");
+  const [subFeeSelectedItem, setSubFeeSelectedItem] = useState("");
 
   /* LOGOUT */
   async function logoutHandle(ev) {
@@ -139,21 +140,42 @@ const AdminSideBar = () => {
               <Link
                 onClick={() => {
                   setSelectedItem("fees");
+                  setSubFeeSelectedItem("collectFee");
                 }}
                 to="accountant/fee/collectFees"
-                className="p-2 hover:underline hover:cursor-pointer"
+                className={`p-2 duration-300 hover:underline hover:cursor-pointer ${
+                  subFeeSelectedItem === "collectFee"
+                    ? "text-[#D90368]"
+                    : "text-white"
+                }`}
               >
                 Collect Fees
               </Link>
               <Link
+                onClick={() => {
+                  setSelectedItem("fees");
+                  setSubFeeSelectedItem("dueFees");
+                }}
                 to="accountant/fee/dueFees"
-                className="p-2 hover:underline hover:cursor-pointer"
+                className={`p-2 duration-300 hover:underline hover:cursor-pointer ${
+                  subFeeSelectedItem === "dueFees"
+                    ? "text-[#D90368]"
+                    : "text-white"
+                }`}
               >
                 Due Fees
               </Link>
               <Link
+                onClick={() => {
+                  setSelectedItem("fees");
+                  setSubFeeSelectedItem("addFee");
+                }}
                 to="accountant/fee/addFee"
-                className="p-2 hover:underline hover:cursor-pointer"
+                className={`p-2 duration-300 hover:underline hover:cursor-pointer ${
+                  subFeeSelectedItem === "addFee"
+                    ? "text-[#D90368]"
+                    : "text-white"
+                }`}
               >
                 Add Fee
               </Link>

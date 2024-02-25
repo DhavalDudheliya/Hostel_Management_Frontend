@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 import { useStudentContext } from "../../../StudentContext";
@@ -14,6 +14,13 @@ function CollectFeeCard() {
 
   const [rollNumber, setRollNumber] = useState("");
   const { student, setStudent } = useStudentContext();
+
+  useEffect(() => {
+    // Cleanup function to clear student data when the component is unmounted
+    return () => {
+      setStudent("");
+    };
+  }, []); // Empty dependency array means this effect runs once after the initial render
 
   async function getDeatils(ev) {
     ev.preventDefault();

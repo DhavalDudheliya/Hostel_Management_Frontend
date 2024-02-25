@@ -11,6 +11,7 @@ import ClearPaneltyAler from "./ClearPaneltyAler";
 import DeleteFee from "./DeleteFee";
 
 function CollectFeeTable() {
+  const today = moment();
   const [expandedRow, setExpandedRow] = useState(null);
   const { student, setSubFees, subFees } = useStudentContext();
 
@@ -41,6 +42,9 @@ function CollectFeeTable() {
               </th>
               <th scope="col" className="px-6 py-3">
                 Amount
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Due Date
               </th>
               <th scope="col" className="px-6 py-3">
                 Penalty
@@ -85,6 +89,14 @@ function CollectFeeTable() {
                       onClick={() => handleRowClick(index, fee)}
                     >
                       ₹{fee.amount}
+                    </td>
+                    <td
+                      className={`px-6 py-4 ${
+                        moment(fee.dueDate).isBefore(today) ? "text-red-500" : ""
+                      }`}
+                      onClick={() => handleRowClick(index, fee)}
+                    >
+                      {moment(fee.dueDate).format("DD-MM-YYYY")}
                     </td>
                     <td
                       className="px-6 py-2"
@@ -138,6 +150,7 @@ function CollectFeeTable() {
                     subFees.map((subFee, index) => (
                       <tr className="bg-gray-200 border-b border-gray-300">
                         <td className="px-6 py-4"></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
