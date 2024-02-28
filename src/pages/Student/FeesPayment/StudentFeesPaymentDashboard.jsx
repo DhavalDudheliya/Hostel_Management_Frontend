@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import logo from "../../../assets/logo2.png";
 
 function StudentFeesPaymentDashboard() {
   const [amount, setAmount] = useState(10000);

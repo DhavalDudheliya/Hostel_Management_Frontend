@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 function DueFeeTable() {
   const today = moment();
   const [expandedRow, setExpandedRow] = useState(null);
-  const { setDueFees, dueFees, setSubFees, subFees } = useStudentContext();
+  const { dueFees, setSubFees, subFees } = useStudentContext();
 
   const handleRowClick = (index, fee) => {
     if (expandedRow === index) {
@@ -24,9 +24,6 @@ function DueFeeTable() {
       setExpandedRow(index);
     }
   };
-
-
-  // async function clearPanelty() {}
 
   return (
     <div>
@@ -69,7 +66,7 @@ function DueFeeTable() {
           <tbody>
             {dueFees &&
               dueFees.map((fee, index) => (
-                <>
+                <React.Fragment key={index}>
                   <tr className="bg-white border-b border-gray-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 cursor-pointer">
                     <td
                       scope="row"
@@ -118,10 +115,6 @@ function DueFeeTable() {
                     >
                       <div className="flex flex-row justify-center items-center gap-2">
                         <span className="font-semibold">₹{fee.penalty}</span>
-                        <div className="flex flex-col">
-                          <AddPaneltyDialog fee={fee} />
-                          <ClearPaneltyAler fee={fee} />
-                        </div>
                       </div>
                     </td>
                     <td
@@ -139,39 +132,10 @@ function DueFeeTable() {
                     </td>
 
                     <td className="flex flex-row justify-center items-center gap-2 px-2 py-4">
-                      <Button onClick={msg}>Send</Button>
+                      <Button>Send</Button>
                     </td>
                   </tr>
-                  {expandedRow === index &&
-                    subFees &&
-                    subFees.map((subFee, index) => (
-                      <tr className="bg-gray-200 border-b border-gray-300">
-                        <td className="px-6 py-4"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>₹{subFee.amount}</td>
-                        <td>{moment(subFee.date).format("DD-MM-YYYY")}</td>
-                        <td></td>
-                        <td></td>
-                        <td className="pr-2 py-4 flex flex-row items-center justify-start gap-1">
-                          <RevertFeeAlertDialogue
-                            subFeeAmount={subFee.amount}
-                            subFeeId={subFee._id}
-                            feeId={fee._id}
-                          />
-                          <button
-                            size="sm"
-                            className="bg-cyan-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 hover:bg-cyan-500/90 flex items-center"
-                          >
-                            <ReceiptIndianRupee size={14} />
-                            <div className="ml-1">Reciept</div>
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                </>
+                </React.Fragment>
               ))}
           </tbody>
         </table>
