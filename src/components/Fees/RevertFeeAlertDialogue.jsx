@@ -55,7 +55,7 @@ function RevertFeeAlertDialogue({ subFeeAmount, subFeeId, feeId }) {
         <AlertDialogTrigger asChild>
           <button
             size="sm"
-            className="bg-red-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 hover:bg-red-500/90 flex items-center"
+            className="bg-red-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 flex items-center  hover:bg-red-500/90 hover:ring-1 hover:ring-red-700"
           >
             <Undo2 size={14} />
             <div className="ml-1">Revert</div>
