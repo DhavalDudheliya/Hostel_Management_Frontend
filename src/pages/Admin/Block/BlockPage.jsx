@@ -85,9 +85,9 @@ const BlockPage = () => {
                       setRoom(room);
                       setSelectedRoomNumber(room.number);
                     }}
-                    className={`bg-gray-200 border border-black rounded-lg p-2 flex flex-col items-center cursor-pointer h-fit duration-100 hover:bg-gradient-to-t hover:from-gray-300 hover:to-gray-200 ${
+                    className={`bg-gray-100 border border-black rounded-lg p-2 flex flex-col items-center cursor-pointer h-fit duration-200 ${
                       selectedRoomNumber && selectedRoomNumber === room.number
-                        ? "bg-gradient-to-t from-gray-300 to-gray-200 border-b-4 border-bg_dark_section"
+                        ? "bg-gradient-to-t from-gray-300 to-gray-50"
                         : "bg-gray-200"
                     } `}
                     key={room.number}
@@ -101,7 +101,8 @@ const BlockPage = () => {
               ))}
             </div>
           </ScrollArea>
-          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2 items-center border-2 border-black rounded-lg p-5 mt-4 ml-4 mr-6">
+          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2 items-center border-2 border-black rounded-lg px-5 pt-3 pb-5 mt-4 ml-4 mr-6">
+            <div className="col-span-2 text-center text-2xl font-semibold mb-2">{selectedRoomNumber}</div>
             {AllocatedRoomStudents &&
               AllocatedRoomStudents.map((student) => (
                 <>
@@ -109,7 +110,7 @@ const BlockPage = () => {
                     <div>
                       {student.profilePhoto ? (
                         <img
-                          className="rounded-xl aspect-square object-cover border-2 border-bg_dark_section"
+                          className="rounded aspect-square object-cover border-2 border-bg_dark_section w-20"
                           src={
                             myConstants.BACKEND_URL +
                             "/uploads/" +

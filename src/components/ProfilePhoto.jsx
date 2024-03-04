@@ -8,9 +8,15 @@ function ProfilePhoto() {
   const [count, setCount] = useState(0);
   const [profilePhotoPath, setProfilePhotoPath] = useState("");
 
-  useEffect(() => {
-    setProfilePhotoPath(myConst.BACKEND_URL + "/uploads/" + user.profilePhoto);
-  }, [count]);
+  useEffect(
+    () => {
+      setProfilePhotoPath(
+        myConst.BACKEND_URL + "/uploads/" + user.profilePhoto
+      );
+    },
+    [count],
+    []
+  );
 
   async function photoHandler(ev) {
     ev.preventDefault();
@@ -23,7 +29,6 @@ function ProfilePhoto() {
       .then((res) => {
         alert("Photo uploaded successfully");
         setCount((prev) => prev + 1);
-        window.location.reload(false);
       })
       .catch((err) => console.log(err));
   }

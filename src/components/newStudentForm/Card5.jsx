@@ -15,7 +15,7 @@ import {
 import { Button } from "../ui/button";
 
 function Card5({ formik, submitted }) {
-  const [photo, setPhoto] = useState("");
+  // const [photo, setPhoto] = useState("");
   const [range, setRange] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -164,13 +164,11 @@ function Card5({ formik, submitted }) {
         <Input
           type="file"
           onChange={(ev) => {
-            setTimeout(() => {
-              setIsUploading(false);
-            }, 1000);
-            setPhoto(ev.target.files[0]);
+            // setPhoto(ev.target.files[0]);
+            formik.setFieldValue("profilePhoto", ev.target.files[0]);
           }}
           name="photo"
-          className="mt-1 mb-2 bg-slate-200"
+          className="mt-1 mb-2 bg-slate-200 cursor-pointer"
         />
       </CardContent>
     </div>

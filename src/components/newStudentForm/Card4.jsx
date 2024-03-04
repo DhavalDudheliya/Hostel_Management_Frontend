@@ -3,14 +3,7 @@ import universities from "@/assets/universities";
 import branches from "@/assets/branches";
 import courses from "@/assets/courses";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -34,7 +27,7 @@ function Card4({ formik, submitted }) {
   };
 
   const handleUniversityChanged = (value) => {
-    formik.setFieldValue("universityOrSchool", value);
+    formik.setFieldValue("university", value);
     if (value == "Knowledge High School") {
       setIsScholl(true);
     } else {
@@ -54,17 +47,17 @@ function Card4({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Select
                 onValueChange={(value) => handleUniversityChanged(value)}
-                name="universityOrSchool"
-                value={formik.values.universityOrSchool}
+                name="university"
+                value={formik.values.university}
                 onChange={formik.handleChange}
                 onOpenChange={() =>
-                  formik.handleBlur({ target: { name: "universityOrSchool" } })
+                  formik.handleBlur({ target: { name: "university" } })
                 }
-                {...formik.getFieldProps("universityOrSchool")}
+                {...formik.getFieldProps("university")}
               >
                 <SelectTrigger
                   className={`w-full h-8 border-gray-300 mt-1 ${
-                    submitted && formik.errors.universityOrSchool
+                    submitted && formik.errors.university
                       ? "outline outline-1 outline-red-500 "
                       : ""
                   }`}
@@ -82,9 +75,9 @@ function Card4({ formik, submitted }) {
                 </SelectContent>
               </Select>
               <div className="absolute top-10">
-                {submitted && formik.errors.universityOrSchool ? (
+                {submitted && formik.errors.university ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.universityOrSchool}
+                    {formik.errors.university}
                   </div>
                 ) : (
                   <div className=""></div>
@@ -159,17 +152,10 @@ function Card4({ formik, submitted }) {
                     name="branch"
                     value={formik.values.branch}
                     onChange={formik.handleChange}
-                    onOpenChange={() =>
-                      formik.handleBlur({ target: { name: "branch" } })
-                    }
                     {...formik.getFieldProps("branch")}
                   >
                     <SelectTrigger
-                      className={`w-full h-8 border-gray-300 mt-1 ${
-                        submitted && formik.errors.branch
-                          ? "outline outline-1 outline-red-500 "
-                          : ""
-                      }`}
+                      className={`w-full h-8 border-gray-300 mt-1`}
                     >
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
@@ -185,15 +171,6 @@ function Card4({ formik, submitted }) {
                   </Select>
                 </>
               )}
-              <div className="absolute top-10">
-                {submitted && formik.errors.branch ? (
-                  <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.branch}
-                  </div>
-                ) : (
-                  <div className=""></div>
-                )}
-              </div>
             </div>
           </div>
           <div></div>
@@ -232,21 +209,23 @@ function Card4({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Input
                 type="text"
-                name="lastExamPrtg"
-                value={formik.values.lastExamPrtg}
+                name="lastExamPercentage"
+                value={formik.values.lastExamPercentage}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.lastExamPrtg && formik.errors.lastExamPrtg
+                  formik.touched.lastExamPercentage &&
+                  formik.errors.lastExamPercentage
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
-                {...formik.getFieldProps("lastExamPrtg")}
+                {...formik.getFieldProps("lastExamPercentage")}
               />
               <div className="absolute top-10">
-                {formik.touched.lastExamPrtg && formik.errors.lastExamPrtg ? (
+                {formik.touched.lastExamPercentage &&
+                formik.errors.lastExamPercentage ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.lastExamPrtg}
+                    {formik.errors.lastExamPercentage}
                   </div>
                 ) : (
                   <div className=""></div>

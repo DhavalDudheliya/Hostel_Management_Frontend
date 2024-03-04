@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import districts from "@/assets/allDistricts";
 import talukasByDistrict from "@/assets/allTalukas";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {  CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -180,21 +180,21 @@ function Card3({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Input
                 type="text"
-                name="pCode"
-                value={formik.values.pCode}
+                name="postalCode"
+                value={formik.values.postalCode}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.pCode && formik.errors.pCode
+                  formik.touched.postalCode && formik.errors.postalCode
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
-                {...formik.getFieldProps("pCode")}
+                {...formik.getFieldProps("postalCode")}
               />
               <div className="absolute top-10">
-                {formik.touched.pCode && formik.errors.pCode ? (
+                {formik.touched.postalCode && formik.errors.postalCode ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.pCode}
+                    {formik.errors.postalCode}
                   </div>
                 ) : (
                   <div className=""></div>

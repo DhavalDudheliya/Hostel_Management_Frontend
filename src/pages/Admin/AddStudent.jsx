@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -19,9 +19,10 @@ import { Button } from "@/components/ui/button";
 function AddStudent() {
   const { user, setUser } = useContext(UserContext);
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   if (!user || (user && user.role !== "Admin")) {
-    return <Navigate to="/login" />;
+    navigate("/login");
   }
 
   const formik = useFormik({
@@ -29,65 +30,76 @@ function AddStudent() {
       rollNumber: "",
       firstName: "",
       lastName: "",
-      birthDate: "",
+      dateOfBirth: "",
       cast: "",
       bloodGroup: "",
-      pNo: "",
-      wNo: "",
+      mobileNumber: "",
+      whatsappNumber: "",
       email: "",
-      fatherName: "",
-      fEmail: "",
-      grandfatherName: "",
+      fatherFirstName: "",
+      fatherEmail: "",
+      fatherMiddlename: "",
       work: "",
-      fatherPNo: "",
-      fatherWNo: "",
+      fatherPhoneNo: "",
+      fatherWhatsappNo: "",
       street: "",
       district: "",
       taluka: "",
       village: "",
-      pCode: "",
-      universityOrSchool: "",
+      postalCode: "",
+      university: "",
       course: "",
       branch: "",
       lastExam: "",
-      lastExamPrtg: "",
+      lastExamPercentage: "",
       lastSchoolName: "",
       rollNumberRange: "",
       permenantDisease: "",
+      profilePhoto: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async ({ resetForm }) => {
       try {
+        const formData = new FormData();
+        formData.append("rollNumber", formik.values.rollNumber);
+        formData.append("firstName", formik.values.firstName);
+        formData.append("lastName", formik.values.lastName);
+        formData.append("dateOfBirth", formik.values.dateOfBirth);
+        formData.append("cast", formik.values.cast);
+        formData.append("bloodGroup", formik.values.bloodGroup);
+        formData.append("mobileNumber", formik.values.mobileNumber);
+        formData.append("whatsappNumber", formik.values.whatsappNumber);
+        formData.append("email", formik.values.email);
+        formData.append("fatherFirstName", formik.values.fatherFirstName);
+        formData.append("fatherEmail", formik.values.fatherEmail);
+        formData.append("fatherMiddlename", formik.values.fatherMiddlename);
+        formData.append("work", formik.values.work);
+        formData.append("fatherPhoneNo", formik.values.fatherPhoneNo);
+        formData.append("fatherWhatsappNo", formik.values.fatherWhatsappNo);
+        formData.append("street", formik.values.street);
+        formData.append("district", formik.values.district);
+        formData.append("taluka", formik.values.taluka);
+        formData.append("village", formik.values.village);
+        formData.append("postalCode", formik.values.postalCode);
+        formData.append("university", formik.values.university);
+        formData.append("course", formik.values.course);
+        formData.append(
+          "branch",
+          formik.values.branch ? formik.values.branch : formik.values.course
+        );
+        formData.append("lastExam", formik.values.lastExam);
+        formData.append("lastExamPercentage", formik.values.lastExamPercentage);
+        formData.append("lastSchoolName", formik.values.lastSchoolName);
+        formData.append("permenantDisease", formik.values.permenantDisease);
+        formData.append("profilePhoto", formik.values.profilePhoto);
+
+        console.log(formik.values.profilePhoto);
+
         await axios
-          .post("/admin/createstudent", {
-            rollNumber: formik.values.rollNumber,
-            firstName: formik.values.firstName,
-            lastName: formik.values.lastName,
-            Street: formik.values.street,
-            village: formik.values.village,
-            taluka: formik.values.taluka,
-            city: formik.values.district,
-            postalCode: formik.values.pCode,
-            dateOfBirth: formik.values.birthDate,
-            cast: formik.values.cast,
-            permenantDisease: formik.values.permenantDisease,
-            mobileNumber: formik.values.pNo,
-            whatsappNumber: formik.values.wNo,
-            email: formik.values.email,
-            university: formik.values.universityOrSchool,
-            course: formik.values.course,
-            branch: formik.values.branch
-              ? formik.values.branch
-              : formik.values.course,
-            lastSchoolName: formik.values.lastSchoolName,
-            lastExam: formik.values.lastExam,
-            lastExamPercentage: formik.values.lastExamPrtg,
-            fatherFirstName: formik.values.fatherName,
-            fatherMiddlename: formik.values.grandfatherName,
-            fatherPhoneNo: formik.values.fatherPNo,
-            fatherWhatsappNo: formik.values.fatherWNo,
-            fatherEmail: formik.values.fEmail,
-            work: formik.values.work,
+          .post("/admin/createstudent", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
           })
           .then((res) => {
             if (res.status === 200) {
@@ -115,7 +127,11 @@ function AddStudent() {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     setSubmitted(true);
-    formik.handleSubmit();
+    if (formik.isValid) {
+      formik.handleSubmit();
+    } else {
+      toast.error("Please fill in all required fields");
+    }
   };
 
   return (

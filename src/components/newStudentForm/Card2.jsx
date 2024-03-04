@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {  CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -30,21 +30,23 @@ function Card2({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Input
                 type="text"
-                name="fatherName"
-                value={formik.values.fatherName}
+                name="fatherFirstName"
+                value={formik.values.fatherFirstName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.fatherName && formik.errors.fatherName
+                  formik.touched.fatherFirstName &&
+                  formik.errors.fatherFirstName
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
-                {...formik.getFieldProps("fatherName")}
+                {...formik.getFieldProps("fatherFirstName")}
               />
               <div className="absolute top-10">
-                {formik.touched.fatherName && formik.errors.fatherName ? (
+                {formik.touched.fatherFirstName &&
+                formik.errors.fatherFirstName ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.fatherName}
+                    {formik.errors.fatherFirstName}
                   </div>
                 ) : (
                   <div className=""></div>
@@ -57,23 +59,23 @@ function Card2({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Input
                 type="text"
-                name="grandfatherName"
-                value={formik.values.grandfatherName}
+                name="fatherMiddlename"
+                value={formik.values.fatherMiddlename}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.grandfatherName &&
-                  formik.errors.grandfatherName
+                  formik.touched.fatherMiddlename &&
+                  formik.errors.fatherMiddlename
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
-                {...formik.getFieldProps("grandfatherName")}
+                {...formik.getFieldProps("fatherMiddlename")}
               />
               <div className="absolute top-10">
-                {formik.touched.grandfatherName &&
-                formik.errors.grandfatherName ? (
+                {formik.touched.fatherMiddlename &&
+                formik.errors.fatherMiddlename ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.grandfatherName}
+                    {formik.errors.fatherMiddlename}
                   </div>
                 ) : (
                   <div className=""></div>
@@ -86,21 +88,21 @@ function Card2({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Input
                 type="text"
-                name="fatherPNo"
-                value={formik.values.fatherPNo}
+                name="fatherPhoneNo"
+                value={formik.values.fatherPhoneNo}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.fatherPNo && formik.errors.fatherPNo
+                  formik.touched.fatherPhoneNo && formik.errors.fatherPhoneNo
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
-                {...formik.getFieldProps("fatherPNo")}
+                {...formik.getFieldProps("fatherPhoneNo")}
               />
               <div className="absolute top-10">
-                {formik.touched.fatherPNo && formik.errors.fatherPNo ? (
+                {formik.touched.fatherPhoneNo && formik.errors.fatherPhoneNo ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.fatherPNo}
+                    {formik.errors.fatherPhoneNo}
                   </div>
                 ) : (
                   <div className=""></div>
@@ -113,21 +115,21 @@ function Card2({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Input
                 type="text"
-                name="fatherWNo"
-                value={formik.values.fatherWNo}
+                name="fatherWhatsappNo"
+                value={formik.values.fatherWhatsappNo}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.fatherWNo && formik.errors.fatherWNo
+                  formik.touched.fatherWhatsappNo && formik.errors.fatherWhatsappNo
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
-                {...formik.getFieldProps("fatherWNo")}
+                {...formik.getFieldProps("fatherWhatsappNo")}
               />
               <div className="absolute top-10">
-                {formik.touched.fatherWNo && formik.errors.fatherWNo ? (
+                {formik.touched.fatherWhatsappNo && formik.errors.fatherWhatsappNo ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.fatherWNo}
+                    {formik.errors.fatherWhatsappNo}
                   </div>
                 ) : (
                   <div className=""></div>
@@ -140,21 +142,21 @@ function Card2({ formik, submitted }) {
             <div className="flex flex-row gap-2 items-center relative">
               <Input
                 type="text"
-                name="fEmail"
-                value={formik.values.fEmail}
+                name="fatherEmail"
+                value={formik.values.fatherEmail}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.fEmail && formik.errors.fEmail
+                  formik.touched.fatherEmail && formik.errors.fatherEmail
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
-                {...formik.getFieldProps("fEmail")}
+                {...formik.getFieldProps("fatherEmail")}
               />
               <div className="absolute top-10">
-                {formik.touched.fEmail && formik.errors.fEmail ? (
+                {formik.touched.fatherEmail && formik.errors.fatherEmail ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
-                    {formik.errors.fEmail}
+                    {formik.errors.fatherEmail}
                   </div>
                 ) : (
                   <div className=""></div>

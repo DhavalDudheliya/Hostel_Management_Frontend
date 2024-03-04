@@ -12,7 +12,7 @@ function BriefStudentProfileCard({ student }) {
           <div>
             {student.profilePhoto ? (
               <img
-                className="rounded-xl aspect-square object-cover border-2 border-bg_dark_section"
+                className="rounded aspect-square object-cover border-2 border-bg_dark_section w-20"
                 src={
                   myConstants.BACKEND_URL + "/uploads/" + student.profilePhoto
                 }
