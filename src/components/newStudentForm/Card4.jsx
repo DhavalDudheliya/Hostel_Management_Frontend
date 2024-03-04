@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-function Card4({ formik }) {
+function Card4({ formik, submitted }) {
   const [isScholl, setIsScholl] = useState(false);
 
   const handleCourseChange = (value) => {
@@ -64,8 +64,7 @@ function Card4({ formik }) {
               >
                 <SelectTrigger
                   className={`w-full h-8 border-gray-300 mt-1 ${
-                    formik.touched.universityOrSchool &&
-                    formik.errors.universityOrSchool
+                    submitted && formik.errors.universityOrSchool
                       ? "outline outline-1 outline-red-500 "
                       : ""
                   }`}
@@ -83,8 +82,7 @@ function Card4({ formik }) {
                 </SelectContent>
               </Select>
               <div className="absolute top-10">
-                {formik.touched.universityOrSchool &&
-                formik.errors.universityOrSchool ? (
+                {submitted && formik.errors.universityOrSchool ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
                     {formik.errors.universityOrSchool}
                   </div>
@@ -111,7 +109,7 @@ function Card4({ formik }) {
               >
                 <SelectTrigger
                   className={`w-full h-8 border-gray-300 mt-1 ${
-                    formik.touched.course && formik.errors.course
+                    submitted && formik.errors.course
                       ? "outline outline-1 outline-red-500 "
                       : ""
                   }`}
@@ -139,7 +137,7 @@ function Card4({ formik }) {
                 </SelectContent>
               </Select>
               <div className="absolute top-10">
-                {formik.touched.course && formik.errors.course ? (
+                {submitted && formik.errors.course ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
                     {formik.errors.course}
                   </div>
@@ -168,7 +166,7 @@ function Card4({ formik }) {
                   >
                     <SelectTrigger
                       className={`w-full h-8 border-gray-300 mt-1 ${
-                        formik.touched.branch && formik.errors.branch
+                        submitted && formik.errors.branch
                           ? "outline outline-1 outline-red-500 "
                           : ""
                       }`}
@@ -188,7 +186,7 @@ function Card4({ formik }) {
                 </>
               )}
               <div className="absolute top-10">
-                {formik.touched.branch && formik.errors.branch ? (
+                {submitted && formik.errors.branch ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
                     {formik.errors.branch}
                   </div>

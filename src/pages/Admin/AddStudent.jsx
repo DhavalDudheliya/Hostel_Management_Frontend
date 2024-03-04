@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { useFormik } from "formik";
@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 
 function AddStudent() {
   const { user, setUser } = useContext(UserContext);
+  const [submitted, setSubmitted] = useState(false);
 
   if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
@@ -55,58 +56,66 @@ function AddStudent() {
       permenantDisease: "",
     },
     validationSchema: validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        await axios
+          .post("/admin/createstudent", {
+            rollNumber: formik.values.rollNumber,
+            firstName: formik.values.firstName,
+            lastName: formik.values.lastName,
+            Street: formik.values.street,
+            village: formik.values.village,
+            taluka: formik.values.taluka,
+            city: formik.values.district,
+            postalCode: formik.values.pCode,
+            dateOfBirth: formik.values.birthDate,
+            cast: formik.values.cast,
+            permenantDisease: formik.values.permenantDisease,
+            mobileNumber: formik.values.pNo,
+            whatsappNumber: formik.values.wNo,
+            email: formik.values.email,
+            university: formik.values.universityOrSchool,
+            course: formik.values.course,
+            branch: formik.values.branch
+              ? formik.values.branch
+              : formik.values.course,
+            lastSchoolName: formik.values.lastSchoolName,
+            lastExam: formik.values.lastExam,
+            lastExamPercentage: formik.values.lastExamPrtg,
+            fatherFirstName: formik.values.fatherName,
+            fatherMiddlename: formik.values.grandfatherName,
+            fatherPhoneNo: formik.values.fatherPNo,
+            fatherWhatsappNo: formik.values.fatherWNo,
+            fatherEmail: formik.values.fEmail,
+            work: formik.values.work,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              toast.success("Successfully created");
+              setSubmitted(false);
+            } else {
+              toast.error("Failed to create student");
+            }
+          })
+          .catch((err) => {
+            toast.error("Failed to create student");
+          });
+      } catch (error) {
+        toast.error("Failed to create student");
+      }
+    },
   });
 
   const handleClearForm = (ev) => {
     ev.preventDefault();
     formik.resetForm();
+    setSubmitted(false);
   };
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    try {
-      await axios
-        .post("/admin/createstudent", {
-          rollNumber: formik.values.rollNumber,
-          firstName: formik.values.firstName,
-          lastName: formik.values.lastName,
-          Street: formik.values.street,
-          village: formik.values.village,
-          taluka: formik.values.taluka,
-          city: formik.values.district,
-          postalCode: formik.values.pCode,
-          dateOfBirth: formik.values.birthDate,
-          cast: formik.values.cast,
-          permenantDisease: formik.values.permenantDisease,
-          mobileNumber: formik.values.pNo,
-          whatsappNumber: formik.values.wNo,
-          email: formik.values.email,
-          university: formik.values.universityOrSchool,
-          course: formik.values.course,
-          branch: formik.values.branch ? formik.values.branch : "",
-          lastSchoolName: formik.values.lastSchoolName,
-          lastExam: formik.values.lastExam,
-          lastExamPercentage: formik.values.lastExamPrtg,
-          fatherFirstName: formik.values.fatherName,
-          fatherMiddlename: formik.values.grandfatherName,
-          fatherPhoneNo: formik.values.fatherPNo,
-          fatherWhatsappNo: formik.values.fatherWNo,
-          fatherEmail: formik.values.fEmail,
-          work: formik.values.work,
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            toast.success("Successfully created");
-          } else {
-            toast.error("Failed to create student");
-          }
-        })
-        .catch((err) => {
-          toast.error("Failed to create student");
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    setSubmitted(true);
+    formik.handleSubmit();
   };
 
   return (
@@ -119,34 +128,39 @@ function AddStudent() {
           <div className="flex flex-col gap-y-8">
             <div>
               <Card>
-                <Card1 formik={formik} />
+                <Card1 formik={formik} submitted={submitted} />
               </Card>
             </div>
             <div className="col-span-2">
               <Card>
-                <Card2 formik={formik} />
+                <Card2 formik={formik} submitted={submitted} />
               </Card>
             </div>
             <div className="col-span-2 col-start-2 row-start-2">
               <Card>
-                <Card3 formik={formik} />
+                <Card3 formik={formik} submitted={submitted} />
               </Card>
             </div>
           </div>
           <div className="flex flex-col lg:flex-row mt-8 gap-8">
             <div>
               <Card>
-                <Card4 formik={formik} />
+                <Card4 formik={formik} submitted={submitted} />
               </Card>
             </div>
             <div>
               <Card>
-                <Card5 formik={formik} />
+                <Card5 formik={formik} submitted={submitted} />
               </Card>
             </div>
           </div>
           <div className="flex flex-row justify-center items-center w-full mt-8 gap-4">
-            <Button size="lg" variant="destructive" onClick={handleSubmit}>
+            <Button
+              size="lg"
+              variant="destructive"
+              onClick={handleSubmit}
+              type="submit"
+            >
               Add Student
             </Button>
             <Button size="lg" onClick={handleClearForm}>

@@ -75,6 +75,5 @@ export const validationSchema = Yup.object().shape({
   taluka: Yup.string().required("Please select an option"),
   rollNumberRange: Yup.string().required("Please select an option"),
   rollNumber: Yup.string()
-    .matches(/^\d{3}$/, "Roll number is not valid")
     .required("Roll number is required"),
 });

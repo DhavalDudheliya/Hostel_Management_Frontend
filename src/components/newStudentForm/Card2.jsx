@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-function Card2({ formik }) {
+function Card2({ formik, submitted }) {
   const handleWorkTypeChange = (value) => {
     formik.setFieldValue("work", value);
   };
@@ -176,7 +176,7 @@ function Card2({ formik }) {
               >
                 <SelectTrigger
                   className={`w-full h-8 border-gray-300 mt-1 ${
-                    formik.touched.work && formik.errors.work
+                    submitted && formik.errors.work
                       ? "outline outline-1 outline-red-500 "
                       : ""
                   }`}
@@ -191,7 +191,7 @@ function Card2({ formik }) {
                 </SelectContent>
               </Select>
               <div className="absolute top-10">
-                {formik.touched.work && formik.errors.work ? (
+                {submitted && formik.errors.work ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
                     {formik.errors.work}
                   </div>

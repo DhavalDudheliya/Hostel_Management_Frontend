@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-function Card3({ formik }) {
+function Card3({ formik, submitted }) {
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [talukas, setTalukas] = useState([]);
 
@@ -77,7 +77,7 @@ function Card3({ formik }) {
               >
                 <SelectTrigger
                   className={`w-full h-8 border-gray-300 mt-1 ${
-                    formik.touched.district && formik.errors.district
+                    submitted && formik.errors.district
                       ? "outline outline-1 outline-red-500 "
                       : ""
                   }`}
@@ -95,7 +95,7 @@ function Card3({ formik }) {
                 </SelectContent>
               </Select>
               <div className="absolute top-10">
-                {formik.touched.district && formik.errors.district ? (
+                {submitted && formik.errors.district ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
                     {formik.errors.district}
                   </div>
@@ -120,7 +120,7 @@ function Card3({ formik }) {
               >
                 <SelectTrigger
                   className={`w-full h-8 border-gray-300 mt-1 ${
-                    formik.touched.taluka && formik.errors.taluka
+                    submitted && formik.errors.taluka
                       ? "outline outline-1 outline-red-500 "
                       : ""
                   }`}
@@ -138,7 +138,7 @@ function Card3({ formik }) {
                 </SelectContent>
               </Select>
               <div className="absolute top-10">
-                {formik.touched.taluka && formik.errors.taluka ? (
+                {submitted && formik.errors.taluka ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
                     {formik.errors.taluka}
                   </div>

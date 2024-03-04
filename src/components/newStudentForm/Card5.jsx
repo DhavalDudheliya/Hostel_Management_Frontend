@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "../ui/button";
 
-function Card5({ formik }) {
+function Card5({ formik, submitted }) {
   const [photo, setPhoto] = useState("");
   const [range, setRange] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -71,7 +71,7 @@ function Card5({ formik }) {
           >
             <SelectTrigger
               className={`w-full h-8 border-gray-300 mt-1 ${
-                formik.touched.rollNumberRange && formik.errors.rollNumberRange
+                submitted && formik.errors.rollNumberRange
                   ? "outline outline-1 outline-red-500 "
                   : ""
               }`}
@@ -93,7 +93,7 @@ function Card5({ formik }) {
             </SelectContent>
           </Select>
           <div className="absolute top-10">
-            {formik.touched.rollNumberRange && formik.errors.rollNumberRange ? (
+            {submitted && formik.errors.rollNumberRange ? (
               <div className="ml-1 text-xs text-red-600 font-medium">
                 {formik.errors.rollNumberRange}
               </div>
@@ -158,15 +158,6 @@ function Card5({ formik }) {
                 "Generate"
               )}
             </button>
-            <div className="absolute top-10">
-              {formik.touched.lastExam && formik.errors.lastExam ? (
-                <div className="ml-1 text-xs text-red-600 font-medium">
-                  {formik.errors.lastExam}
-                </div>
-              ) : (
-                <div className=""></div>
-              )}
-            </div>
           </div>
         </div>
         <CardTitle className="py-3">Upload profile picture</CardTitle>
