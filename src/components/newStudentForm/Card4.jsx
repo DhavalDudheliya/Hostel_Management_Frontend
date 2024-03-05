@@ -41,7 +41,7 @@ function Card4({ formik, submitted }) {
         <CardTitle>Current Education</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid lg:grid-cols-3 gap-y-6 gap-x-16 pb-8">
+        <div className="grid lg:grid-cols-3 gap-y-6 gap-x-16 pb-8 w-full">
           <div>
             <Label>University or School</Label>
             <div className="flex flex-row gap-2 items-center relative">

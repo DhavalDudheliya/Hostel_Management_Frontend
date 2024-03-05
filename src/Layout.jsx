@@ -1,8 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Header from "./components/Header";
 import SideBar from "./components/Sidebar/SideBar";
 import React, { useContext, useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../UserContext";
 import Loader from "./components/Loader";
@@ -26,7 +24,7 @@ function Layout() {
 
   return (
     <>
-      <div className="md:flex hidden">
+      <div className="md:flex hidden  bg-slate-100 h-full">
         <SideBar />
         <div className="flex-1 justify-center items-center">
           <Outlet />

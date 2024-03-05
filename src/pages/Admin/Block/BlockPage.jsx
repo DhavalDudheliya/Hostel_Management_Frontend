@@ -8,7 +8,6 @@ import AddStudentPopup from "./AddStudentPopup";
 import Loader from "../../../components/Loader";
 import { UserContext } from "../../../../UserContext";
 import * as myConstants from "../../../../myConstants";
-import roomIcon from "../../../assets/room.png";
 
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";

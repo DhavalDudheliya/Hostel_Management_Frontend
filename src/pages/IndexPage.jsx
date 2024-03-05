@@ -34,7 +34,7 @@ function IndexPage() {
 
   return (
     <>
-      <div className="workspace">
+      <div className="h-[100vh] overflow-y-hidden">
         <div className="max-h-screen overflow-hidden">
           <Header />
         </div>

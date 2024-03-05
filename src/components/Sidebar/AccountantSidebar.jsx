@@ -35,7 +35,7 @@ const AdminSideBar = () => {
   }
 
   return (
-    <div className="sticky top-0 h-screen mr-4">
+    <div className="sticky top-0 h-screen">
       <div
         className={`w-60 duration-300 h-screen p-5 pt-8 bg-bg_dark_section relative`}
       >
@@ -54,7 +54,10 @@ const AdminSideBar = () => {
         <ul className="pt-10">
           <Link
             to="/accountant/dashboard"
-            onClick={() => setSelectedItem("home")}
+            onClick={() => {
+              setSelectedItem("home");
+              setSubFeeSelectedItem("");
+            }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "home"
                 ? "bg-white "
@@ -78,7 +81,10 @@ const AdminSideBar = () => {
           </Link>
           <Link
             to={"/admin/add-student"}
-            onClick={() => setSelectedItem("addStudent")}
+            onClick={() => {
+              setSelectedItem("addStudent");
+              setSubFeeSelectedItem("");
+            }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "addStudent"
                 ? "bg-white "
@@ -183,7 +189,10 @@ const AdminSideBar = () => {
           </div>
           <Link
             to={"/admin/report"}
-            onClick={() => setSelectedItem("report")}
+            onClick={() => {
+              setSelectedItem("report");
+              setSubFeeSelectedItem("");
+            }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "report"
                 ? "bg-white "
@@ -207,7 +216,10 @@ const AdminSideBar = () => {
           </Link>
           <Link
             to={"/admin/allnotices"}
-            onClick={() => setSelectedItem("notice")}
+            onClick={() => {
+              setSelectedItem("notice");
+              setSubFeeSelectedItem("");
+            }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "notice"
                 ? "bg-white duration-200"

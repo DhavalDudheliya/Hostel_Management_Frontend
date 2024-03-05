@@ -17,7 +17,7 @@ function CollectFees() {
 
   return (
     <>
-      <div className="p-6 lg:pl-6 lg:pr-10">
+      <div className="container py-8">
         <CollectFeeCard />
         {student && <CollectFeeTable />}
       </div>

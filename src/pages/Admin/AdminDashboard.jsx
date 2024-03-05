@@ -34,8 +34,8 @@ function StudentsProfile() {
 
   return (
     <>
-      <div className="py-4">
-        <div className="mx-6">
+      <div className="container py-8">
+        <div className="">
           <div className="font-semibold mx-1">Search student</div>
           <div className="relative">
             <Input

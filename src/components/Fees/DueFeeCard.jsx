@@ -18,7 +18,7 @@ function DueFeeCard() {
   const { toast } = useToast();
   const [year, setYear] = useState("");
   const [semester, setSemester] = useState("");
-  const { setDueFees, dueFees, setSubFees, subFees } = useStudentContext();
+  const { setDueFees } = useStudentContext();
 
   async function getDeatils(ev) {
     ev.preventDefault();
@@ -31,7 +31,7 @@ function DueFeeCard() {
         .then((res) => {
           if (res.status === 200) {
             setDueFees(res.data.feesArray);
-            // console.log(student);
+            console.log(res.data.feesArray);
           }
         });
     } catch (error) {

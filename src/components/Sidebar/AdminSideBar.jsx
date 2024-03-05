@@ -156,6 +156,33 @@ const AdminSideBar = () => {
               Room&nbsp;allocation
             </span>
           </Link>
+          <Link
+            to={"/admin/leave"}
+            onClick={() => setSelectedItem("leave")}
+            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
+              selectedItem === "leave"
+                ? "bg-white duration-200"
+                : "hover:bg-white hover:bg-opacity-20 hover:scale-95 transition-all duration-75"
+            }`}
+          >
+            {selectedItem === "leave" ? (
+              <img
+                className={`h-6 rotate-[360deg] duration-500`}
+                src={selected_room}
+              />
+            ) : (
+              <img className="h-6" src={room} />
+            )}
+            <span
+              className={`${!open && "hidden"} origin-left duration-75 ${
+                selectedItem === "leave"
+                  ? "text-bg_dark_section font-semibold"
+                  : "text-bg_white"
+              }`}
+            >
+              Room&nbsp;allocation
+            </span>
+          </Link>
           <li
             onClick={() => setSelectedItem("fine")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${

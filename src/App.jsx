@@ -46,6 +46,7 @@ import AllNotices from "./pages/Manager/Notice/AllNotices";
 import ManagerReport from "./pages/Manager/Report/ManagerReport";
 
 import ResetPassword from "./components/ResetPassword";
+import ApplyLeave from "./pages/Admin/Leave/ApplyLeave";
 
 axios.defaults.baseURL = myContants.BACKEND_URL;
 axios.defaults.withCredentials = true;
@@ -58,8 +59,8 @@ function App() {
         <Toaster />
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<IndexPage />} />
             <Route path="/login" element={<UserLogin />} />
+            <Route path="/" element={<IndexPage />} />
             // Admin
             <Route path="/admin/profile" element={<AdminProfile />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -67,14 +68,9 @@ function App() {
             <Route path="/admin/allnotices" element={<AllNotices />} />
             <Route path="/admin/report" element={<AdminReport />} />
             <Route path="/admin/add-student" element={<AddStudent />} />
-            <Route
-              path="/admin/allocate-blocks/:id"
-              element={<BlockPage />}
-            />
-            <Route
-              path="/admin/allocate-blocks"
-              element={<AllocateBlocks />}
-            />
+            <Route path="/admin/allocate-blocks/:id" element={<BlockPage />} />
+            <Route path="/admin/allocate-blocks" element={<AllocateBlocks />} />
+            <Route path="/admin/leave" element={<ApplyLeave />} />
             // Accountant
             <Route
               path="/accountant/dashboard"

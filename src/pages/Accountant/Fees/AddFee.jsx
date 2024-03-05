@@ -88,7 +88,7 @@ function AddFee() {
   }
 
   return (
-    <div className="px-6 py-16 lg:pl-6 lg:pr-10">
+    <div className="container py-8">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Add Fee Master</CardTitle>
