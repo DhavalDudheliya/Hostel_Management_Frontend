@@ -46,7 +46,7 @@ import AllNotices from "./pages/Manager/Notice/AllNotices";
 import ManagerReport from "./pages/Manager/Report/ManagerReport";
 
 import ResetPassword from "./components/ResetPassword";
-import ApplyLeave from "./pages/Admin/Leave/ApplyLeave";
+import Leave from "./pages/Admin/Leave/Leave";
 
 axios.defaults.baseURL = myContants.BACKEND_URL;
 axios.defaults.withCredentials = true;
@@ -70,7 +70,7 @@ function App() {
             <Route path="/admin/add-student" element={<AddStudent />} />
             <Route path="/admin/allocate-blocks/:id" element={<BlockPage />} />
             <Route path="/admin/allocate-blocks" element={<AllocateBlocks />} />
-            <Route path="/admin/leave" element={<ApplyLeave />} />
+            <Route path="/admin/leave" element={<Leave />} />
             // Accountant
             <Route
               path="/accountant/dashboard"

@@ -24,7 +24,7 @@ function Layout() {
 
   return (
     <>
-      <div className="md:flex hidden  bg-slate-100 h-full">
+      <div className="md:flex hidden h-full">
         <SideBar />
         <div className="flex-1 justify-center items-center">
           <Outlet />

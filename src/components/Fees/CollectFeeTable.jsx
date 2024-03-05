@@ -4,13 +4,11 @@ import moment from "moment";
 
 import { useStudentContext } from "../../../StudentContext";
 import CollectFeeDialog from "./CollectFeeDialog";
-import { Button } from "@/components/ui/button";
 import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
 import AddPaneltyDialog from "./AddPaneltyDialog";
 import ClearPaneltyAler from "./ClearPaneltyAler";
 import DeleteFee from "./DeleteFee";
 import axios from "axios";
-import Loader from "../Loader";
 
 function CollectFeeTable() {
   const today = moment();

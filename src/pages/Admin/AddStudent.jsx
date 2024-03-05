@@ -136,7 +136,7 @@ function AddStudent() {
 
   return (
     <>
-      <div className="container py-8">
+      <div className="p-6 lg:p-8">
         <h1 className="lg:text-3xl text-2xl font-bold text-bg_dark_section mb-5 mx-2">
           📝 New Admission Form
         </h1>
@@ -158,19 +158,19 @@ function AddStudent() {
               </Card>
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row mt-8 gap-8 w-full">
-            <div>
+          <div className="flex flex-col lg:flex-row my-8 gap-8 w-full">
+            <div className="w-full">
               <Card>
                 <Card4 formik={formik} submitted={submitted} />
               </Card>
             </div>
-            <div>
+            <div className="w-3/5">
               <Card>
-                {/* <Card5 formik={formik} submitted={submitted} /> */}
+                <Card5 formik={formik} submitted={submitted} />
               </Card>
             </div>
           </div>
-          <div className="flex flex-row justify-center items-center w-full mt-8 gap-4">
+          <div className="flex flex-row justify-center items-center w-full gap-4">
             <Button
               size="lg"
               variant="destructive"
