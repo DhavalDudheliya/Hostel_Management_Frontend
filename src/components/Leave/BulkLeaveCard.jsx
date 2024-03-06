@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import moment from "moment";
 
 // Components
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,28 +9,23 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import DateRangePicker from "./DateRangePicker";
 import { useToast } from "@/components/ui/use-toast";
-import BriefStudentProfileCard from "../BriefStudentProfileCard";
 import RollNumberInput from "../RollNumberInput";
 
 function BulkLeaveCard() {
   const { toast } = useToast();
 
-  const [rollNumber, setRollNumber] = useState("");
+  const [rollNumbers, setRollNumbers] = useState([]);
   const [reason, setReason] = useState("");
   const [date, setDate] = useState({ from: "", to: "" });
 
   async function handleSubmit(ev) {
     ev.preventDefault();
-    console.log(rollNumber);
-    console.log(date.from);
-    console.log(date.to);
-    console.log(reason);
     try {
       await axios
         .post("/leave/applyBulklLeave", {
-          rollNumber,
-          startDate: date.from,
-          endDate: date.to,
+          rollNumbers,
+          startDate: moment(date.from).format("DD-MM-YYYY"),
+          endDate: moment(date.to).format("DD-MM-YYYY"),
           reason,
         })
         .then((res) => {
@@ -43,7 +39,7 @@ function BulkLeaveCard() {
       if (error.response.status === 404) {
         toast({
           variant: "destructive",
-          title: "Student not found !! .",
+          title: "Students not found !! .",
         });
       }
       if (error.response.status === 500) {
@@ -63,16 +59,19 @@ function BulkLeaveCard() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-10">
-              <div className="flex flex-row items-center gap-2 col-span-2 w-full">
+            <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-10">
+              <div className="flex flex-row items-center gap-2 lg:col-span-2">
                 <Label>Roll&nbsp;Number:</Label>
-                <RollNumberInput />
+                <RollNumberInput
+                  rollNumbers={rollNumbers}
+                  setRollNumbers={setRollNumbers}
+                />
               </div>
-              <div className="flex flex-row items-center gap-3">
+              <div className="flex flex-row items-center gap-2">
                 <Label>Date&nbsp;Range:</Label>
                 <DateRangePicker setDate={setDate} date={date} />
               </div>
-              <div className="flex flex-row items-center gap-11">
+              <div className="flex flex-row items-center gap-2">
                 <Label>Reason: </Label>
                 <Input
                   type="text"
@@ -89,6 +88,17 @@ function BulkLeaveCard() {
             <div className="flex flex-row justify-center items-center w-full gap-4 mt-10">
               <Button variant="destructive" type="submit">
                 Submit
+              </Button>
+              <Button
+                type="button"
+                size="lg"
+                onClick={() => {
+                  setRollNumbers([]);
+                  setReason("");
+                  setDate({ from: "", to: "" });
+                }}
+              >
+                Clear
               </Button>
             </div>
           </form>

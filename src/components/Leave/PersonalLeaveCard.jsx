@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import moment from "moment";
 
 // Components
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -39,16 +40,13 @@ function PersonalLeaveCard() {
 
   async function handleSubmit(ev) {
     ev.preventDefault();
-    console.log(rollNumber);
-    console.log(date.from);
-    console.log(date.to);
-    console.log(reason);
     try {
+ 
       await axios
         .post("/leave/applyPersonalLeave", {
           rollNumber,
-          startDate: date.from,
-          endDate: date.to,
+          startDate: moment(date.from).format("DD-MM-YYYY"),
+          endDate: moment(date.to).format("DD-MM-YYYY"),
           reason,
         })
         .then((res) => {

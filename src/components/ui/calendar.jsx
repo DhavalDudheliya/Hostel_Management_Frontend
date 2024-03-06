@@ -1,19 +1,14 @@
 "use client";
-import * as React from "react"
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
-import { DayPicker } from "react-day-picker"
+import * as React from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { DayPicker } from "react-day-picker";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
-function Calendar({
-  className,
-  classNames,
-  showOutsideDays = true,
-  ...props
-}) {
+function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
   return (
-    (<DayPicker
+    <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
@@ -46,13 +41,13 @@ function Calendar({
         day_range_start: "day-range-start",
         day_range_end: "day-range-end",
         day_selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        day_today: "bg-accent text-accent-foreground",
+          "bg-bg_light_section/30 text-accent-foreground hosver:bg-primary hover:text-primary-foreground focus:bg-bg_light_section/30 focus:text-accent-foreground",
+        day_today: "bg-bg_light_section/30 text-accent-foreground",
         day_outside:
           "day-outside text-muted-foreground opacity-50  aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
         day_disabled: "text-muted-foreground opacity-50",
         day_range_middle:
-          "aria-selected:bg-accent aria-selected:text-accent-foreground",
+          "aria-selected:bg-bg_light_section/30 aria-selected:text-accent-foreground",
         day_hidden: "invisible",
         ...classNames,
       }}
@@ -60,9 +55,10 @@ function Calendar({
         IconLeft: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
         IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
       }}
-      {...props} />)
+      {...props}
+    />
   );
 }
-Calendar.displayName = "Calendar"
+Calendar.displayName = "Calendar";
 
-export { Calendar }
+export { Calendar };

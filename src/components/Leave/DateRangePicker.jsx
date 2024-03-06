@@ -20,8 +20,9 @@ function DateRangePicker({ setDate, date }) {
         <PopoverTrigger asChild>
           <Button
             id="date"
+            size="sm"
             className={cn(
-              "w-full justify-start text-black text-left font-normal bg-transparent border border-gray-400/70 hover:bg-transparent",
+              "w-full justify-start text-black text-left font-normal bg-transparent border border-gray-400/70 hover:bg-transparent text-sm",
               !date && "text-black"
             )}
           >

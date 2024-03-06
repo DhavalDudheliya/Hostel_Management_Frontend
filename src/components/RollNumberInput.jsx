@@ -3,9 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { useToast } from "@/components/ui/use-toast";
 
-const RollNumberInput = () => {
+const RollNumberInput = ({ rollNumbers, setRollNumbers }) => {
   const [inputValue, setInputValue] = useState("");
-  const [rollNumbers, setRollNumbers] = useState([]);
+
   const inputRef = useRef(null);
   const { toast } = useToast();
 
@@ -54,9 +54,9 @@ const RollNumberInput = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <div
-        className="bg-gray-200 flex flex-wrap items-center w-full rounded px-1 ring-1 ring-black  gap-y-1 py-1"
+        className="bg-gray-200 flex flex-wrap items-center w-full rounded px-1 ring-1 ring-black  gap-y-1 py-1 cursor-text"
         onClick={() => inputRef.current.focus()}
       >
         {rollNumbers.map((roll, index) => (

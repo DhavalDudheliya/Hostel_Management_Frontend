@@ -6,6 +6,7 @@ import PersonalLeaveCard from "@/components/Leave/PersonalLeaveCard";
 import BulkLeaveCard from "@/components/Leave/BulkLeaveCard";
 import LeaveStudents from "@/components/Leave/LeaveStudents";
 import LeaveLog from "@/components/Leave/LeaveLog";
+import { Separator } from "@/components/ui/separator";
 
 function Leave() {
   return (
@@ -14,9 +15,13 @@ function Leave() {
         <Tabs defaultValue="personal" className="w-full">
           <TabsList className="ml-auto">
             <TabsTrigger value="personal">Personal Leave</TabsTrigger>
+            <Separator orientation="vertical" />
             <TabsTrigger value="bulk">Bulk Leave</TabsTrigger>
+            <Separator orientation="vertical" />
             <TabsTrigger value="student">Leave Students</TabsTrigger>
+            <Separator orientation="vertical" />
             <TabsTrigger value="log">Leave Log</TabsTrigger>
+            <div className="text-bg_dark_font opacity-0">22</div>
           </TabsList>
 
           <TabsContent value="personal">
