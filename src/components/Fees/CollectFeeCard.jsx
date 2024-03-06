@@ -20,7 +20,7 @@ function CollectFeeCard() {
     return () => {
       setStudent("");
     };
-  }, []); 
+  }, []);
 
   async function getDeatils(ev) {
     ev.preventDefault();
@@ -49,7 +49,11 @@ function CollectFeeCard() {
             variant: "destructive",
             title: "Student does not exist !!!",
           });
-        if (error.response.status === 401) toast.error("Request failed");
+        if (error.response.status === 401)
+          toast({
+            variant: "destructive",
+            title: "Request failed",
+          });
         console.log(error);
       }
     }

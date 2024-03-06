@@ -18,7 +18,7 @@ function Leave() {
             <Separator orientation="vertical" />
             <TabsTrigger value="bulk">Bulk Leave</TabsTrigger>
             <Separator orientation="vertical" />
-            <TabsTrigger value="student">Leave Students</TabsTrigger>
+            <TabsTrigger value="student">On Leave Students</TabsTrigger>
             <Separator orientation="vertical" />
             <TabsTrigger value="log">Leave Log</TabsTrigger>
             <div className="text-bg_dark_font opacity-0">22</div>
