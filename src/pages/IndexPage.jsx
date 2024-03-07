@@ -1,23 +1,37 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../UserContext";
-import Loader from "../components/Loader";
+import { motion, useScroll } from "framer-motion";
 
-import index from "../assets/Index.jpg";
 import Header from "../components/Header";
-
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import Hero from "@/components/LandingPage/Hero";
+import Header1 from "@/components/LandingPage/Header";
+import AboutUs from "@/components/LandingPage/AboutUs";
+import PhotoGallery from "@/components/LandingPage/PhotoGallery";
+import Testimonials from "@/components/LandingPage/Testimonials";
+import Room from "@/components/LandingPage/Room";
+import FacilitiesAndAmenities from "@/components/LandingPage/FacilitiesAndAmenities";
 
 function IndexPage() {
   const { user, setUser } = useContext(UserContext);
+  const { scrollYProgress } = useScroll();
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      const threshold = 60;
+
+      setIsSticky(offset > threshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   if (user) {
     if (user.role == "Student") {
@@ -34,12 +48,34 @@ function IndexPage() {
 
   return (
     <>
-      <div className="h-[100vh] overflow-y-hidden">
-        <div className="max-h-screen overflow-hidden">
-          <Header />
+      <div className="landing_background">
+        <motion.div
+          className="progress-bar bg-rose-500"
+          style={{
+            // position: isSticky ? "fixed" : "relative",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: "5px",
+            transformOrigin: "0%",
+            scaleX: scrollYProgress,
+          }}
+        ></motion.div>
+      </div>
+      <div className="landing_background">
+        <Header />
+        {/* <Header1 /> */}
+        <div className="px-5 md:px-10 lg:px-20">
+          <Hero />
+          <AboutUs />
+          <PhotoGallery />
+          <Testimonials />
+          <Room />
+          <FacilitiesAndAmenities />
         </div>
-      </div >
-      {/* <img src={index} alt="index" className="" /> */}
+      </div>
     </>
   );
 }

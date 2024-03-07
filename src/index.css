@@ -10,6 +10,13 @@
   /* font-family: 'Rubik', sans-serif; */
 }
 
+.guj {
+  font-family: "Mogra", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 /* body {
   margin: 0;
   padding: 0;
@@ -154,4 +161,24 @@ textarea {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.welcom_title {
+  background: -webkit-linear-gradient(45deg, #09009f, #ff0095 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.landing_background {
+  background: linear-gradient(45deg, #fdeff9, #a5c7d1, #cfd9df, #a5c7d1, #85a1bb42);
+  /* background: rgb(12, 12, 12); */
+}
+
+.gradient-border {
+  border: 3.5px solid;
+  border-image: linear-gradient(45deg, #09009f, #ff0095) 1;
+}
+
+.drop-shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }

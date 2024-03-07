@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import logo from "../assets/logo2.png";
+import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../UserContext";
 
@@ -21,32 +21,27 @@ function Header() {
   return (
     <>
       {!user && (
-        <div className="sticky py-2 shadow-md bg-bg_dark_section">
+        <div className="sticky p-4 bg-transparent">
           <header className="flex justify-between items-center">
             <div className="flex justify-between items-center my-1">
               <Link
                 to={"/"}
                 className="flex items-center gap-2 cursor-pointer px-2"
               >
-                <img
-                  className="p-1 h-10 w-10 border-2 border-bg_white bg-bg_white rounded-full"
-                  src={logo}
-                  alt=""
-                />
-                <span className="text-lg font-semibold text-bg_white_font">
+                <img className="p-1 h-12 w-13 " src={logo} alt="" />
+                <span className="text-2xl font-semibold welcom_title">
                   APC Nadiad
                 </span>
               </Link>
             </div>
-            <div className="mx-3">
+            <div>
               <a
-                className="py-2 px-4 bg-bg_white rounded-md hover:bg-bg_red hover:text-bg_white_font duration-200"
+                className="py-2 px-4 gradient-border welcom_title duration-200"
                 href={"/login"}
               >
                 Log in
               </a>
             </div>
-            {/* <BeforeLoginNavBtns /> */}
           </header>
         </div>
       )}
