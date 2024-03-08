@@ -14,7 +14,7 @@ function Hero() {
   }, [isInViewPage, controlsPage]);
 
   return (
-    <div className="min-h-screen py-10 lg:py-20 flex flex-col lg:flex-row gap-10">
+    <div className="py-10 lg:py-20 flex flex-col lg:flex-row gap-10 items-center">
       <motion.section className="flex flex-col gap-4 lg:w-1/2">
         <motion.div
           ref={ref}
@@ -93,21 +93,23 @@ function Hero() {
 
       {/* Image section */}
       <section className="flex items-start lg:w-1/2 p-5 md:pl-10">
-        <div className="">
+        <motion.div
+          ref={ref}
+          variants={{
+            hidden: { opacity: 0, x: 100 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate={controlsPage}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="p-1 img-border rounded-full"
+        >
           <motion.img
-            ref={ref}
-            variants={{
-              hidden: { opacity: 0, x: 100 },
-              visible: { opacity: 1, x: 0 },
-            }}
-            initial="hidden"
-            animate={controlsPage}
-            transition={{ duration: 0.5, delay: 0.35 }}
             src={index}
             alt="index"
-            className="rounded-full shadow-xl"
+            className="rounded-full sm:h-60 md:h-full shadow-xl"
           />
-        </div>
+        </motion.div>
       </section>
     </div>
   );

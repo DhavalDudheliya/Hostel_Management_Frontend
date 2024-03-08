@@ -14,11 +14,11 @@ function AboutUs() {
   }, [isInViewPage, controlsPage]);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row gap-10">
+    <div className="py-10 lg:py-28 flex flex-col lg:flex-row gap-10 lg:mb-20">
       {/* Image section */}
       <section className="flex items-start lg:w-1/2 md:pr-10">
-        <div className="relative">
-          <motion.img
+        <div className="lg:relative">
+          <motion.div
             ref={ref}
             variants={{
               hidden: { opacity: 0, x: -100 },
@@ -26,12 +26,16 @@ function AboutUs() {
             }}
             initial="hidden"
             animate={controlsPage}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            src={index}
-            alt="index"
-            className="rounded-3xl shadow-xl right-10 h-60 ring-4 ring-gray-400 "
-          />
-          <motion.img
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="p-1 img-border rounded-3xl hidden lg:block"
+          >
+            <img
+              src={index}
+              alt="index"
+              className="rounded-3xl shadow-xl right-10 lg:h-60"
+            />
+          </motion.div>
+          <motion.div
             ref={ref}
             variants={{
               hidden: { opacity: 0, x: -100 },
@@ -39,12 +43,16 @@ function AboutUs() {
             }}
             initial="hidden"
             animate={controlsPage}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            src={index}
-            alt="index"
-            className="rounded-3xl shadow-xl h-60 absolute left-56 top-44 z-10 ring-4 ring-gray-400"
-          />
-          <motion.img
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="p-1 img-border rounded-3xl w-full lg:absolute left-56 top-44"
+          >
+            <img
+              src={index}
+              alt="index"
+              className="rounded-3xl shadow-xl h-60 z-1"
+            />
+          </motion.div>
+          <motion.div
             ref={ref}
             variants={{
               hidden: { opacity: 0, x: -100 },
@@ -54,12 +62,16 @@ function AboutUs() {
             animate={controlsPage}
             transition={{
               duration: 0.5,
-              delay: 0.35,
+              delay: 0.3,
             }}
-            src={index}
-            alt="index"
-            className="rounded-3xl shadow-xl h-60 absolute top-[350px] ring-4 ring-gray-400"
-          />
+            className="p-1 img-border rounded-3xl w-full hidden lg:block lg:absolute top-[350px]"
+          >
+            <img
+              src={index}
+              alt="index"
+              className="rounded-3xl shadow-xl h-60"
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -72,7 +84,7 @@ function AboutUs() {
           }}
           initial="hidden"
           animate={controlsPage}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
           className="welcom_title text-5xl font-bold my-4 lg:text-left text-center drop-shadow-text"
         >
           Our Mission
@@ -85,7 +97,7 @@ function AboutUs() {
           }}
           initial="hidden"
           animate={controlsPage}
-          transition={{ duration: 0.5, delay: 0.35 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="mb-4 text-center lg:text-left"
         >
           At The BAPS Swaminarayan Chhatralaya, we believe in{" "}
@@ -102,7 +114,7 @@ function AboutUs() {
           }}
           initial="hidden"
           animate={controlsPage}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
           className="text-xl font-bold text-center lg:text-left"
         >
           🌟 What Sets Us Apart :
@@ -115,7 +127,7 @@ function AboutUs() {
           }}
           initial="hidden"
           animate={controlsPage}
-          transition={{ duration: 0.5, delay: 0.45 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="list-disc pl-12 flex flex-col items-center lg:items-start gap-2"
         >
           <li>

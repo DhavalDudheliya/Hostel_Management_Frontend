@@ -36,7 +36,7 @@ function Header() {
             </div>
             <div>
               <a
-                className="py-2 px-4 gradient-border welcom_title duration-200"
+                className="py-2 px-4 gradient-border welcom_title duration-200 mx-4"
                 href={"/login"}
               >
                 Log in

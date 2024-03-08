@@ -16,22 +16,6 @@ import FacilitiesAndAmenities from "@/components/LandingPage/FacilitiesAndAmenit
 function IndexPage() {
   const { user, setUser } = useContext(UserContext);
   const { scrollYProgress } = useScroll();
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      const threshold = 60;
-
-      setIsSticky(offset > threshold);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   if (user) {
     if (user.role == "Student") {
@@ -50,7 +34,7 @@ function IndexPage() {
     <>
       <div className="landing_background">
         <motion.div
-          className="progress-bar bg-rose-500"
+          className="progress-bar bg-orange-400 z-10"
           style={{
             // position: isSticky ? "fixed" : "relative",
             position: "fixed",
@@ -64,17 +48,13 @@ function IndexPage() {
           }}
         ></motion.div>
       </div>
-      <div className="landing_background">
-        <Header />
-        {/* <Header1 /> */}
-        <div className="px-5 md:px-10 lg:px-20">
-          <Hero />
-          <AboutUs />
-          <PhotoGallery />
-          <Testimonials />
-          <Room />
-          <FacilitiesAndAmenities />
-        </div>
+      <div className="px-5 md:px-10 lg:px-20 overflow-x-hidden flex flex-col">
+        <Hero />
+        <AboutUs />
+        <PhotoGallery />
+        <Testimonials />
+        <Room />
+        <FacilitiesAndAmenities />
       </div>
     </>
   );

@@ -47,6 +47,7 @@ import ManagerReport from "./pages/Manager/Report/ManagerReport";
 
 import ResetPassword from "./components/ResetPassword";
 import Leave from "./pages/Admin/Leave/Leave";
+import Layout2 from "./Layout2";
 
 axios.defaults.baseURL = myContants.BACKEND_URL;
 axios.defaults.withCredentials = true;
@@ -58,9 +59,11 @@ function App() {
         <ToastContainer />
         <Toaster />
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/login" element={<UserLogin />} />
+          <Route path="/" element={<Layout2 />}>
             <Route path="/" element={<IndexPage />} />
+            <Route path="/login" element={<UserLogin />} />
+          </Route>
+          <Route path="/" element={<Layout />}>
             // Admin
             <Route path="/admin/profile" element={<AdminProfile />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
