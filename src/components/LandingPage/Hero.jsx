@@ -92,7 +92,7 @@ function Hero() {
       </motion.section>
 
       {/* Image section */}
-      <section className="flex items-start lg:w-1/2 p-5 md:pl-10">
+      <section className="flex items-center justify-center lg:w-1/2 md:pl-10">
         <motion.div
           ref={ref}
           variants={{

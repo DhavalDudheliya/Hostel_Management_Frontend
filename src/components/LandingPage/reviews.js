@@ -14,7 +14,7 @@ const reviews = [
   {
     review:
       "From the moment I stepped in, I knew this hostel was special. The vibrant decor, friendly faces, and diverse activities made my stay truly unforgettable. It's more than a place to sleep; it's an experience!",
-    reting: "4.8",
+    rating: "4.8",
     name: "Rajat Verma",
   },
   {

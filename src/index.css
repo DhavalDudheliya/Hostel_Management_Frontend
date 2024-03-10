@@ -165,6 +165,7 @@ textarea {
 .login_bg {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0px 0px 20px rgba(101, 97, 177, 0.3);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.37); */
 }
 
 .welcom_title {
@@ -199,14 +200,6 @@ textarea {
   background: -webkit-linear-gradient(45deg, #09009f, #ff0095 80%);
 }
 
-.glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.37);
+.footer_shadow {
+  box-shadow: 0px -8px 60px 0 rgba(0, 0, 0, 0.37);
 }

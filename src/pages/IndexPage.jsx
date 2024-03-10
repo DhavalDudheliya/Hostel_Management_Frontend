@@ -12,6 +12,7 @@ import PhotoGallery from "@/components/LandingPage/PhotoGallery";
 import Testimonials from "@/components/LandingPage/Testimonials";
 import Room from "@/components/LandingPage/Room";
 import FacilitiesAndAmenities from "@/components/LandingPage/FacilitiesAndAmenities";
+import Footer from "@/components/LandingPage/Footer";
 
 function IndexPage() {
   const { user, setUser } = useContext(UserContext);
@@ -53,9 +54,10 @@ function IndexPage() {
         <AboutUs />
         <PhotoGallery />
         <Testimonials />
-        <Room />
-        <FacilitiesAndAmenities />
+        {/* <Room />
+        <FacilitiesAndAmenities /> */}
       </div>
+      <Footer />
     </>
   );
 }

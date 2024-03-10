@@ -37,7 +37,7 @@ function Testimonials() {
       <motion.div
         ref={ref}
         variants={{
-          hidden: { opacity: 0, y: 100 },
+          hidden: { opacity: 0, y: -100 },
           visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"
@@ -49,9 +49,22 @@ function Testimonials() {
       </motion.div>
       <div className="px-5 py-10">
         <div className="hidden lg:flex flex-row flex-wrap gap-12 items-start justify-center">
-          <section className="grid gap-10 w-full md:w-[40%] lg:w-[29%]">
+          <motion.section
+            ref={ref}
+            variants={{
+              hidden: { opacity: 0, x: -100 },
+              visible: { opacity: 1, x: 0 },
+            }}
+            initial="hidden"
+            animate={controlsPage}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="grid gap-10 w-full md:w-[40%] lg:w-[29%]"
+          >
             {secondPartL.map((review, index) => (
-              <div className="p-6 glass flex flex-col gap-4 w-ful" key={index}>
+              <div
+                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
+                key={index}
+              >
                 <p className="text-sm">"{review.review}"</p>
                 <div className="flex flex-row justify-between">
                   <p className="font-semibold">⭐ {review.rating}/5</p>
@@ -59,10 +72,23 @@ function Testimonials() {
                 </div>
               </div>
             ))}
-          </section>
-          <section className="grid gap-10 w-full md:w-[40%] lg:w-[29%]">
+          </motion.section>
+          <motion.section
+            ref={ref}
+            variants={{
+              hidden: { opacity: 0, y: 40 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            initial="hidden"
+            animate={controlsPage}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="grid gap-10 w-full md:w-[40%] lg:w-[29%]"
+          >
             {firstPartL.map((review, index) => (
-              <div className="p-6 glass flex flex-col gap-4 w-ful" key={index}>
+              <div
+                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
+                key={index}
+              >
                 <p className="text-sm">"{review.review}"</p>
                 <div className="flex flex-row justify-between">
                   <p className="font-semibold">⭐ {review.rating}/5</p>
@@ -70,10 +96,23 @@ function Testimonials() {
                 </div>
               </div>
             ))}
-          </section>
-          <section className="grid grid-cols-1 gap-10 w-full md:w-[40%] lg:w-[29%]">
+          </motion.section>
+          <motion.section
+            ref={ref}
+            variants={{
+              hidden: { opacity: 0, x: 100 },
+              visible: { opacity: 1, x: 0 },
+            }}
+            initial="hidden"
+            animate={controlsPage}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="grid grid-cols-1 gap-10 w-full md:w-[40%] lg:w-[29%]"
+          >
             {thirdPartL.map((review, index) => (
-              <div className="p-6 glass flex flex-col gap-4 w-ful" key={index}>
+              <div
+                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
+                key={index}
+              >
                 <p className="text-sm">"{review.review}"</p>
                 <div className="flex flex-row justify-between">
                   <p className="font-semibold">⭐ {review.rating}/5</p>
@@ -81,12 +120,15 @@ function Testimonials() {
                 </div>
               </div>
             ))}
-          </section>
+          </motion.section>
         </div>
         <div className="hidden sm:hidden lg:hidden md:flex flex-row flex-wrap gap-12 items-start justify-center">
           <section className="grid gap-10 w-full md:w-[40%] lg:w-[30%]">
             {secondPartM.map((review, index) => (
-              <div className="p-6 glass flex flex-col gap-4 w-ful" key={index}>
+              <div
+                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
+                key={index}
+              >
                 <p className="text-sm">"{review.review}"</p>
                 <div className="flex flex-row justify-between">
                   <p className="font-semibold">⭐ {review.rating}/5</p>
@@ -97,7 +139,10 @@ function Testimonials() {
           </section>
           <section className="grid gap-10 w-full md:w-[40%] lg:w-[30%]">
             {firstPartM.map((review, index) => (
-              <div className="p-6 glass flex flex-col gap-4 w-ful" key={index}>
+              <div
+                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
+                key={index}
+              >
                 <p className="text-sm">"{review.review}"</p>
                 <div className="flex flex-row justify-between">
                   <p className="font-semibold">⭐ {review.rating}/5</p>
@@ -110,7 +155,10 @@ function Testimonials() {
         <div className="md:hidden sm:flex flex-row flex-wrap gap-12 items-start justify-center">
           <section className="grid gap-10 w-full md:w-[40%] lg:w-[30%]">
             {reviews.map((review, index) => (
-              <div className="p-6 glass flex flex-col gap-4 w-ful" key={index}>
+              <div
+                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
+                key={index}
+              >
                 <p className="text-sm">"{review.review}"</p>
                 <div className="flex flex-row justify-between">
                   <p className="font-semibold">⭐ {review.rating}/5</p>
