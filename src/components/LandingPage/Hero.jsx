@@ -107,7 +107,7 @@ function Hero() {
           <motion.img
             src={index}
             alt="index"
-            className="rounded-full sm:h-60 md:h-full shadow-xl"
+            className="rounded-full sm:h-60 md:h-80 shadow-xl"
           />
         </motion.div>
       </section>

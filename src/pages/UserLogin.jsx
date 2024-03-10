@@ -103,6 +103,11 @@ function UserLogin() {
               variant: "destructive",
               title: "User does not exists !!",
             });
+          if (err.response.status === 400)
+            toast({
+              variant: "destructive",
+              title: "Failed !!",
+            });
           console.log(err);
         }
       }

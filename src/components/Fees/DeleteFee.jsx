@@ -47,7 +47,7 @@ function DeleteFee({ fee }) {
           title: "Fee not found.",
         });
       }
-      if (error.response.status === 400) {
+      if (error.response.status === 500) {
         toast({
           variant: "destructive",
           title: "Oh! Something went wrong.",

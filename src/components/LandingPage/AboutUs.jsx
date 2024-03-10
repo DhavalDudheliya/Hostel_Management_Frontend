@@ -1,6 +1,8 @@
 import React, { useContext, useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import index from "../../assets/Index.jpg";
+import garden1 from "../../assets/garden1.jpg";
+import garden2 from "../../assets/garden2.jpg";
+import garden3 from "../../assets/garden3.jpg";
 
 function AboutUs() {
   const ref = useRef(null);
@@ -30,7 +32,7 @@ function AboutUs() {
             className="p-1 img-border rounded-3xl hidden lg:block"
           >
             <img
-              src={index}
+              src={garden1}
               alt="index"
               className="rounded-3xl shadow-xl right-10 lg:h-60"
             />
@@ -44,12 +46,12 @@ function AboutUs() {
             initial="hidden"
             animate={controlsPage}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-1 img-border rounded-3xl w-full lg:absolute left-56 top-44"
+            className="p-1 img-border rounded-3xl w-full lg:absolute left-56 top-44 hidden lg:block mr-20"
           >
             <img
-              src={index}
+              src={garden2}
               alt="index"
-              className="rounded-3xl shadow-xl h-60 z-1"
+              className="rounded-3xl shadow-xl h-60 w-full z-1 "
             />
           </motion.div>
           <motion.div
@@ -67,7 +69,7 @@ function AboutUs() {
             className="p-1 img-border rounded-3xl w-full hidden lg:block lg:absolute top-[350px]"
           >
             <img
-              src={index}
+              src={garden3}
               alt="index"
               className="rounded-3xl shadow-xl h-60"
             />
