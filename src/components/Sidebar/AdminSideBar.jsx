@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import logo from "../../assets/logo2.png";
 import report from "../../assets/report.png";
 import selected_report from "../../assets/selected_report.png";
 import room from "../../assets/room.png";
 import selected_room from "../../assets/selected_room.png";
+import users from "../../assets/users.png";
+import selected_users from "../../assets/selected_users.png";
 import fine from "../../assets/fine.png";
 import selected_fine from "../../assets/selected_fine.png";
 import notice from "../../assets/bell-plus.png";
@@ -21,7 +24,7 @@ import { UserContext } from "../../../UserContext";
 const AdminSideBar = () => {
   const [open, setOpen] = useState(true);
   const { user, setUser } = useContext(UserContext);
-  const [selectedItem, setSelectedItem] = useState("home");
+  const [selectedItem, setSelectedItem] = useState("dashboard");
 
   /* LOGOUT */
   async function logoutHandle(ev) {
@@ -77,14 +80,14 @@ const AdminSideBar = () => {
         <ul className="pt-10">
           <Link
             to="/admin/dashboard"
-            onClick={() => setSelectedItem("home")}
+            onClick={() => setSelectedItem("dashboard")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
-              selectedItem === "home"
+              selectedItem === "dashboard"
                 ? "bg-white "
                 : "hover:bg-white hover:bg-opacity-20 hover:scale-95 transition-all duration-75"
             }`}
           >
-            {selectedItem === "home" ? (
+            {selectedItem === "dashboard" ? (
               <img
                 className={`h-6 rotate-[360deg] duration-500`}
                 src={selected_home}
@@ -94,12 +97,39 @@ const AdminSideBar = () => {
             )}
             <span
               className={`${!open && "hidden"} origin-left duration-75 ${
-                selectedItem === "home"
+                selectedItem === "dashboard"
                   ? "text-bg_dark_section font-semibold"
                   : "text-bg_white"
               }`}
             >
               Dashboard
+            </span>
+          </Link>
+          <Link
+            to="/admin/studentInfo"
+            onClick={() => setSelectedItem("student")}
+            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
+              selectedItem === "student"
+                ? "bg-white "
+                : "hover:bg-white hover:bg-opacity-20 hover:scale-95 transition-all duration-75"
+            }`}
+          >
+            {selectedItem === "student" ? (
+              <img
+                className={`h-6 rotate-[360deg] duration-500`}
+                src={selected_users}
+              />
+            ) : (
+              <img className="h-6" src={users} />
+            )}
+            <span
+              className={`${!open && "hidden"} origin-left duration-75 ${
+                selectedItem === "student"
+                  ? "text-bg_dark_section font-semibold"
+                  : "text-bg_white"
+              }`}
+            >
+              Student&nbsp;Profile
             </span>
           </Link>
           <Link
@@ -166,12 +196,11 @@ const AdminSideBar = () => {
             }`}
           >
             {selectedItem === "leave" ? (
-              <img
-                className={`h-6 rotate-[360deg] duration-500`}
-                src={selected_room}
-              />
+              <div className="text-2xl rotate-[360deg] duration-500 text-[#2b2d42] font-medium ml-1.5 mr-2">
+                L
+              </div>
             ) : (
-              <img className="h-6" src={room} />
+              <div className="text-2xl font-medium ml-1.5 mr-2">L</div>
             )}
             <span
               className={`${!open && "hidden"} origin-left duration-75 ${
@@ -180,7 +209,7 @@ const AdminSideBar = () => {
                   : "text-bg_white"
               }`}
             >
-              Room&nbsp;allocation
+              Leave
             </span>
           </Link>
           <li

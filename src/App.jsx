@@ -13,7 +13,7 @@ import IndexPage from "./pages/IndexPage";
 import UserLogin from "./pages/UserLogin";
 
 // Admin
-import AdminDashboard from "./pages/Admin/AdminDashboard";
+import StudentInfo from "./pages/Admin/StudentInfo/StudentInfo";
 import AdminProfile from "./pages/Admin/AdminProfile";
 import StudentsProfile from "./pages/Admin/StudentsProfile";
 import AdminReport from "./pages/Admin/Report/AdminReport";
@@ -48,6 +48,7 @@ import ManagerReport from "./pages/Manager/Report/ManagerReport";
 import ResetPassword from "./components/ResetPassword";
 import Leave from "./pages/Admin/Leave/Leave";
 import Layout2 from "./Layout2";
+import AdminDashBoard from "./pages/Admin/DashBoard/AdminDashBoard";
 
 axios.defaults.baseURL = myContants.BACKEND_URL;
 axios.defaults.withCredentials = true;
@@ -66,7 +67,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             // Admin
             <Route path="/admin/profile" element={<AdminProfile />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/dashboard" element={<AdminDashBoard />} />
+            <Route path="/admin/studentInfo" element={<StudentInfo />} />
             <Route path="/admin/students" element={<StudentsProfile />} />
             <Route path="/admin/allnotices" element={<AllNotices />} />
             <Route path="/admin/report" element={<AdminReport />} />

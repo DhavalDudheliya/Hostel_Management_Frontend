@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { useToast } from "@/components/ui/use-toast";
 
 import { validationSchema } from "./validation";
 import { UserContext } from "../../../UserContext";
@@ -20,6 +20,7 @@ function AddStudent() {
   const { user, setUser } = useContext(UserContext);
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   if (!user || (user && user.role !== "Admin")) {
     navigate("/login");
@@ -93,7 +94,6 @@ function AddStudent() {
         formData.append("permenantDisease", formik.values.permenantDisease);
         formData.append("profilePhoto", formik.values.profilePhoto);
 
-        console.log(formik.values.profilePhoto);
 
         await axios
           .post("/admin/createstudent", formData, {
@@ -103,17 +103,28 @@ function AddStudent() {
           })
           .then((res) => {
             if (res.status === 200) {
-              toast.success("Successfully created");
+              toast({
+                title: "Student Successfully created",
+              });
               setSubmitted(false);
             } else {
-              toast.error("Failed to create student");
+              toast({
+                variant: "destructive",
+                title: "Failed to create student",
+              });
             }
           })
           .catch((err) => {
-            toast.error("Failed to create student");
+            toast({
+              variant: "destructive",
+              title: "Failed to create student",
+            });
           });
       } catch (error) {
-        toast.error("Failed to create student");
+        toast({
+          variant: "destructive",
+          title: "Failed to create student",
+        });
       }
     },
   });
@@ -127,10 +138,15 @@ function AddStudent() {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     setSubmitted(true);
-    if (formik.isValid) {
-      formik.handleSubmit();
+    console.log(formik.errors);
+    if (Object.keys(formik.errors).length !== 0) {
+      toast({
+        variant: "destructive",
+        title: "Please fill in all required fields",
+      });
     } else {
-      toast.error("Please fill in all required fields");
+      console.log("submit");
+      formik.handleSubmit();
     }
   };
 

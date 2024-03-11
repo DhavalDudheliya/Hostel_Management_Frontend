@@ -41,7 +41,7 @@ function PhotoGallery() {
         >
           Our Photo Gallary
         </motion.div>
-        <motion.div
+        <div
           ref={ref}
           variants={{
             hidden: { opacity: 0, x: -300 },
@@ -103,7 +103,7 @@ function PhotoGallery() {
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
-        </motion.div>
+        </div>
       </div>
     </>
   );

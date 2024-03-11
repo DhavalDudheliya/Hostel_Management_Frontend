@@ -1,20 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../UserContext";
-import * as myConst from "../../myConstants";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import * as myConst from "../../myConstants";
+import { useToast } from "@/components/ui/use-toast";
+
+import { useStudentContext } from "../../StudentContext";
+import { Camera } from "lucide-react";
+
 function ProfilePhoto() {
-  const { user } = useContext(UserContext);
-  const [count, setCount] = useState(0);
+  const { student, setStudent } = useStudentContext();
+  const { toast } = useToast();
   const [profilePhotoPath, setProfilePhotoPath] = useState("");
 
   useEffect(
     () => {
       setProfilePhotoPath(
-        myConst.BACKEND_URL + "/uploads/" + user.profilePhoto
+        myConst.BACKEND_URL + "/uploads/" + student.profilePhoto
       );
     },
-    [count],
+    [student],
     []
   );
 
@@ -22,13 +26,18 @@ function ProfilePhoto() {
     ev.preventDefault();
     const formData = new FormData();
     formData.append("profilePhoto", ev.target.files[0]);
+    formData.append("studentId", student._id);
     axios
-      .put("/profile-photo-update", formData, {
+      .put("admin/profile-photo-update", formData, {
         headers: { "Content-type": "multipart/form-data" },
       })
       .then((res) => {
-        alert("Photo uploaded successfully");
-        setCount((prev) => prev + 1);
+        if (res.status === 200) {
+          toast({
+            title: "Photo Updated successfully.",
+          });
+          setStudent(res.data.UpdatedStudent);
+        }
       })
       .catch((err) => console.log(err));
   }
@@ -36,29 +45,35 @@ function ProfilePhoto() {
   return (
     <>
       <div>
-        <label>
+        <label className="relative group z-0">
           <input
             type="file"
             className="hidden cursor-pointer"
             onChange={photoHandler}
             name="img"
           />
-          {user.profilePhoto ? (
+          {student.profilePhoto ? (
             <>
               <img
                 src={profilePhotoPath}
                 // src={myConst.BACKEND_URL + "/uploads/" + user.profilePhoto}
                 alt=""
-                className="rounded-full object-cover aspect-square h-[13rem] hover:bg-black hover:opacity-70 cursor-pointer"
-              />
+                className="rounded object-cover border-2 border-gray-300 aspect-square h-[13rem] hover:bg-black hover:opacity-70 cursor-pointer"
+              ></img>
+              <div className="opacity-50 hidden group-hover:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+                <Camera />
+              </div>
             </>
           ) : (
             <>
               <img
                 src={myConst.BACKEND_URL + "/uploads/default.png"}
                 alt=""
-                className="rounded-full object-cover aspect-square h-[13rem] hover:bg-black hover:opacity-70 cursor-pointer"
+                className="rounded border-2 border-gray-300 object-cover aspect-square h-[13rem] hover:bg-black hover:opacity-70 cursor-pointer"
               />
+              <div className="opacity-50 hidden group-hover:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <Camera />
+              </div>
             </>
           )}
         </label>

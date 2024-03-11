@@ -24,13 +24,13 @@ function Layout() {
 
   return (
     <>
-      <div className="md:flex hidden h-full">
+      <div className="md:flex hidden h-full bg-blue-100/60">
         <SideBar />
         <div className="flex-1 justify-center items-center">
           <Outlet />
         </div>
       </div>
-      <div className="md:hidden block">
+      <div className="md:hidden block bg-blue-100/60">
         <MobileHeader />
         <div className="flex-1 justify-center items-center">
           <Outlet />
