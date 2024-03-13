@@ -61,7 +61,7 @@ function BulkLeaveCard() {
           <form onSubmit={handleSubmit}>
             <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-10">
               <div className="flex flex-row items-center gap-2 lg:col-span-2">
-                <Label>Roll&nbsp;Number:</Label>
+                <Label>Roll&nbsp;Numbers:</Label>
                 <RollNumberInput
                   rollNumbers={rollNumbers}
                   setRollNumbers={setRollNumbers}

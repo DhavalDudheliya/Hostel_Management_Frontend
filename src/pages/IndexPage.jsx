@@ -4,9 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../UserContext";
 import { motion, useScroll } from "framer-motion";
 
-import Header from "../components/Header";
 import Hero from "@/components/LandingPage/Hero";
-import Header1 from "@/components/LandingPage/Header";
 import AboutUs from "@/components/LandingPage/AboutUs";
 import PhotoGallery from "@/components/LandingPage/PhotoGallery";
 import Testimonials from "@/components/LandingPage/Testimonials";

@@ -25,17 +25,28 @@ const Footer = () => {
             <p>Email: apcnadiad13@.com | Phone: +1 (123) 456-7890</p>
           </div> */}
           <div>
-            <p className="mb-2">
-              &copy; 2024 BAPS Swaminarayan Chhatralaya. All Rights Reserved.
-            </p>
             <p>Address: Nutan Park Society, Nadiad, Gujarat 387001</p>
             <p>Email: info@example.com | Phone: +1 (123) 456-7890</p>
+            <p className="mt-8">
+              &copy; 2024 BAPS Swaminarayan Chhatralaya. All Rights Reserved.
+            </p>
           </div>
-          <div className="flex flex-row gap-2">
-            <Facebook />
-            <Instagram />
-            <Twitter />
-            <Youtube size={25} />
+          <div className="flex flex-col gap-2">
+            <p>Socials</p>
+            <div className="flex flex-row gap-2">
+              <a className="cursor-pointer">
+                <Facebook />
+              </a>
+              <a className="cursor-pointer">
+                <Instagram />
+              </a>
+              <a className="cursor-pointer">
+                <Twitter />
+              </a>
+              <a className="cursor-pointer">
+                <Youtube size={25} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

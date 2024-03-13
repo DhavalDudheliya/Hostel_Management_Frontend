@@ -55,7 +55,7 @@ function StudentsProfile() {
 
   return (
     <>
-      <div className="container py-8">
+      <div className="p-6 lg:p-8">
         <div>
           <SearchStudentInput
             query={query}

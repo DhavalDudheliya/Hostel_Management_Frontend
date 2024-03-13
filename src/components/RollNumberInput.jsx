@@ -56,7 +56,7 @@ const RollNumberInput = ({ rollNumbers, setRollNumbers }) => {
   return (
     <div className="w-full">
       <div
-        className="bg-gray-200 flex flex-wrap items-center w-full rounded px-1 ring-1 ring-black  gap-y-1 py-1 cursor-text"
+        className="bg-gray-50 flex flex-wrap items-center w-full rounded px-1 ring-1 ring-gray-400/70  gap-y-1 py-1 cursor-text"
         onClick={() => inputRef.current.focus()}
       >
         {rollNumbers.map((roll, index) => (
@@ -77,7 +77,7 @@ const RollNumberInput = ({ rollNumbers, setRollNumbers }) => {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           ref={inputRef}
-          className="w-10 py-0.5 px-1 bg-gray-200 text-xs rounded font-[450]"
+          className="w-10 py-0.5 px-1 bg-gray-50 text-xs rounded font-[450]"
           style={{
             outline: "none", // Disable the default focus outline
           }}

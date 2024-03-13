@@ -6,7 +6,7 @@ function Loader({ height }) {
       <div
         role="status"
         className={
-          "w-full flex justify-center items-center " +
+          "w-8 flex justify-center items-center " +
           (height == undefined ? "h-screen" : height)
         }
       >

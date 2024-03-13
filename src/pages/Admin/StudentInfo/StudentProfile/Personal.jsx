@@ -16,15 +16,19 @@ import {
 
 function Personal({ formik }) {
   const { student, setStudent } = useStudentContext();
-
-  const defaultDate = moment(formik.values.dateOfBirth).format("YYYY-MM-DD");
+  const [birthDate, setBirthDate] = useState(
+    moment(formik.values.dateOfBirth).format("YYYY-MM-DD")
+  );
 
   const handleBloodGroupChange = (value) => {
     formik.setFieldValue("bloodGroup", value);
   };
 
   const handleBirthDateChange = (value) => {
-    formik.setFieldValue("dateOfBirth", value);
+    console.log(value.target.value);
+    setBirthDate(value.target.value);
+    formik.setFieldValue("dateOfBirth", value.target.value);
+    // defaultDate = moment(value).format("YYYY-MM-DD");
   };
 
   return (
@@ -100,8 +104,7 @@ function Personal({ formik }) {
                 type="date"
                 id="myDate"
                 name="dateOfBirth"
-                placeholder="Select found date"
-                value={defaultDate}
+                value={birthDate}
                 max={new Date().toISOString().split("T")[0]}
                 onChange={(value) => handleBirthDateChange(value)}
               />

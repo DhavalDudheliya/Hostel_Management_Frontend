@@ -3,6 +3,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import StudentProfile from "./StudentProfile";
+import Leaves from "./Leaves";
 
 function FullInfoCard() {
   return (
@@ -25,6 +26,14 @@ function FullInfoCard() {
             className={cn(
               "data-[state=active]:bg-transparent data-[state=active]:border-b-4 data-[state=active]:rounded-none data-[state=active]:border-cyan-500 text-bg_dark_section transition-none px-6 pb-2 text-base"
             )}
+            value="leaves"
+          >
+            Leaves
+          </TabsTrigger>
+          <TabsTrigger
+            className={cn(
+              "data-[state=active]:bg-transparent data-[state=active]:border-b-4 data-[state=active]:rounded-none data-[state=active]:border-cyan-500 text-bg_dark_section transition-none px-6 pb-2 text-base"
+            )}
             value="attendence"
           >
             Attendence
@@ -41,6 +50,9 @@ function FullInfoCard() {
         <div className="py-4">
           <TabsContent value="profile">
             <StudentProfile />
+          </TabsContent>
+          <TabsContent value="leaves">
+            <Leaves />
           </TabsContent>
           <TabsContent value="attendence"></TabsContent>
           <TabsContent value="noc"></TabsContent>

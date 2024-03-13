@@ -74,7 +74,7 @@ textarea {
 }
 
 .labels {
-  @apply bg-bg_dark_section text-bg_white rounded-xl shadow-md border-4 border-bg_white;
+  @apply bg-bg_dark_section text-bg_white rounded-xl shadow-md border-2 border-bg_white;
 }
 
 .labels_2 {

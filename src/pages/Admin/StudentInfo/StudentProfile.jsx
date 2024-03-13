@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState } from "react";
 import moment from "moment";
+import axios from "axios";
 import { useFormik } from "formik";
 import { validationSchema } from "./validation";
 
@@ -11,13 +12,17 @@ import Personal from "./StudentProfile/Personal";
 import Address from "./StudentProfile/Address";
 import Family from "./StudentProfile/Family";
 import Education from "./StudentProfile/Education";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import Loader from "@/components/Loader";
 
 function StudentProfile() {
-  const { student } = useStudentContext();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const { student, setStudent } = useStudentContext();
 
   const formik = useFormik({
     initialValues: {
-      rollNumber: student.rollNumber,
       firstName: student.firstName,
       lastName: student.lastName,
       dateOfBirth: student.dateOfBirth,
@@ -46,7 +51,62 @@ function StudentProfile() {
       lastSchoolName: student.lastSchoolName,
     },
     validationSchema: validationSchema,
+    onSubmit: async () => {
+      setIsLoading(true);
+      try {
+        await axios
+          .put("admin/updateStudentProfile", {
+            rollNumber: student.rollNumber,
+            firstName: formik.values.firstName,
+            lastName: formik.values.lastName,
+            dateOfBirth: formik.values.dateOfBirth,
+            cast: formik.values.cast,
+            bloodGroup: formik.values.bloodGroup,
+            permenantDisease: formik.values.permenantDisease,
+            mobileNumber: formik.values.mobileNumber,
+            whatsappNumber: formik.values.whatsappNumber,
+            email: formik.values.email,
+            fatherFirstName: formik.values.fatherFirstName,
+            fatherEmail: formik.values.fatherEmail,
+            fatherMiddlename: formik.values.fatherMiddlename,
+            work: formik.values.work,
+            fatherPhoneNo: formik.values.fatherPhoneNo,
+            fatherWhatsappNo: formik.values.fatherWhatsappNo,
+            street: formik.values.street,
+            taluka: formik.values.taluka,
+            village: formik.values.village,
+            postalCode: formik.values.postalCode,
+            university: formik.values.university,
+            course: formik.values.course,
+            branch: formik.values.branch,
+            lastExam: formik.values.lastExam,
+            lastExamPercentage: formik.values.lastExamPercentage,
+            lastSchoolName: formik.values.lastSchoolName,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              setStudent(res.data.UpdatedStudent);
+              setIsLoading(false);
+            }
+          });
+      } catch (error) {}
+    },
   });
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    console.log(formik.errors);
+    if (Object.keys(formik.errors).length !== 0) {
+      toast({
+        variant: "destructive",
+        title: "Please fill in all required fields",
+      });
+    } else {
+      console.log("submit");
+      console.log(formik.values.dateOfBirth);
+      formik.handleSubmit();
+    }
+  };
 
   return (
     <div className="pl-2">
@@ -60,7 +120,7 @@ function StudentProfile() {
         </span>
         <span className="inline-flex gap-1 items-center text-sm">
           <MessageSquare size={18} />
-          +91 {student.mobileNumber}
+          +91 {student.whatsappNumber}
         </span>
       </div>
       <div className="mt-2">
@@ -127,6 +187,21 @@ function StudentProfile() {
             </TabsContent>
           </div>
         </Tabs>
+      </div>
+      <div className="inline-flex gap-3 justify-end w-full pr-4">
+        <Button onClick={handleSubmit} type="submit">
+          {isLoading ? (
+            <>
+              <div className="pl-3 pr-2">
+                <Loader height={"h-auto"} />
+              </div>
+            </>
+          ) : (
+            <>
+              <p>Update</p>
+            </>
+          )}
+        </Button>
       </div>
     </div>
   );
