@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../../../UserContext";
+import { useReportContext } from "../../../../ReportContext";
 
 import { Send, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -20,8 +21,9 @@ import {
 } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 
-function StudentAddReportPopUp({ setFetch }) {
+function StudentAddReportPopUp() {
   const { toast } = useToast();
+  const { setReportChanged } = useReportContext();
   const [title, setTitle] = useState("");
   const [receiver, setReceiver] = useState("");
   const [description, setDescription] = useState("");
@@ -60,7 +62,7 @@ function StudentAddReportPopUp({ setFetch }) {
               setDescription("");
               setReceiver("");
               setPhoto("");
-              setFetch(true);
+              setReportChanged((prev) => prev + 1);
             }
           });
       } catch (err) {
