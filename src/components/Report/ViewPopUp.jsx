@@ -36,7 +36,7 @@ function ViewPopUp({ report, setFetch }) {
           <div key={report._id} onClick={openModal}>
             <div className="flex justify-between bg-bg_report rounded-sm p-1 mx-6 cursor-pointer relative ">
               <div className="mr-5 min-w-[125px]">
-                From: {report.author.rollNo}
+                From: {report.author.rollNumber}
               </div>
               <div className="flex-1 truncate max-w-2xl ">{report.title}</div>
               <div>{format(new Date(report.updatedAt), "dd-MM-yyyy")}</div>
@@ -64,26 +64,27 @@ function ViewPopUp({ report, setFetch }) {
                     </svg>
                   </div>
                   <div className="w-full flex justify-start gap-3 items-center">
-                    <span className="font-semibold">From:</span>{" "}
-                    {report.author.rollNo}
+                    <span className="font-semibold">From:</span>
                     <div className="flex gap-3 items-center">
-                      <span className="text-xl">{report.author.name}</span>
                       <img
-                        className="w-12  aspect-square object-cover rounded-full"
+                        className="w-12  aspect-square object-cover rounded-full border"
                         src={
                           myConstants.BACKEND_URL +
                           "/uploads/" +
                           report.author.profilePhoto
                         }
-                      />{" "}
+                      />
                     </div>
+                    <span>
+                      {report.author.rollNumber} - {report.author.firstName}
+                    </span>
                   </div>
                   <div className="w-full">
-                    <span className="font-semibold">Subject:</span>{" "}
+                    <span className="font-semibold">Subject: </span>
                     {report.title}
                   </div>
                   <div className="w-full">
-                    <span className="font-semibold">Description:</span>{" "}
+                    <span className="font-semibold">Description: </span>
                     {report.description}
                   </div>
                   {report.photo && (

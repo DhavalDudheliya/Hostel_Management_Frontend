@@ -39,11 +39,11 @@ function Card5({ formik, submitted }) {
             range: range,
           })
           .then((res) => {
-            const rno = res.data.randomNumber;
+            const rno = res.data.rollNumber;
             setTimeout(() => {
               formik.setFieldValue("rollNumber", rno);
               setIsGenerating(false);
-            }, 2000);
+            }, 1500);
           });
       } catch (error) {
         toast.error("Error while generating roll number");

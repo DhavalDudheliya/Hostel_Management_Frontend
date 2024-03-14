@@ -3,9 +3,9 @@ import moment from "moment";
 import axios from "axios";
 import { useFormik } from "formik";
 import { validationSchema } from "./validation";
-
 import { Gift, MessageSquare, PhoneCall } from "lucide-react";
 import { useStudentContext } from "../../../../StudentContext";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Personal from "./StudentProfile/Personal";
@@ -87,6 +87,9 @@ function StudentProfile() {
             if (res.status === 200) {
               setStudent(res.data.UpdatedStudent);
               setIsLoading(false);
+              toast({
+                title: "Student profile updated successfully",
+              });
             }
           });
       } catch (error) {}
@@ -193,7 +196,7 @@ function StudentProfile() {
           {isLoading ? (
             <>
               <div className="pl-3 pr-2">
-                <Loader height={"h-auto"} />
+                <Loader height="h-auto" width="w-8" />
               </div>
             </>
           ) : (

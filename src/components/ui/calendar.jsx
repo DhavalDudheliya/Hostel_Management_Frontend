@@ -42,7 +42,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
         day_range_end: "day-range-end",
         day_selected:
           "bg-bg_light_section/30 text-accent-foreground focus:bg-bg_light_section/30 focus:text-accent-foreground",
-        day_today: "bg-bg_dark_section text-white",
+        day_today: "bg-bg_dark_section hover:bg-gray-300 text-white",
         day_outside:
           "day-outside text-muted-foreground opacity-50  aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
         day_disabled: "text-muted-foreground opacity-50",

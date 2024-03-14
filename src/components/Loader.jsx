@@ -1,14 +1,13 @@
 import React from "react";
 
-function Loader({ height }) {
+function Loader({ height, width }) {
   return (
     <>
       <div
         role="status"
-        className={
-          "w-8 flex justify-center items-center " +
-          (height == undefined ? "h-screen" : height)
-        }
+        className={`flex justify-center items-center ${
+          height == undefined ? "h-screen" : height
+        } ${width == undefined ? "w-full" : width}`}
       >
         <svg
           aria-hidden="true"

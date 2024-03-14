@@ -15,9 +15,11 @@ import Card5 from "@/components/newStudentForm/Card5";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Loader from "@/components/Loader";
 
 function AddStudent() {
   const { user, setUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -94,6 +96,7 @@ function AddStudent() {
         formData.append("permenantDisease", formik.values.permenantDisease);
         formData.append("profilePhoto", formik.values.profilePhoto);
 
+        setIsLoading(true);
 
         await axios
           .post("/admin/createstudent", formData, {
@@ -107,7 +110,9 @@ function AddStudent() {
                 title: "Student Successfully created",
               });
               setSubmitted(false);
+              setIsLoading(false);
             } else {
+              setIsLoading(false);
               toast({
                 variant: "destructive",
                 title: "Failed to create student",
@@ -119,12 +124,14 @@ function AddStudent() {
               variant: "destructive",
               title: "Failed to create student",
             });
+            setIsLoading(false);
           });
       } catch (error) {
         toast({
           variant: "destructive",
           title: "Failed to create student",
         });
+        setIsLoading(false);
       }
     },
   });
@@ -193,7 +200,17 @@ function AddStudent() {
               onClick={handleSubmit}
               type="submit"
             >
-              Add Student
+              {isLoading ? (
+                <>
+                  <div className="pl-8 pr-5">
+                    <Loader height="auto" width="w-8" />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p>Add Student</p>
+                </>
+              )}
             </Button>
             <Button size="lg" onClick={handleClearForm}>
               Clear

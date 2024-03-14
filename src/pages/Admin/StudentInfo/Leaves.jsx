@@ -54,7 +54,7 @@ function Leaves() {
       ) : (
         <>
           <div className="text-center text-xl mt-10">
-            No students are on leave
+            There is no Leave data
           </div>
         </>
       )}

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../../../UserContext";
+import { useNavigate } from "react-router-dom";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PersonalLeaveCard from "@/components/Leave/PersonalLeaveCard";
@@ -8,6 +10,12 @@ import LeaveLog from "@/components/Leave/LeaveLog";
 import { Separator } from "@/components/ui/separator";
 
 function Leave() {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  if (!user || (user && user.role !== "Admin")) {
+    navigate("/login");
+  }
   return (
     <>
       <div className="p-6 lg:p-8">

@@ -1,34 +1,44 @@
 import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../../../UserContext";
 
+import { Send, Upload } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Plus } from "lucide-react";
+
 function StudentAddReportPopUp({ setFetch }) {
+  const { toast } = useToast();
   const [title, setTitle] = useState("");
   const [receiver, setReceiver] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
   const { user, setUser } = useContext(UserContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!user || (user && user.role !== "Student")) {
     return <Navigate to="/login" />;
   }
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   async function addReport(ev) {
     ev.preventDefault();
     if (title == "" || receiver == "" || description === "") {
-      toast.error("Please fill all fields");
+      toast({
+        variant: "destructive",
+        title: "Please fill all fields.",
+      });
     } else {
       try {
         const formData = new FormData();
@@ -43,8 +53,9 @@ function StudentAddReportPopUp({ setFetch }) {
           })
           .then((res) => {
             if (res.status === 200) {
-              toast.success("Added Successfully");
-              setIsModalOpen(false);
+              toast({
+                title: "Report added successfully.",
+              });
               setTitle("");
               setDescription("");
               setReceiver("");
@@ -53,47 +64,39 @@ function StudentAddReportPopUp({ setFetch }) {
             }
           });
       } catch (err) {
-        if (err.response.status === 409) toast.error("Report already exists");
+        if (err.response.status === 500)
+          toast({
+            variant: "destructive",
+            title: "Submission failed !! ",
+          });
         console.log(err);
       }
     }
   }
   return (
     <div>
-      <ToastContainer />
-      <div
-        onClick={openModal}
-        className="bg-bg_red text-bg_white_font w-40 justify-center rounded-lg flex gap-2 p-2 font-bold mx-auto my-4 hover:bg-bg_dark_section cursor-pointer"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
-          />
-        </svg>
-        Add report
-      </div>
-      {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <form
-            className="bg-bg_white text-bg_dark_font rounded-md shadow-lg shadow-bg_light_section border-2 border-bg_dark_section p-7 flex flex-col justify-center items-center gap-2"
-            onSubmit={addReport}
-          >
-            <div className="text-xl mb-4 font-bold">Add Report</div>
-
+      <Dialog>
+        <DialogTrigger asChild>
+          <div className="py-5 inline-flex justify-center w-full">
+            <Button variant="blue_btn" className={`w-fit space-x-2`}>
+              <Plus />
+              <div>Add new report</div>
+            </Button>
+          </div>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>
+              <span>Add new report</span>
+            </DialogTitle>
+            <DialogDescription></DialogDescription>
+          </DialogHeader>
+          <form onSubmit={addReport} className="space-y-3">
             <div className="w-full flex gap-2">
               <span className="font-semibold">To:</span>
               <select
                 value={receiver}
-                className="w-full border-black border rounded-sm"
+                className="w-full border-gray-300 p-0.5 border rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 onChange={(ev) => {
                   if (ev.target.value === "Select receiver") {
                     setReceiver("");
@@ -105,14 +108,16 @@ function StudentAddReportPopUp({ setFetch }) {
                 <option>Select receiver</option>
                 <option>Accountant</option>
                 <option>Manager</option>
+                <option>Admin</option>
               </select>
             </div>
 
-            <div className="w-full">
-              <span className="font-semibold">Subject:</span>{" "}
-              <input
+            <div className="w-full inline-flex mt-2 items-center gap-2">
+              <span className="font-semibold">Subject:</span>
+              <Input
                 type="text"
                 value={title}
+                className="h-7"
                 onChange={(ev) => {
                   setTitle(ev.target.value);
                 }}
@@ -122,6 +127,7 @@ function StudentAddReportPopUp({ setFetch }) {
               <span className="font-semibold">Description:</span>{" "}
               <textarea
                 type="text"
+                className="flex min-h-[120px] w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 value={description}
                 onChange={(ev) => {
                   setDescription(ev.target.value);
@@ -133,7 +139,7 @@ function StudentAddReportPopUp({ setFetch }) {
               <div className="">
                 <div className="flex items-center  gap-4">
                   <div className="font-semibold">
-                    Upload&nbsp;item&nbsp;photo
+                    Upload&nbsp;item&nbsp;photo:
                   </div>
                   <div className="grow">
                     <input
@@ -144,21 +150,8 @@ function StudentAddReportPopUp({ setFetch }) {
                       name="photo"
                       className="hidden mt-1 mb-2"
                     />
-                    <div className="mt-1 bg-bg_red hover:bg-bg_dark_section w-full p-1 rounded-md py-2 px-4 text-bg_white flex justify-center items-center cursor-pointer hover:scale-95 hover:transition-all duration-75">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                        />
-                      </svg>
+                    <div className="bg-blue-500 text-white hover:bg-blue-500/90 hover:ring-2 hover:ring-blue-700  hover:transition-all duration-75 w-full p-1 rounded-md py-2 px-4 flex justify-center items-center cursor-pointer">
+                      <Upload />
                     </div>
                   </div>
                 </div>
@@ -167,17 +160,20 @@ function StudentAddReportPopUp({ setFetch }) {
                 </div>
               </div>
             </label>
-            <div className="flex justify-center gap-2 w-full">
-              <button onClick={closeModal} className="btn">
-                Close
-              </button>
-              <button className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Add
-              </button>
-            </div>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="secondary">Close</Button>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button type="submit" className="hover:bg-red-500">
+                  <Send size={15} className="mr-2" />
+                  Submit
+                </Button>
+              </DialogClose>
+            </DialogFooter>
           </form>
-        </div>
-      )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

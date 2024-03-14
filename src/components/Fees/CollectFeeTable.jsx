@@ -136,7 +136,8 @@ function CollectFeeTable() {
                     </td>
                     <td
                       className={`px-6 py-4 ${
-                        moment(fee.dueDate).isBefore(today)
+                        moment(fee.dueDate).isBefore(today) &&
+                        fee.paymentStatus !== "Paid"
                           ? "text-red-500"
                           : ""
                       }`}
