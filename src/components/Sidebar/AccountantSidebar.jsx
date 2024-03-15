@@ -1,12 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../../assets/logo2.png";
 import report from "../../assets/report.png";
 import selected_report from "../../assets/selected_report.png";
-import fine from "../../assets/fine.png";
-import selected_fine from "../../assets/selected_fine.png";
 import notice from "../../assets/bell-plus.png";
 import selected_notice from "../../assets/bell-plus_selected.png";
 import home from "../../assets/home.png";
@@ -19,13 +17,29 @@ import fees from "../../assets/fees.png";
 import down from "../../assets/down.png";
 import selected_down from "../../assets/selected_down.png";
 import { UserContext } from "../../../UserContext";
-import ModeToggele from "../Mode_toggle";
 
 const AdminSideBar = () => {
   const [open, setOpen] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [selectedItem, setSelectedItem] = useState("home");
   const [subFeeSelectedItem, setSubFeeSelectedItem] = useState("");
+
+  useEffect(() => {
+    // Retrieve the selected item from localStorage
+    const storedItem = localStorage.getItem("selectedItem");
+    if (storedItem) {
+      setSelectedItem(storedItem);
+    } else {
+      setSelectedItem("home");
+      localStorage.setItem("selectedItem", item);
+    }
+  }, []);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    // Store the selected item in localStorage
+    localStorage.setItem("selectedItem", item);
+  };
 
   /* LOGOUT */
   async function logoutHandle(ev) {
@@ -55,7 +69,7 @@ const AdminSideBar = () => {
           <Link
             to="/accountant/dashboard"
             onClick={() => {
-              setSelectedItem("home");
+              handleItemClick("home");
               setSubFeeSelectedItem("");
             }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
@@ -79,36 +93,9 @@ const AdminSideBar = () => {
               Dashboard
             </span>
           </Link>
-          <Link
-            to={"/admin/add-student"}
-            onClick={() => {
-              setSelectedItem("addStudent");
-              setSubFeeSelectedItem("");
-            }}
-            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
-              selectedItem === "addStudent"
-                ? "bg-white "
-                : "hover:bg-white hover:bg-opacity-20 transition-all duration-75"
-            }`}
-          >
-            {selectedItem === "addStudent" ? (
-              <img className={`h-6`} src={selected_addStudent} />
-            ) : (
-              <img className="h-6" src={addStudent} />
-            )}
-            <span
-              className={`origin-left duration-75 ${
-                selectedItem === "addStudent"
-                  ? "text-bg_dark_section font-semibold"
-                  : "text-bg_white"
-              }`}
-            >
-              Add&nbsp;Student
-            </span>
-          </Link>
           <li
             onClick={() => {
-              setSelectedItem("fees");
+              handleItemClick("fees");
               setOpen((prev) => !prev);
             }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
@@ -145,7 +132,7 @@ const AdminSideBar = () => {
             <ul className="flex flex-col gap-4">
               <Link
                 onClick={() => {
-                  setSelectedItem("fees");
+                  handleItemClick("fees");
                   setSubFeeSelectedItem("collectFee");
                 }}
                 to="accountant/fee/collectFees"
@@ -159,7 +146,7 @@ const AdminSideBar = () => {
               </Link>
               <Link
                 onClick={() => {
-                  setSelectedItem("fees");
+                  handleItemClick("fees");
                   setSubFeeSelectedItem("dueFees");
                 }}
                 to="accountant/fee/dueFees"
@@ -173,7 +160,7 @@ const AdminSideBar = () => {
               </Link>
               <Link
                 onClick={() => {
-                  setSelectedItem("fees");
+                  handleItemClick("fees");
                   setSubFeeSelectedItem("addFee");
                 }}
                 to="accountant/fee/addFee"
@@ -190,7 +177,7 @@ const AdminSideBar = () => {
           <Link
             to={"/admin/report"}
             onClick={() => {
-              setSelectedItem("report");
+              handleItemClick("report");
               setSubFeeSelectedItem("");
             }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
@@ -217,7 +204,7 @@ const AdminSideBar = () => {
           <Link
             to={"/admin/allnotices"}
             onClick={() => {
-              setSelectedItem("notice");
+              handleItemClick("notice");
               setSubFeeSelectedItem("");
             }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${

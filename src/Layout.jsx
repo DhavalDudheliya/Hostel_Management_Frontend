@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../UserContext";
 import Loader from "./components/Loader";
 import MobileHeader from "./components/MobileHeaders/MobileHeader";
+import Footer from "./components/LandingPage/Footer";
 
 function Layout() {
   const { user, setUser } = useContext(UserContext);
@@ -13,7 +14,7 @@ function Layout() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -35,6 +36,7 @@ function Layout() {
         <div className="flex-1 justify-center items-center">
           <Outlet />
         </div>
+        <Footer />
       </div>
     </>
   );

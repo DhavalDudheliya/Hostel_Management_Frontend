@@ -11,7 +11,7 @@ const Footer = () => {
         {/* <p>&copy; 2024 Your Website Name. All Rights Reserved.</p>
         <p>Address: Nutan Park Society, Nadiad, Gujarat 387001</p>
         <p>Email: info@example.com | Phone: +1 (123) 456-7890</p> */}
-        <div className="flex flex-row justify-between items-start">
+        <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between md:items-start">
           <div to={"/"} className="flex items-center gap-2 cursor-pointer px-2">
             <img
               className="p-1 h-9 w-10 bg-white rounded-full"
@@ -27,9 +27,6 @@ const Footer = () => {
           <div>
             <p>Address: Nutan Park Society, Nadiad, Gujarat 387001</p>
             <p>Email: info@example.com | Phone: +1 (123) 456-7890</p>
-            <p className="mt-8">
-              &copy; 2024 BAPS Swaminarayan Chhatralaya. All Rights Reserved.
-            </p>
           </div>
           <div className="flex flex-col gap-2">
             <p>Socials</p>
@@ -49,6 +46,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <p className="mt-8">
+          &copy; 2024 BAPS Swaminarayan Chhatralaya. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );

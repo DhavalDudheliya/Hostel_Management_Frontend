@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import logo from "../../assets/logo2.png";
 import axios from "axios";
 import { useContext } from "react";
 
-import user from "../../assets/user.png";
-import selected_user from "../../assets/selected_user.png";
 import food from "../../assets/food.png";
 import selected_food from "../../assets/selected_food.png";
 import home from "../../assets/home.png";
@@ -24,6 +22,23 @@ const ManagerSidebar = () => {
   const [selectedItem, setSelectedItem] = useState("home");
 
   const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    // Retrieve the selected item from localStorage
+    const storedItem = localStorage.getItem("selectedItem");
+    if (storedItem) {
+      setSelectedItem(storedItem);
+    } else {
+      setSelectedItem("home");
+      localStorage.setItem("selectedItem", item);
+    }
+  }, []);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    // Store the selected item in localStorage
+    localStorage.setItem("selectedItem", item);
+  };
 
   /* LOGOUT */
   async function logoutHandle(ev) {
@@ -78,8 +93,9 @@ const ManagerSidebar = () => {
             </h1>
           </div>
           <ul className="pt-10">
-            <li
-              onClick={() => setSelectedItem("home")}
+            <Link
+              to="/manager/dashboard"
+              onClick={() => handleItemClick("home")}
               className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
                 selectedItem === "home"
                   ? "bg-white duration-200"
@@ -101,13 +117,13 @@ const ManagerSidebar = () => {
                     : "text-bg_white"
                 }`}
               >
-                Home
+                Dashboard
               </span>
-            </li>
+            </Link>
 
             <Link
               to="/manager/allfoods"
-              onClick={() => setSelectedItem("foodMenu")}
+              onClick={() => handleItemClick("foodMenu")}
               className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
                 selectedItem === "foodMenu"
                   ? "bg-white duration-200"
@@ -135,7 +151,7 @@ const ManagerSidebar = () => {
 
             <Link
               to="/manager/addmeal"
-              onClick={() => setSelectedItem("todayMeal")}
+              onClick={() => handleItemClick("todayMeal")}
               className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
                 selectedItem === "todayMeal"
                   ? "bg-white duration-200"
@@ -162,7 +178,7 @@ const ManagerSidebar = () => {
             </Link>
             <Link
               to={"/manager/allnotices"}
-              onClick={() => setSelectedItem("notice")}
+              onClick={() => handleItemClick("notice")}
               className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
                 selectedItem === "notice"
                   ? "bg-white duration-200"
@@ -189,7 +205,7 @@ const ManagerSidebar = () => {
             </Link>
             <Link
               to={"/manager/report"}
-              onClick={() => setSelectedItem("report")}
+              onClick={() => handleItemClick("report")}
               className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
                 selectedItem === "report"
                   ? "bg-white duration-200"

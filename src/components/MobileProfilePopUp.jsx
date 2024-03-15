@@ -32,7 +32,7 @@ const ProfileUpdatePopUp = () => {
                 <img
                   src={myConst.BACKEND_URL + "/uploads/" + user.profilePhoto}
                   alt=""
-                  className="rounded-full object-cover aspect-square h-[2rem] hover:bg-black hover:opacity-70 cursor-pointer"
+                  className="rounded-full object-cover aspect-square h-[30px]  hover:bg-black hover:opacity-70 cursor-pointer"
                 />
               </>
             )}

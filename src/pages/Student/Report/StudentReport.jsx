@@ -39,24 +39,26 @@ function StudentReport() {
 
   return (
     <>
-      <div className="flex justify-center text-2xl font-bold labels mx-4 mt-6">
-        All Reports
-      </div>
-      <StudentAddReportPopUp />
-      <div className="flex flex-col mx-2">
-        <div className="grid grid-cols-3 md:grid-cols-9 bg-gray-200 border border-gray-300 mx-6 cursor-pointe p-1.5 rounded-t-lg">
-          <div></div>
-          <div className="">Receiver</div>
-          <div className="hidden md:block truncate col-span-2 text-center">
-            Title
-          </div>
-          <div className="hidden md:block truncate col-span-3 text-center">
-            Description
-          </div>
-          <div className="text-center md:col-span-2">Date</div>
+      <div className="h-[90vh] md:h-auto">
+        <div className="flex justify-center text-2xl font-bold labels mx-4 mt-6">
+          All Reports
         </div>
-        {reports.length > 0 &&
-          reports.map((report) => <StudentViewPopUp report={report} />)}
+        <StudentAddReportPopUp />
+        <div className="flex flex-col mx-2">
+          <div className="grid grid-cols-3 md:grid-cols-9 bg-gray-200 border border-gray-300 mx-6 cursor-pointe p-1.5 rounded-t-lg">
+            <div></div>
+            <div className="">Receiver</div>
+            <div className="hidden md:block truncate col-span-2 text-center">
+              Title
+            </div>
+            <div className="hidden md:block truncate col-span-3 text-center">
+              Description
+            </div>
+            <div className="text-center md:col-span-2">Date</div>
+          </div>
+          {reports.length > 0 &&
+            reports.map((report) => <StudentViewPopUp report={report} />)}
+        </div>
       </div>
     </>
   );

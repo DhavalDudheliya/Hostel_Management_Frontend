@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import logo from "../../assets/logo2.png";
 import report from "../../assets/report.png";
@@ -23,8 +22,26 @@ import { UserContext } from "../../../UserContext";
 
 const AdminSideBar = () => {
   const [open, setOpen] = useState(true);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [selectedItem, setSelectedItem] = useState("dashboard");
+
+  useEffect(() => {
+    // Retrieve the selected item from localStorage
+    const storedItem = localStorage.getItem("selectedItem");
+    if (storedItem) {
+      setSelectedItem(storedItem);
+    } else {
+      setSelectedItem("dashboard");
+      localStorage.setItem("selectedItem", item);
+    }
+  }, []);
+
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    // Store the selected item in localStorage
+    localStorage.setItem("selectedItem", item);
+  };
 
   /* LOGOUT */
   async function logoutHandle(ev) {
@@ -80,7 +97,7 @@ const AdminSideBar = () => {
         <ul className="pt-10">
           <Link
             to="/admin/dashboard"
-            onClick={() => setSelectedItem("dashboard")}
+            onClick={() => handleItemClick("dashboard")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "dashboard"
                 ? "bg-white "
@@ -107,7 +124,7 @@ const AdminSideBar = () => {
           </Link>
           <Link
             to="/admin/studentInfo"
-            onClick={() => setSelectedItem("student")}
+            onClick={() => handleItemClick("student")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "student"
                 ? "bg-white "
@@ -134,7 +151,7 @@ const AdminSideBar = () => {
           </Link>
           <Link
             to={"/admin/add-student"}
-            onClick={() => setSelectedItem("addStudent")}
+            onClick={() => handleItemClick("addStudent")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "addStudent"
                 ? "bg-white "
@@ -161,7 +178,7 @@ const AdminSideBar = () => {
           </Link>
           <Link
             to={"/admin/allocate-blocks"}
-            onClick={() => setSelectedItem("roomAllocation")}
+            onClick={() => handleItemClick("roomAllocation")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "roomAllocation"
                 ? "bg-white duration-200"
@@ -188,7 +205,7 @@ const AdminSideBar = () => {
           </Link>
           <Link
             to={"/admin/leave"}
-            onClick={() => setSelectedItem("leave")}
+            onClick={() => handleItemClick("leave")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "leave"
                 ? "bg-white duration-200"
@@ -213,7 +230,7 @@ const AdminSideBar = () => {
             </span>
           </Link>
           <li
-            onClick={() => setSelectedItem("fine")}
+            onClick={() => handleItemClick("fine")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "fine"
                 ? "bg-white "
@@ -240,7 +257,7 @@ const AdminSideBar = () => {
           </li>
           <Link
             to={"/admin/report"}
-            onClick={() => setSelectedItem("report")}
+            onClick={() => handleItemClick("report")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "report"
                 ? "bg-white "
@@ -267,7 +284,7 @@ const AdminSideBar = () => {
           </Link>
           <Link
             to={"/admin/allnotices"}
-            onClick={() => setSelectedItem("notice")}
+            onClick={() => handleItemClick("notice")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "notice"
                 ? "bg-white duration-200"

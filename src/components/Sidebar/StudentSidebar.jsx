@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
@@ -24,6 +24,23 @@ const StudentSidebar = () => {
   const [open, setOpen] = useState(true);
   const { user, setUser } = useContext(UserContext);
   const [selectedItem, setSelectedItem] = useState("home");
+
+  useEffect(() => {
+    // Retrieve the selected item from localStorage
+    const storedItem = localStorage.getItem("selectedItem");
+    if (storedItem) {
+      setSelectedItem(storedItem);
+    } else {
+      setSelectedItem("meal");
+      localStorage.setItem("selectedItem", item);
+    }
+  }, []);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    // Store the selected item in localStorage
+    localStorage.setItem("selectedItem", item);
+  };
 
   /* LOGOUT */
   async function logoutHandle(ev) {
@@ -77,7 +94,7 @@ const StudentSidebar = () => {
           </h1>
         </div>
         <ul className="pt-10">
-          <li
+          {/* <li
             onClick={() => setSelectedItem("home")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "home"
@@ -102,10 +119,10 @@ const StudentSidebar = () => {
             >
               Home
             </span>
-          </li>
+          </li> */}
           <Link
             to={"/meal"}
-            onClick={() => setSelectedItem("meal")}
+            onClick={() => handleItemClick("meal")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "meal"
                 ? "bg-white duration-200"
@@ -132,7 +149,7 @@ const StudentSidebar = () => {
           </Link>
           <Link
             to={"/student/report"}
-            onClick={() => setSelectedItem("report")}
+            onClick={() => handleItemClick("report")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "report"
                 ? "bg-white duration-200"
@@ -159,7 +176,7 @@ const StudentSidebar = () => {
           </Link>
           <Link
             to={"/student/notices"}
-            onClick={() => setSelectedItem("notice")}
+            onClick={() => handleItemClick("notice")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "notice"
                 ? "bg-white duration-200"
@@ -186,7 +203,7 @@ const StudentSidebar = () => {
           </Link>
           <Link
             to={"/student/fees"}
-            onClick={() => setSelectedItem("fees")}
+            onClick={() => handleItemClick("fees")}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
               selectedItem === "fees"
                 ? "bg-white duration-200"
@@ -221,20 +238,23 @@ const StudentSidebar = () => {
             </span>
           </li>
           <Link
-            to={"/admin/profile"}
+            to={"/student/profile"}
             onClick={() => setSelectedItem("profile")}
-            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer ml-1 my-6 rounded-md hover:cursor-pointer`}
+            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer  my-6 rounded-md hover:cursor-pointer`}
           >
-            <Avatar className="shadow-lg border">
-              <AvatarImage
-                src={myConst.BACKEND_URL + "/uploads/" + user.profilePhoto}
-              />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            {user.profilePhoto && (
+              <>
+                <img
+                  src={myConst.BACKEND_URL + "/uploads/" + user.profilePhoto}
+                  alt=""
+                  className="rounded-full object-cover aspect-square h-[2rem] w-[30px] hover:bg-black hover:opacity-70 cursor-pointer"
+                />
+              </>
+            )}
             <span
               className={`${!open && "hidden"} origin-left hover:underline`}
             >
-              {user.name}
+              {user.firstName} {user.lastName}
             </span>
           </Link>
         </ul>
