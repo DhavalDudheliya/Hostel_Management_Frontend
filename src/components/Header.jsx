@@ -20,31 +20,29 @@ function Header() {
 
   return (
     <>
-      {!user && (
-        <div className="sticky p-4 bg-transparent">
-          <header className="flex justify-between items-center">
-            <div className="flex justify-between items-center my-1">
-              <Link
-                to={"/"}
-                className="flex items-center gap-2 cursor-pointer px-2"
-              >
-                <img className="p-1 h-12 w-13 " src={logo} alt="" />
-                <span className="text-2xl font-semibold welcom_title">
-                  APC Nadiad
-                </span>
-              </Link>
-            </div>
-            <div>
-              <a
-                className="py-2 px-4 gradient-border welcom_title duration-200 mx-4"
-                href={"/login"}
-              >
-                Log in
-              </a>
-            </div>
-          </header>
-        </div>
-      )}
+      <div className="sticky p-4 bg-transparent">
+        <header className="flex justify-between items-center">
+          <div className="flex justify-between items-center my-1">
+            <Link
+              to={"/"}
+              className="flex items-center gap-2 cursor-pointer px-2"
+            >
+              <img className="p-1 h-12 w-13 " src={logo} alt="" />
+              <span className="text-2xl font-semibold welcom_title">
+                APC Nadiad
+              </span>
+            </Link>
+          </div>
+          <div>
+            <a
+              className="py-2 px-4 gradient-border welcom_title duration-200 mx-4"
+              href={"/login"}
+            >
+              Log in
+            </a>
+          </div>
+        </header>
+      </div>
     </>
   );
 }

@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import axios from "axios";
+
 // import * as myConst from "../../myConstants";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
@@ -6,16 +8,23 @@ import { UserContext } from "../../../UserContext";
 import home from "../../assets/home.png";
 import report from "../../assets/report.png";
 import fine from "../../assets/fine.png";
+import logout from "../../assets/logout.png";
+import users from "../../assets/users.png";
 import notice from "../../assets/bell-plus.png";
 import addStudent from "../../assets/user-plus.png";
 import room from "../../assets/room.png";
-import MobileProfilePopup from "../MobileProfilePopUp";
+import { FaRegUserCircle } from "react-icons/fa";
 
 function AdminMobileHeader() {
-  const { user } = useContext(UserContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { setUser, user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const [menuButtonToggel, setMenuButtonToggel] = useState(false);
+
+  async function logoutHandle(ev) {
+    ev.preventDefault();
+    await axios.post("/logout");
+    setUser(null);
+  }
 
   function menuToggel() {
     let list = document.querySelector("ul");
@@ -94,8 +103,9 @@ function AdminMobileHeader() {
                   </span>
                 </Link>
               </div>
-              <div className="mx-1">
-                <MobileProfilePopup />
+              <div className="mx-1 text-white flex items-center gap-2">
+                <FaRegUserCircle />
+                <p className="text-red-500">Admin</p>
               </div>
             </div>
           </nav>
@@ -109,8 +119,16 @@ function AdminMobileHeader() {
                   className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 mt-4 rounded-md`}
                 >
                   <img className="h-6" src={home} />
-                  <span className="text-bg_white">Home</span>
+                  <span className="text-bg_white">Dashboard</span>
                 </li>
+                <Link
+                  to={"/admin/studentInfo"}
+                  onClick={menuToggel}
+                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
+                >
+                  <img className="h-6" src={users} />
+                  <span className="text-bg_white">Student&nbsp;Profile</span>
+                </Link>
                 <Link
                   to={"/admin/add-student"}
                   onClick={menuToggel}
@@ -120,12 +138,20 @@ function AdminMobileHeader() {
                   <span className="text-bg_white">Add&nbsp;Student</span>
                 </Link>
                 <Link
-                  to={"/manager/allocate-blocks"}
+                  to={"/admin/allocate-blocks"}
                   onClick={menuToggel}
                   className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
                 >
                   <img className="h-6" src={room} />
                   <span className="text-bg_white">Room&nbsp;Allocation</span>
+                </Link>
+                <Link
+                  to={"/admin/leave"}
+                  onClick={menuToggel}
+                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
+                >
+                  <div className="text-2xl font-medium ml-1.5 mr-2">L</div>
+                  <span className="text-bg_white">Leave</span>
                 </Link>
                 <li
                   onClick={menuToggel}
@@ -150,6 +176,13 @@ function AdminMobileHeader() {
                   <img className="h-6" src={notice} />
                   <span className="text-bg_white">Notice</span>
                 </Link>
+                <li
+                  onClick={logoutHandle}
+                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
+                >
+                  <img className="h-6" src={logout} />
+                  <span className={`origin-left underline`}>Log&nbsp;out</span>
+                </li>
               </ul>
             </div>
           )}

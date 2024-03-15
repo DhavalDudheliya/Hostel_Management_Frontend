@@ -118,6 +118,7 @@ function UserLogin() {
     ev.preventDefault();
     setLoading(true);
     const email = formik.values.email;
+    console.log(email);
     if (email === "") {
       toast({
         variant: "destructive",
@@ -132,10 +133,10 @@ function UserLogin() {
             toast({
               title: "Password reset link sent to your email.",
             });
-            setEmail("");
           }
         });
       } catch (error) {
+        console.log(error);
         toast({
           variant: "destructive",
           title: "Could not send link !!",

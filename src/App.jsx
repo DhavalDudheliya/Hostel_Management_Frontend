@@ -114,11 +114,10 @@ function App() {
                 element={<StudentFeesPaymentDashboard />}
               />
               <Route path="/meal" element={<TodayMeal />} />
-              <Route
-                path="/reset-password/:token"
-                element={<ResetPassword />}
-              />
             </Route>
+          </Routes>
+          <Routes>
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
           </Routes>
         </ReportProvider>
       </StudentProvider>

@@ -3,10 +3,6 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../../assets/logo2.png";
-import user from "../../assets/user.png";
-import selected_user from "../../assets/selected_user.png";
-import home from "../../assets/home.png";
-import selected_home from "../../assets/selected_home.png";
 import report from "../../assets/report.png";
 import selected_report from "../../assets/selected_report.png";
 import food from "../../assets/food.png";
@@ -32,7 +28,7 @@ const StudentSidebar = () => {
       setSelectedItem(storedItem);
     } else {
       setSelectedItem("meal");
-      localStorage.setItem("selectedItem", item);
+      localStorage.setItem("selectedItem", "meal");
     }
   }, []);
 
@@ -94,32 +90,6 @@ const StudentSidebar = () => {
           </h1>
         </div>
         <ul className="pt-10">
-          {/* <li
-            onClick={() => setSelectedItem("home")}
-            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
-              selectedItem === "home"
-                ? "bg-white duration-200"
-                : "hover:bg-white hover:bg-opacity-20 hover:scale-95 transition-all duration-75"
-            }`}
-          >
-            {selectedItem === "home" ? (
-              <img
-                className={`h-6 rotate-[360deg] duration-500`}
-                src={selected_home}
-              />
-            ) : (
-              <img className="h-6" src={home} />
-            )}
-            <span
-              className={`${!open && "hidden"} origin-left duration-75 ${
-                selectedItem === "home"
-                  ? "text-bg_dark_section font-semibold"
-                  : "text-bg_white"
-              }`}
-            >
-              Home
-            </span>
-          </li> */}
           <Link
             to={"/meal"}
             onClick={() => handleItemClick("meal")}

@@ -9,8 +9,6 @@ import notice from "../../assets/bell-plus.png";
 import selected_notice from "../../assets/bell-plus_selected.png";
 import home from "../../assets/home.png";
 import selected_home from "../../assets/selected_home.png";
-import addStudent from "../../assets/user-plus.png";
-import selected_addStudent from "../../assets/user-plus_selected.png";
 import logout from "../../assets/logout.png";
 import selected_fees from "../../assets/selected_fees.png";
 import fees from "../../assets/fees.png";
@@ -31,7 +29,7 @@ const AdminSideBar = () => {
       setSelectedItem(storedItem);
     } else {
       setSelectedItem("home");
-      localStorage.setItem("selectedItem", item);
+      localStorage.setItem("selectedItem", "home");
     }
   }, []);
 
@@ -135,7 +133,7 @@ const AdminSideBar = () => {
                   handleItemClick("fees");
                   setSubFeeSelectedItem("collectFee");
                 }}
-                to="accountant/fee/collectFees"
+                to="/accountant/fee/collectFees"
                 className={`p-2 duration-300 hover:underline hover:cursor-pointer ${
                   subFeeSelectedItem === "collectFee"
                     ? "text-[#D90368]"
@@ -149,7 +147,7 @@ const AdminSideBar = () => {
                   handleItemClick("fees");
                   setSubFeeSelectedItem("dueFees");
                 }}
-                to="accountant/fee/dueFees"
+                to="/accountant/fee/dueFees"
                 className={`p-2 duration-300 hover:underline hover:cursor-pointer ${
                   subFeeSelectedItem === "dueFees"
                     ? "text-[#D90368]"
@@ -163,7 +161,7 @@ const AdminSideBar = () => {
                   handleItemClick("fees");
                   setSubFeeSelectedItem("addFee");
                 }}
-                to="accountant/fee/addFee"
+                to="/accountant/fee/addFee"
                 className={`p-2 duration-300 hover:underline hover:cursor-pointer ${
                   subFeeSelectedItem === "addFee"
                     ? "text-[#D90368]"

@@ -32,7 +32,7 @@ const AdminSideBar = () => {
       setSelectedItem(storedItem);
     } else {
       setSelectedItem("dashboard");
-      localStorage.setItem("selectedItem", item);
+      localStorage.setItem("selectedItem", "dashboard");
     }
   }, []);
 

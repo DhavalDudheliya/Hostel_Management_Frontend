@@ -1,22 +1,19 @@
 import React, { useContext, useState } from "react";
 // import * as myConst from "../../myConstants";
+import axios from "axios";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../UserContext";
-import User from "../../assets/user.png";
 import food from "../../assets/food.png";
 import home from "../../assets/home.png";
-import room from "../../assets/room.png";
+import logout from "../../assets/logout.png";
 import notice from "../../assets/notice.png";
 import report from "../../assets/report.png";
 import food_menu from "../../assets/food_menu.png";
-// import logout from "../../assets/logout.png";
-import MobileProfilePopup from "../MobileProfilePopUp";
-import axios from "axios";
+import { FaRegUserCircle } from "react-icons/fa";
 
 function ManagerMobileHeader() {
   const { user } = useContext(UserContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [menuButtonToggel, setMenuButtonToggel] = useState(false);
 
@@ -103,8 +100,9 @@ function ManagerMobileHeader() {
                   </span>
                 </Link>
               </div>
-              <div className="mx-1">
-                <MobileProfilePopup />
+              <div className="mx-1 text-white flex items-center gap-2">
+                <FaRegUserCircle />
+                <p className="text-red-500">Manager</p>
               </div>
             </div>
           </nav>
@@ -113,20 +111,12 @@ function ManagerMobileHeader() {
               <ul
                 className={`absolute bg-bg_dark_section w-1/2 pl-4 h-screen transition-all ease-in z-10`}
               >
-                <Link
-                  onClick={menuToggel}
-                  to={"/manager/profile"}
-                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 mt-4 rounded-md`}
-                >
-                  <img className="h-6" src={User} />
-                  <span className="text-bg_white">My&nbsp;profile</span>
-                </Link>
                 <li
                   onClick={menuToggel}
-                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
+                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 mt-6 p-2 rounded-md`}
                 >
                   <img className="h-6" src={home} />
-                  <span className="text-bg_white">Home</span>
+                  <span className="text-bg_white">Dasboard</span>
                 </li>
                 <Link
                   to="/manager/allfoods"
@@ -160,6 +150,13 @@ function ManagerMobileHeader() {
                   <img className="h-6" src={report} />
                   <span className="text-bg_white">Report</span>
                 </Link>
+                <li
+                  onClick={logoutHandle}
+                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
+                >
+                  <img className="h-6" src={logout} />
+                  <span className={`origin-left underline`}>Log&nbsp;out</span>
+                </li>
               </ul>
             </div>
           )}

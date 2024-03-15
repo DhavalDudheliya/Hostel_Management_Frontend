@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo2.png";
 import axios from "axios";
 import { useContext } from "react";
@@ -30,7 +30,7 @@ const ManagerSidebar = () => {
       setSelectedItem(storedItem);
     } else {
       setSelectedItem("home");
-      localStorage.setItem("selectedItem", item);
+      localStorage.setItem("selectedItem", "home");
     }
   }, []);
 

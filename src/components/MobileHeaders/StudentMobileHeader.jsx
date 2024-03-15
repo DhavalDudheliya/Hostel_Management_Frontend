@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../UserContext";
-import User from "../../assets/user.png";
+import fine from "../../assets/fine.png";
 import report from "../../assets/report.png";
 import food from "../../assets/food.png";
 import notice from "../../assets/notice.png";
@@ -79,10 +79,7 @@ function StudentMobileHeader() {
                   )}
                   <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
                 </span>
-                <Link
-                  to={"/"}
-                  className="flex items-center gap-2 cursor-pointer px-4"
-                >
+                <div className="flex items-center gap-2 cursor-pointer px-4">
                   <img
                     className="h-6 w-6 border-2 border-bg_white bg-bg_white rounded-full"
                     src={logo}
@@ -91,7 +88,7 @@ function StudentMobileHeader() {
                   <span className="text-lg font-semibold text-bg_white_font">
                     APC Nadiad
                   </span>
-                </Link>
+                </div>
               </div>
               <div className="mx-1">
                 <MobileProfilePopup />
@@ -101,16 +98,8 @@ function StudentMobileHeader() {
           {open && (
             <div>
               <ul
-                className={`absolute bg-bg_dark_section w-1/2 pl-7 h-screen transition-all ease-in z-10`}
+                className={`absolute bg-bg_dark_section w-1/2 pl-7 h-screen transition-all ease-in z-10 pt-5`}
               >
-                <Link
-                  onClick={menuToggel}
-                  to={"/student/profile"}
-                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 mt-4 rounded-md`}
-                >
-                  <img className="h-6" src={User} />
-                  <span className="text-bg_white">My&nbsp;profile</span>
-                </Link>
                 <Link
                   to={"/meal"}
                   onClick={menuToggel}
@@ -118,6 +107,14 @@ function StudentMobileHeader() {
                 >
                   <img className="h-6" src={food} />
                   <span className="text-bg_white">Today's&nbsp;Meal</span>
+                </Link>
+                <Link
+                  to={"/student/fees"}
+                  onClick={menuToggel}
+                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
+                >
+                  <img className="h-6" src={fine} />
+                  <span className="text-bg_white">Fees</span>
                 </Link>
                 <Link
                   to={"/student/report"}

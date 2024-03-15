@@ -3,6 +3,7 @@ import { UserContext } from "../../../UserContext";
 import ManagerMobileHeader from "./ManagerMobileHeader";
 import AdminHeader from "./AdminHeader";
 import StudentMobileHeader from "./StudentMobileHeader";
+import AccountantMobileHeader from "./AccountantMobileHeader";
 
 function SideBar() {
   const { user } = useContext(UserContext);
@@ -11,6 +12,7 @@ function SideBar() {
       {user && user.role === "Manager" && <ManagerMobileHeader />}
       {user && user.role === "Admin" && <AdminHeader />}
       {user && user.role === "Student" && <StudentMobileHeader />}
+      {user && user.role === "Accountant" && <AccountantMobileHeader />}
     </>
   );
 }
