@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import { motion, useScroll } from "framer-motion";
 
 import Hero from "@/components/LandingPage/Hero";

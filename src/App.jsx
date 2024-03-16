@@ -4,9 +4,9 @@ import { ToastContainer } from "react-toastify";
 import Layout from "./Layout";
 import "react-toastify/dist/ReactToastify.css";
 import * as myContants from "../myConstants";
-import { UserContextProvider } from "../UserContext";
-import { StudentProvider } from "../StudentContext";
-import { ReportProvider } from "../ReportContext";
+import { UserContextProvider } from "../contexts/UserContext";
+import { StudentProvider } from "../contexts/StudentContext";
+import { ReportProvider } from "../contexts/ReportContext";
 import { Toaster } from "@/components/ui/toaster";
 // import { ThemeProvider } from "@/components/theme-provider";
 
@@ -15,12 +15,13 @@ import UserLogin from "./pages/UserLogin";
 
 // Admin
 import StudentInfo from "./pages/Admin/StudentInfo/StudentInfo";
-import AdminProfile from "./pages/Admin/AdminProfile";
-import StudentsProfile from "./pages/Admin/StudentsProfile";
 import AdminReport from "./pages/Admin/Report/AdminReport";
-import AddStudent from "./pages/Admin/AddStudent";
 import BlockPage from "./pages/Admin/Block/BlockPage";
-import AllocateBlocks from "./pages/Admin/Block/AllocateBlocks";
+import AddStudent from "./pages/Admin/AddStudent";
+import AdminDashBoard from "./pages/Admin/DashBoard/AdminDashBoard";
+import RoomAllocation from "./pages/Admin/Block/RoomAllocation";
+import Leave from "./pages/Admin/Leave/Leave";
+// import AllocateBlocks from "./pages/Admin/Block/AllocateBlocks";
 
 // Student
 import StudentDashboard from "./pages/Student/StudentDashboard";
@@ -47,9 +48,8 @@ import AllNotices from "./pages/Manager/Notice/AllNotices";
 import ManagerReport from "./pages/Manager/Report/ManagerReport";
 
 import ResetPassword from "./components/ResetPassword";
-import Leave from "./pages/Admin/Leave/Leave";
 import Layout2 from "./Layout2";
-import AdminDashBoard from "./pages/Admin/DashBoard/AdminDashBoard";
+import { BlockProvider } from "../contexts/BlocksContext";
 
 axios.defaults.baseURL = myContants.BACKEND_URL;
 axios.defaults.withCredentials = true;
@@ -59,66 +59,78 @@ function App() {
     <UserContextProvider>
       <StudentProvider>
         <ReportProvider>
-          <ToastContainer />
-          <Toaster />
-          <Routes>
-            <Route path="/" element={<Layout2 />}>
-              <Route path="/" element={<IndexPage />} />
-              <Route path="/login" element={<UserLogin />} />
-            </Route>
-            <Route path="/" element={<Layout />}>
-              // Admin
-              <Route path="/admin/profile" element={<AdminProfile />} />
-              <Route path="/admin/dashboard" element={<AdminDashBoard />} />
-              <Route path="/admin/studentInfo" element={<StudentInfo />} />
-              <Route path="/admin/students" element={<StudentsProfile />} />
-              <Route path="/admin/allnotices" element={<AllNotices />} />
-              <Route path="/admin/report" element={<AdminReport />} />
-              <Route path="/admin/add-student" element={<AddStudent />} />
+          <BlockProvider>
+            <ToastContainer />
+            <Toaster />
+            <Routes>
+              <Route path="/" element={<Layout2 />}>
+                <Route path="/" element={<IndexPage />} />
+                <Route path="/login" element={<UserLogin />} />
+              </Route>
+              <Route path="/" element={<Layout />}>
+                // Admin
+                <Route path="/admin/dashboard" element={<AdminDashBoard />} />
+                <Route path="/admin/studentInfo" element={<StudentInfo />} />
+                <Route path="/admin/allnotices" element={<AllNotices />} />
+                <Route path="/admin/report" element={<AdminReport />} />
+                <Route path="/admin/add-student" element={<AddStudent />} />
+                <Route
+                  path="/admin/allocate-blocks/:id"
+                  element={<BlockPage />}
+                />
+                <Route
+                  path="/admin/allocate-blocks"
+                  element={<RoomAllocation />}
+                />
+                <Route path="/admin/leave" element={<Leave />} />
+                // Accountant
+                <Route
+                  path="/accountant/dashboard"
+                  element={<AccountantDashboard />}
+                />
+                <Route
+                  path="/accountant/fee/collectFees"
+                  element={<CollectFees />}
+                />
+                <Route path="/accountant/fee/dueFees" element={<DueFees />} />
+                <Route path="/accountant/fee/addFee" element={<AddFee />} />
+                // Manager
+                <Route
+                  path="/manager/dashboard"
+                  element={<ManagerDashboard />}
+                />
+                <Route path="/manager/addfood" element={<AddFoodPopUp />} />
+                <Route path="/manager/allfoods" element={<AllFoods />} />
+                <Route
+                  path="/manager/allfoods/:id"
+                  element={<EditFoodPopUp />}
+                />
+                <Route path="/manager/addmeal" element={<AddMeal />} />
+                <Route path="/manager/profile" element={<ManagerProfile />} />
+                <Route path="/manager/report" element={<ManagerReport />} />
+                <Route path="/manager/allnotices" element={<AllNotices />} />
+                // Student
+                <Route path="/student/profile" element={<StudentProfile />} />
+                <Route
+                  path="/student/dashboard"
+                  element={<StudentDashboard />}
+                />
+                <Route path="/student/report" element={<StudentReport />} />
+                <Route path="/student/notices" element={<StudentNotices />} />
+                <Route
+                  path="/student/fees"
+                  element={<StudentFeesPaymentDashboard />}
+                />
+                <Route path="/meal" element={<TodayMeal />} />
+              </Route>
+            </Routes>
+            <Routes>
               <Route
-                path="/admin/allocate-blocks/:id"
-                element={<BlockPage />}
+                path="/reset-password/:token"
+                element={<ResetPassword />}
               />
-              <Route
-                path="/admin/allocate-blocks"
-                element={<AllocateBlocks />}
-              />
-              <Route path="/admin/leave" element={<Leave />} />
-              // Accountant
-              <Route
-                path="/accountant/dashboard"
-                element={<AccountantDashboard />}
-              />
-              <Route
-                path="/accountant/fee/collectFees"
-                element={<CollectFees />}
-              />
-              <Route path="/accountant/fee/dueFees" element={<DueFees />} />
-              <Route path="/accountant/fee/addFee" element={<AddFee />} />
-              // Manager
-              <Route path="/manager/dashboard" element={<ManagerDashboard />} />
-              <Route path="/manager/addfood" element={<AddFoodPopUp />} />
-              <Route path="/manager/allfoods" element={<AllFoods />} />
-              <Route path="/manager/allfoods/:id" element={<EditFoodPopUp />} />
-              <Route path="/manager/addmeal" element={<AddMeal />} />
-              <Route path="/manager/profile" element={<ManagerProfile />} />
-              <Route path="/manager/report" element={<ManagerReport />} />
-              <Route path="/manager/allnotices" element={<AllNotices />} />
-              // Student
-              <Route path="/student/profile" element={<StudentProfile />} />
-              <Route path="/student/dashboard" element={<StudentDashboard />} />
-              <Route path="/student/report" element={<StudentReport />} />
-              <Route path="/student/notices" element={<StudentNotices />} />
-              <Route
-                path="/student/fees"
-                element={<StudentFeesPaymentDashboard />}
-              />
-              <Route path="/meal" element={<TodayMeal />} />
-            </Route>
-          </Routes>
-          <Routes>
-            <Route path="/reset-password/:token" element={<ResetPassword />} />
-          </Routes>
+            </Routes>
+          </BlockProvider>
         </ReportProvider>
       </StudentProvider>
     </UserContextProvider>

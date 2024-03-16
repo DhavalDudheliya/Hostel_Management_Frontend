@@ -1,19 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../../UserContext";
-import Loader from "../../../components/Loader";
+import { UserContext } from "../../../../contexts/UserContext";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import AddBlockPopUp from "./AddBlockPopUp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function AllocateBlocks() {
   const [blocks, setBlocks] = useState([]);
   const { user, setUser } = useContext(UserContext);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [fetch, setFetch] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios.get("/admin/get-blocks").then((res) => {
       if (res.status === 200) {
         setBlocks(res.data);
@@ -25,10 +26,6 @@ function AllocateBlocks() {
 
   if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
-  }
-
-  if (loading) {
-    return <Loader />;
   }
 
   // Function to calculate the empty spaces in a block
@@ -57,11 +54,43 @@ function AllocateBlocks() {
 
   return (
     <>
-      <ToastContainer />
       <div className="p-6 lg:p-8">
         <div className="flex justify-center mb-6 text-2xl font-bold labels">
           All Blocks
         </div>
+        {loading && blocks.length === 0 && (
+          <>
+            <div className="ml-2 mr-4 relative rounded-2xl grid gap-x-6 gap-y-8 grid-cols-4 md:grid-cols-6 lg:grid-cols-8 w-full">
+              <div className="flex flex-col gap-1 mr-6">
+                <Skeleton className="h-[125px] rounded relative ">
+                  <Skeleton className="h-5 w-5 absolute bottom-1 right-1" />
+                  <Skeleton className="h-5 w-5 absolute bottom-1 left-1" />
+                </Skeleton>
+                <Skeleton className="h-5 w-[150px] mt-2" />
+                <Skeleton className="h-5 w-[100px]" />
+                <Skeleton className="h-5 w-[150px]" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <Skeleton className="h-[125px] w-[150px] rounded relative">
+                  <Skeleton className="h-5 w-5 absolute bottom-1 right-1" />
+                  <Skeleton className="h-5 w-5 absolute bottom-1 left-1" />
+                </Skeleton>
+                <Skeleton className="h-5 w-[150px] mt-2" />
+                <Skeleton className="h-5 w-[100px]" />
+                <Skeleton className="h-5 w-[150px]" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <Skeleton className="h-[125px] w-[150px] rounded relative">
+                  <Skeleton className="h-5 w-5 absolute bottom-1 right-1" />
+                  <Skeleton className="h-5 w-5 absolute bottom-1 left-1" />
+                </Skeleton>
+                <Skeleton className="h-5 w-[150px] mt-2" />
+                <Skeleton className="h-5 w-[100px]" />
+                <Skeleton className="h-5 w-[150px]" />
+              </div>
+            </div>
+          </>
+        )}
         <div className="ml-2 mr-4 relative rounded-2xl grid gap-x-6 gap-y-8 grid-cols-4 md:grid-cols-6 lg:grid-cols-8 w-full">
           {blocks.length > 0 &&
             blocks.map((block) => (
@@ -135,7 +164,11 @@ function AllocateBlocks() {
                 </div>
               </div>
             ))}
-          <AddBlockPopUp fetch={fetch} setFetch={setFetch} />
+          {!loading && (
+            <>
+              <AddBlockPopUp setFetch={setFetch} />
+            </>
+          )}
         </div>
       </div>
     </>

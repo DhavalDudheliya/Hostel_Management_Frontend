@@ -1,8 +1,8 @@
 import { React, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { UserContext } from "../../../../UserContext";
-import { useStudentContext } from "../../../../StudentContext";
+import { UserContext } from "../../../../contexts/UserContext";
+import { useStudentContext } from "../../../../contexts/StudentContext";
 import "react-toastify/dist/ReactToastify.css";
 
 import SearchStudentInput from "./SearchStudentInput";
@@ -15,6 +15,7 @@ function StudentsProfile() {
   const [query, setQuery] = useState("");
   const [suggestionStudents, setSuggestionStudents] = useState([]);
   const [clearSuggestions, setClearSuggestions] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -35,11 +36,13 @@ function StudentsProfile() {
       return;
     } else {
       if (!clearSuggestions) {
+        setIsLoading(true);
         axios
           .get(`/admin/getSearchSuggestionStudents?q=${query}`)
           .then((res) => {
             const data = res.data.students;
             setSuggestionStudents(data);
+            setIsLoading(false);
           });
       }
       setClearSuggestions(false);
@@ -62,6 +65,7 @@ function StudentsProfile() {
             setQuery={setQuery}
             suggestionStudents={suggestionStudents}
             handleSeachedStudent={handleSeachedStudent}
+            isLoading={isLoading}
           />
         </div>
         {student ? (

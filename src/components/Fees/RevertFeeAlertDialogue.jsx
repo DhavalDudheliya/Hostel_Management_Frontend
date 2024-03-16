@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Undo2 } from "lucide-react";
 import axios from "axios";
-import { useStudentContext } from "../../../StudentContext";
+import { useStudentContext } from "../../../contexts/StudentContext";
 
 import { useToast } from "@/components/ui/use-toast";
 

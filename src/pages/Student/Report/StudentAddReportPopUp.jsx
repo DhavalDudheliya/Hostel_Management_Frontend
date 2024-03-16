@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../../../../UserContext";
-import { useReportContext } from "../../../../ReportContext";
+import { UserContext } from "../../../../contexts/UserContext";
+import { useReportContext } from "../../../../contexts/ReportContext";
 
 import { Send, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";

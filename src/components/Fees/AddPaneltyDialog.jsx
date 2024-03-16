@@ -20,7 +20,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useStudentContext } from "../../../StudentContext";
+import { useStudentContext } from "../../../contexts/StudentContext";
 import { Plus } from "lucide-react";
 
 function AddPaneltyDialog({ fee }) {

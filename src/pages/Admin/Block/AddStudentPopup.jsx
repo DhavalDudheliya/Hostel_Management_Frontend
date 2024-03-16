@@ -1,17 +1,16 @@
 import React, { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 // Components
 import Loader from "../../../components/Loader";
 import { Input } from "@/components/ui/input";
-import { UserContext } from "../../../../UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
+import { useBlockContext } from "../../../../contexts/BlocksContext";
 import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -30,6 +29,7 @@ function AddStudentPopup({
   setAllocatedRoomStudents,
 }) {
   const { toast } = useToast();
+  const { setBlocks } = useBlockContext();
   const [rollNo, setRollNo] = useState("");
   const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -48,13 +48,14 @@ function AddStudentPopup({
       })
       .then((res) => {
         if (res.status === 200) {
-          setLoading(false);
+          setFetch(true);
+          setBlocks(res.data.UpdatedBlocks);
+          setAllocatedRoomStudents(res.data.roomInfo.allocatedStudents);
           toast({
             title: "Student allocated successfully.",
           });
           setRollNo("");
-          setAllocatedRoomStudents(res.data.roomInfo.allocatedStudents);
-          setFetch(true);
+          setLoading(false);
         }
       });
   }
@@ -65,9 +66,7 @@ function AddStudentPopup({
         <div>
           <Dialog>
             <DialogTrigger asChild>
-              <div
-                className="flex justify-center text-2xl items-center border border-gray-400/50 rounded-lg h-[104px] cursor-pointer shadow hover:bg-gradient-to-t hover:from-gray-200 hover:to-gray-100 "
-              >
+              <div className="flex justify-center text-2xl items-center border border-gray-400/50 rounded-lg h-[104px] cursor-pointer shadow hover:bg-gradient-to-t hover:from-blue-100 hover:to-white">
                 {loading && <Loader height={"200px"} />}
                 {!loading && "+"}
               </div>

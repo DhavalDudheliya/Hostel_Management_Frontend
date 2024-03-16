@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 import ManagerMobileHeader from "./ManagerMobileHeader";
 import AdminHeader from "./AdminHeader";
 import StudentMobileHeader from "./StudentMobileHeader";

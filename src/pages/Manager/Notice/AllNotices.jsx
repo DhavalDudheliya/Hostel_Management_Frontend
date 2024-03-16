@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { UserContext } from "../../../../UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
 import axios from "axios";
 import Loader from "../../../components/Loader";
 import { ToastContainer, toast } from "react-toastify";

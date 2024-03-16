@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useStudentContext } from "../../../../../StudentContext";
+import { useStudentContext } from "../../../../../contexts/StudentContext";
 import districts from "@/assets/allDistricts";
 import talukasByDistrict from "@/assets/allTalukas";
 

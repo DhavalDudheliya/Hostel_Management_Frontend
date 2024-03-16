@@ -1,22 +1,25 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { GraduationCap, Home, User } from "lucide-react";
-import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 import AddStudentPopup from "./AddStudentPopup";
 import Loader from "../../../components/Loader";
-import { UserContext } from "../../../../UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
+import { useBlockContext } from "../../../../contexts/BlocksContext";
 import * as myConstants from "../../../../myConstants";
 
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useToast } from "@/components/ui/use-toast";
 
-const BlockPage = () => {
-  const { id } = useParams();
+const BlockPage = ({ blockId }) => {
+  // const { id } = useParams();
+  const { toast } = useToast();
   const [block, setBlock] = useState(null);
   const { user, setUser } = useContext(UserContext);
-  const [loading, setLoading] = useState(true);
+  const { blocks, setBlocks } = useBlockContext();
+  const [loading, setLoading] = useState(false);
   const [AllocatedRoomStudents, setAllocatedRoomStudents] = useState([]);
   const [capacity, setCapacity] = useState("");
   const [room, setRoom] = useState("");
@@ -24,14 +27,14 @@ const BlockPage = () => {
   const [fetch, setFetch] = useState(false);
 
   useEffect(() => {
-    if (id) {
-      axios.get("/admin/get-block/" + id).then((res) => {
+    if (blockId) {
+      axios.get("/admin/get-block/" + blockId).then((res) => {
         if (res.status === 200) {
           setBlock(res.data);
-          setAllocatedRoomStudents(res.data.rooms[0].allocatedStudents);
-          setCapacity(res.data.rooms[0].capacity);
-          setRoom(res.data.rooms[0]);
-          setSelectedRoomNumber(res.data.rooms[0].number);
+          // setAllocatedRoomStudents(res.data.rooms[0].allocatedStudents);
+          // setCapacity(res.data.rooms[0].capacity);
+          // setRoom(res.data.rooms[0]);
+          // setSelectedRoomNumber(res.data.rooms[0].number);
           setLoading(false);
           setFetch(false);
         }
@@ -56,29 +59,59 @@ const BlockPage = () => {
         boxes.push(
           <div
             key={i}
-            className="w-4 h-4 m-1 rounded-full bg-bg_dark_red"
+            className="w-3 h-3 m-1 rounded-full bg-bg_dark_red"
           ></div>
         );
       } else {
         // Otherwise, the box is empty
         boxes.push(
-          <div key={i} className="w-4 h-4 m-1 rounded-full bg-green-500"></div>
+          <div key={i} className="w-3 h-3 m-1 rounded-full bg-green-500"></div>
         );
       }
     }
 
-    return <div className="flex flex-wrap">{boxes}</div>;
+    return <div className="flex flex-wrap items-center justify-center">{boxes}</div>;
+  }
+
+  async function deleteBlock() {
+    var a = confirm("Do you want to delete? ");
+    if (a) {
+      try {
+        await axios.delete("/admin/delete-block/" + blockId).then((res) => {
+          if (res.status === 200) {
+            setBlocks(res.data.UpdatedBlocks);
+            toast({
+              title: "Block deleted successfully",
+            });
+          }
+        });
+      } catch (error) {
+        if (error.response.status === 400) {
+          toast({
+            variant: "destructive",
+            title: "Failed to delete block",
+          });
+        }
+      }
+    }
   }
 
   return (
     <>
       {block && (
         <div className="">
-          <div className="flex justify-center mb-6 mr-2 mt-2 text-2xl font-bold labels">
-            Block {block.name}
-          </div>
-          <ScrollArea className="h-[42vh] border-2 border-gray-800 rounded-md ml-2 mr-4 px-4 pt-4">
-            <div className="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-5 mb-4">
+          <ScrollArea className="max-h-[35vh] bg-white border border-gray-300 px-4 overflow-auto">
+            <div className="flex justify-center mb-4 text-2xl font-bold bg-white w-full relative">
+              <p className="pt-2">Block {block.name}</p>
+              <button
+                variant="destructive"
+                className="absolute right-2 -top-2 bg-red-500 text-white text-sm font-normal px-4 pt-3 pb-1 rounded-lg hover:ring-1 hover:ring-red-700 hover:bg-red-500/90"
+                onClick={deleteBlock}
+              >
+                Delete
+              </button>
+            </div>
+            <div className="grid lg:grid-cols-7 grid-cols-2 md:grid-cols-4 gap-5 mb-4">
               {block.rooms.map((room) => (
                 <>
                   <div
@@ -87,15 +120,27 @@ const BlockPage = () => {
                       setCapacity(room.capacity);
                       setRoom(room);
                       setSelectedRoomNumber(room.number);
+                      window.localStorage.setItem(
+                        "SelectedRoomNo",
+                        room.number
+                      );
                     }}
-                    className={`bg-gray-50 border border-gray-800 rounded-lg p-2 flex flex-col items-center cursor-pointer h-fit duration-200 ${
-                      selectedRoomNumber && selectedRoomNumber === room.number
-                        ? "bg-gradient-to-t from-gray-300 to-gray-50"
-                        : "bg-gray-200"
+                    className={`bg-blue-100/60 border border-gray-800 rounded-lg p-2 flex flex-col items-center cursor-pointer h-fit ${
+                      selectedRoomNumber &&
+                      selectedRoomNumber === room.number &&
+                      "bg-gradient-to-t from-blue-200/90 to-blue-50 "
                     } `}
                     key={room.number}
                   >
-                    <div>{room.number}</div>
+                    <div
+                      className={`${
+                        selectedRoomNumber &&
+                        selectedRoomNumber === room.number &&
+                        "font-bold"
+                      }`}
+                    >
+                      {room.number}
+                    </div>
                     <div className="">
                       {roomOccupancy(room.capacity, room.allocatedStudents)}
                     </div>
@@ -104,14 +149,14 @@ const BlockPage = () => {
               ))}
             </div>
           </ScrollArea>
-          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2 items-center border-2 border-black rounded-lg px-5 pt-3 pb-5 mt-4 ml-4 mr-6">
-            <div className="col-span-2 text-center text-4xl font-semibold mb-2 text-cyan-500">
+          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-2 items-center bg-white border border-gray-300 px-5 pt-3 pb-5 mt-3">
+            <div className="col-span-1 lg:col-span-2 text-center text-3xl font-semibold mb-2 text-cyan-500">
               {selectedRoomNumber}
             </div>
             {AllocatedRoomStudents &&
               AllocatedRoomStudents.map((student) => (
                 <>
-                  <div className="bg-gray-50 w-full border rounded-lg border-gray-400/50 shadow p-3 flex flex-row gap-4">
+                  <div className="bg-blue-50 w-full border rounded-lg border-gray-400 shadow p-3 flex flex-row gap-4">
                     <div>
                       {student.profilePhoto ? (
                         <img

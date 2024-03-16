@@ -1,9 +1,9 @@
 import CollectFeeCard from "@/components/Fees/CollectFeeCard";
 import CollectFeeTable from "@/components/Fees/CollectFeeTable";
 import React from "react";
-import { UserContext } from "../../../../UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
 
-import { useStudentContext } from "../../../../StudentContext";
+import { useStudentContext } from "../../../../contexts/StudentContext";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../../assets/logo2.png";
@@ -12,20 +12,29 @@ import selected_notice from "../../assets/selected_notice.png";
 import logout from "../../assets/logout.png";
 import fine from "../../assets/fine.png";
 import selected_fine from "../../assets/selected_fine.png";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 import * as myConst from "../../../myConstants";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const StudentSidebar = () => {
   const [open, setOpen] = useState(true);
   const { user, setUser } = useContext(UserContext);
-  const [selectedItem, setSelectedItem] = useState("home");
+  const [selectedItem, setSelectedItem] = useState("meal");
+  const location = useLocation();
 
   useEffect(() => {
     // Retrieve the selected item from localStorage
+    const url = location.pathname;
+    const words = url.split("/"); // Split the URL by '/'
+    const lastWord = words[words.length - 1]; // Get the last element from the array
     const storedItem = localStorage.getItem("selectedItem");
     if (storedItem) {
-      setSelectedItem(storedItem);
+      if (lastWord === "meal") {
+        setSelectedItem("meal");
+        localStorage.setItem("selectedItem", "meal");
+      } else {
+        setSelectedItem(storedItem);
+      }
     } else {
       setSelectedItem("meal");
       localStorage.setItem("selectedItem", "meal");

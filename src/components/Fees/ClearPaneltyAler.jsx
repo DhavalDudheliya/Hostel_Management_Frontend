@@ -17,7 +17,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import axios from "axios";
-import { useStudentContext } from "../../../StudentContext";
+import { useStudentContext } from "../../../contexts/StudentContext";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash2 } from "lucide-react";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useStudentContext } from "../../../../StudentContext";
+import { useStudentContext } from "../../../../contexts/StudentContext";
 
 import {
   Table,

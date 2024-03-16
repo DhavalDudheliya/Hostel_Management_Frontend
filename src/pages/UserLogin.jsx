@@ -5,7 +5,7 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 // Components
@@ -17,10 +17,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { useEffect } from "react";
+import Loader from "@/components/Loader";
 
 function UserLogin() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [isLoginLoding, setIsLoginLoding] = useState(false);
   const [showPassword, setshowPassword] = useState(false);
 
   const ref = useRef(null);
@@ -66,6 +68,7 @@ function UserLogin() {
           title: "Please fill all fields !!",
         });
       } else {
+        setIsLoginLoding(true);
         try {
           await axios
             .post(
@@ -79,6 +82,7 @@ function UserLogin() {
             .then((res) => {
               if (res.status === 201) {
                 setUser(res.data);
+                setIsLoginLoding(false);
                 if (user) {
                   if (user.role === "Student") {
                     navigate("/student/dashboard");
@@ -108,7 +112,7 @@ function UserLogin() {
               variant: "destructive",
               title: "Failed !!",
             });
-          console.log(err);
+          setIsLoginLoding(false);
         }
       }
     },
@@ -136,6 +140,7 @@ function UserLogin() {
           }
         });
       } catch (error) {
+        setLoading(false);
         console.log(error);
         toast({
           variant: "destructive",
@@ -324,9 +329,14 @@ function UserLogin() {
                         <div className="row-start-2">
                           <div className="flex justify-end items-center">
                             <p
-                              className="text-blue-500 cursor-pointer text-right hover:underline text-sm mr-8"
+                              className="text-blue-500 flex items-center cursor-pointer text-right hover:underline text-sm mr-8"
                               onClick={handleForgotPassword}
                             >
+                              {loading && (
+                                <>
+                                  <Loader height="h-1" width="w-6" />
+                                </>
+                              )}
                               Forgot Password?
                             </p>
                           </div>
@@ -345,7 +355,15 @@ function UserLogin() {
                       className="w-full pr-7"
                     >
                       <Button type="submit" className="w-full">
-                        Login
+                        {isLoginLoding ? (
+                          <>
+                            <Loader height="h-1" width="w-8" />
+                          </>
+                        ) : (
+                          <>
+                            <p>Login</p>
+                          </>
+                        )}
                       </Button>
                     </motion.div>
                   </form>

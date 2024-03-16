@@ -3,7 +3,7 @@ import { ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
 import axios from "axios";
 
-import { useStudentContext } from "../../../StudentContext";
+import { useStudentContext } from "../../../contexts/StudentContext";
 import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
 import AddPaneltyDialog from "./AddPaneltyDialog";
 import ClearPaneltyAler from "./ClearPaneltyAler";

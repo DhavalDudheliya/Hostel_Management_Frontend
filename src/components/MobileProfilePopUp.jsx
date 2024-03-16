@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import * as myConst from "../../myConstants";
 import logout from "../assets/logout.png";
 import axios from "axios";

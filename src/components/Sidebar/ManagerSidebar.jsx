@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo2.png";
 import axios from "axios";
 import { useContext } from "react";
@@ -15,13 +15,33 @@ import selected_food_menu from "../../assets/selected_food_menu.png";
 import notice from "../../assets/notice.png";
 import selected_notice from "../../assets/selected_notice.png";
 import logout from "../../assets/logout.png";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 
 const ManagerSidebar = () => {
   const [open, setOpen] = useState(true);
   const [selectedItem, setSelectedItem] = useState("home");
 
   const { user, setUser } = useContext(UserContext);
+  const location = useLocation();
+
+  useEffect(() => {
+    // Retrieve the selected item from localStorage
+    const url = location.pathname;
+    const words = url.split("/"); // Split the URL by '/'
+    const lastWord = words[words.length - 1]; // Get the last element from the array
+    const storedItem = localStorage.getItem("selectedItem");
+    if (storedItem) {
+      if (lastWord === "home") {
+        setSelectedItem("home");
+        localStorage.setItem("selectedItem", "home");
+      } else {
+        setSelectedItem(storedItem);
+      }
+    } else {
+      setSelectedItem("home");
+      localStorage.setItem("selectedItem", "home");
+    }
+  }, []);
 
   useEffect(() => {
     // Retrieve the selected item from localStorage

@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import * as myConstants from "../../myConstants";
 import { ToastContainer } from "react-toastify";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import Loader from "../components/Loader";
 import axios from "axios";
 

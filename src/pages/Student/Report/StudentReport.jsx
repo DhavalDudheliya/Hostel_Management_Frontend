@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { UserContext } from "../../../../UserContext";
-import { useReportContext } from "../../../../ReportContext";
+import { UserContext } from "../../../../contexts/UserContext";
+import { useReportContext } from "../../../../contexts/ReportContext";
 
 import StudentViewPopUp from "./StudentViewPopUp";
 import Loader from "../../../components/Loader";

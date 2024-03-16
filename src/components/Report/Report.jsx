@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 import Loader from "../Loader";
 import "react-toastify/dist/ReactToastify.css";
 import { Navigate } from "react-router-dom";
 import ViewPopUp from "./ViewPopUp";
-import { useReportContext } from "../../../ReportContext";
+import { useReportContext } from "../../../contexts/ReportContext";
 
 function Report({ role }) {
   const { reportChanged } = useReportContext();

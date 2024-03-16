@@ -1,7 +1,7 @@
 import React from "react";
 import * as myConstants from "../../../myConstants";
 import axios from "axios";
-import { useReportContext } from "../../..//ReportContext";
+import { useReportContext } from "../../../contexts/ReportContext";
 
 import {
   Dialog,
@@ -18,7 +18,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/components/ui/use-toast";
 import moment from "moment/moment";
 
-function ViewPopUp({report}) {
+function ViewPopUp({ report }) {
   const { toast } = useToast();
   const { setReportChanged } = useReportContext();
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../../../../UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -11,7 +11,13 @@ function EditNoticePopUp({ notice }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user, setUser } = useContext(UserContext);
 
-  if (!user || (user && user.role !== "Manager" && user.role !== "Accountant" && user.role !== "Admin")) {
+  if (
+    !user ||
+    (user &&
+      user.role !== "Manager" &&
+      user.role !== "Accountant" &&
+      user.role !== "Admin")
+  ) {
     return <Navigate to="/login" />;
   }
 

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import {  Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../../../../UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
 
 function AddNoticePopUp() {
   const [title, setTitle] = useState("");

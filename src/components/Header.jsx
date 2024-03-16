@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
 function Header() {
   const { user } = useContext(UserContext);

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -43,7 +43,6 @@ const ProfileUpdatePopUp = () => {
 
   return (
     <>
-      
       <button onClick={openModal} className="btn">
         Edit Profile
       </button>

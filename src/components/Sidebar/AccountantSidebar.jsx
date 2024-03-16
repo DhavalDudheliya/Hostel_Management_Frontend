@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../../assets/logo2.png";
@@ -14,19 +14,28 @@ import selected_fees from "../../assets/selected_fees.png";
 import fees from "../../assets/fees.png";
 import down from "../../assets/down.png";
 import selected_down from "../../assets/selected_down.png";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 
 const AdminSideBar = () => {
   const [open, setOpen] = useState(false);
   const { setUser } = useContext(UserContext);
   const [selectedItem, setSelectedItem] = useState("home");
   const [subFeeSelectedItem, setSubFeeSelectedItem] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
     // Retrieve the selected item from localStorage
+    const url = location.pathname;
+    const words = url.split("/"); // Split the URL by '/'
+    const lastWord = words[words.length - 1]; // Get the last element from the array
     const storedItem = localStorage.getItem("selectedItem");
     if (storedItem) {
-      setSelectedItem(storedItem);
+      if (lastWord === "home") {
+        setSelectedItem("home");
+        localStorage.setItem("selectedItem", "home");
+      } else {
+        setSelectedItem(storedItem);
+      }
     } else {
       setSelectedItem("home");
       localStorage.setItem("selectedItem", "home");

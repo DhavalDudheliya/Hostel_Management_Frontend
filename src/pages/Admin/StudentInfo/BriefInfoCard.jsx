@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 
 import ProfilePhoto from "@/components/ProfilePhoto";
-import { useStudentContext } from "../../../../StudentContext";
+import { useStudentContext } from "../../../../contexts/StudentContext";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Home, User } from "lucide-react";
 

@@ -4,7 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
-import { UserContext } from "../../../../UserContext";
+import { UserContext } from "../../../../contexts/UserContext";
 import * as myConstants from "../../../../myConstants";
 import EditFoodPopUp from "./EditFoodPopUp";
 import AddFood from "./AddFoodPopUp";

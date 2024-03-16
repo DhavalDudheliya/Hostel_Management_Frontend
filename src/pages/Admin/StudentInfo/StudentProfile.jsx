@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import axios from "axios";
 import { useFormik } from "formik";
 import { validationSchema } from "./validation";
 import { Gift, MessageSquare, PhoneCall } from "lucide-react";
-import { useStudentContext } from "../../../../StudentContext";
+import { useStudentContext } from "../../../../contexts/StudentContext";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
@@ -95,6 +95,37 @@ function StudentProfile() {
       } catch (error) {}
     },
   });
+
+  // Update formik's initial values whenever student state changes
+  useEffect(() => {
+    formik.setValues({
+      firstName: student.firstName,
+      lastName: student.lastName,
+      dateOfBirth: student.dateOfBirth,
+      cast: student.cast,
+      bloodGroup: student.bloodGroup,
+      permenantDisease: student.permenantDisease,
+      mobileNumber: student.mobileNumber,
+      whatsappNumber: student.whatsappNumber,
+      email: student.email,
+      fatherFirstName: student.fatherFirstName,
+      fatherEmail: student.fatherEmail,
+      fatherMiddlename: student.fatherMiddlename,
+      work: student.work,
+      fatherPhoneNo: student.fatherPhoneNo,
+      fatherWhatsappNo: student.fatherWhatsappNo,
+      street: student.address.street,
+      taluka: student.address.taluka,
+      village: student.address.village,
+      postalCode: student.address.postalCode,
+      university: student.university,
+      course: student.course,
+      branch: student.branch,
+      lastExam: student.lastExam,
+      lastExamPercentage: student.lastExamPercentage,
+      lastSchoolName: student.lastSchoolName,
+    });
+  }, [student]);
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { properties } from "./properties";
-import { useStudentContext } from "../../../../StudentContext";
+import { useStudentContext } from "../../../../contexts/StudentContext";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";

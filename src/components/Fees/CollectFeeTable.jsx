@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
 
-import { useStudentContext } from "../../../StudentContext";
+import { useStudentContext } from "../../../contexts/StudentContext";
 import CollectFeeDialog from "./CollectFeeDialog";
 import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
 import AddPaneltyDialog from "./AddPaneltyDialog";

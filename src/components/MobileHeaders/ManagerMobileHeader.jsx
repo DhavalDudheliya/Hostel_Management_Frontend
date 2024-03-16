@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 import food from "../../assets/food.png";
 import home from "../../assets/home.png";
 import logout from "../../assets/logout.png";

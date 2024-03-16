@@ -4,7 +4,7 @@ import axios from "axios";
 import * as myConst from "../../myConstants";
 import { useToast } from "@/components/ui/use-toast";
 
-import { useStudentContext } from "../../StudentContext";
+import { useStudentContext } from "../../contexts/StudentContext";
 import { Camera } from "lucide-react";
 
 function ProfilePhoto() {

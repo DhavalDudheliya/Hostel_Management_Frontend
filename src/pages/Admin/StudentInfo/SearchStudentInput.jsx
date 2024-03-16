@@ -1,13 +1,16 @@
-import React from "react";
-import BriefStudentProfileCard from "@/components/BriefStudentProfileCard";
+import React, { useState } from "react";
 import { Search } from "lucide-react";
+
+import BriefStudentProfileCard from "@/components/BriefStudentProfileCard";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function SearchStudentInput({
   query,
   setQuery,
   suggestionStudents,
   handleSeachedStudent,
+  isLoading,
 }) {
   return (
     <div>
@@ -30,6 +33,38 @@ function SearchStudentInput({
         </div>
         <div className="absolute w-full lg:w-1/2 z-10">
           <div className="flex flex-col cursor-pointer ">
+            {isLoading && suggestionStudents.length === 0 && (
+              <>
+                <div className="bg-slate-100 w-full border rounded-lg mt-2 border-gray-400/50 shadow p-3 flex flex-row gap-4">
+                  <Skeleton className="h-[75px] w-20 rounded" />
+                  <div className="space-y-1">
+                    <Skeleton className="h-5 w-[250px]" />
+                    <div className="flex gap-2">
+                      <Skeleton className="h-5 w-[75px]" />
+                      <Skeleton className="h-5 w-[75px]" />
+                    </div>
+                    <div className="flex gap-2">
+                      <Skeleton className="h-5 w-[75px]" />
+                      <Skeleton className="h-5 w-[150px]" />
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-slate-100 w-full border rounded-lg mt-2 border-gray-400/50 shadow p-3 flex flex-row gap-4">
+                  <Skeleton className="h-[75px] w-20 rounded" />
+                  <div className="space-y-1">
+                    <Skeleton className="h-5 w-[250px]" />
+                    <div className="flex gap-2">
+                      <Skeleton className="h-5 w-[75px]" />
+                      <Skeleton className="h-5 w-[75px]" />
+                    </div>
+                    <div className="flex gap-2">
+                      <Skeleton className="h-5 w-[75px]" />
+                      <Skeleton className="h-5 w-[150px]" />
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
             {suggestionStudents &&
               query.length != 0 &&
               suggestionStudents.slice(0, 3).map((student, index) => (

@@ -6,7 +6,7 @@ import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 
 import { validationSchema } from "./validation";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 import Card1 from "@/components/newStudentForm/Card1";
 import Card2 from "@/components/newStudentForm/Card2";
 import Card3 from "@/components/newStudentForm/Card3";

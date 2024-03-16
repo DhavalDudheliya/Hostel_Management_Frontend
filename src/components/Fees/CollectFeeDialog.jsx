@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { IndianRupee, Send } from "lucide-react";
 import axios from "axios";
-import { useStudentContext } from "../../../StudentContext";
+import { useStudentContext } from "../../../contexts/StudentContext";
 
 function CollectFeeDialog({ fee }) {
   const { toast } = useToast();

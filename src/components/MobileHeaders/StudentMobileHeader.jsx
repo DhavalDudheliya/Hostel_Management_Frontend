@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 // import * as myConst from "../../myConstants";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 import fine from "../../assets/fine.png";
 import report from "../../assets/report.png";
 import food from "../../assets/food.png";
