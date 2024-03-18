@@ -168,14 +168,7 @@ function AdminMobileHeader() {
                   <img className="h-6" src={report} />
                   <span className="text-bg_white">Report</span>
                 </Link>
-                <Link
-                  to={"/admin/allnotices"}
-                  onClick={menuToggel}
-                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
-                >
-                  <img className="h-6" src={notice} />
-                  <span className="text-bg_white">Notice</span>
-                </Link>
+
                 <li
                   onClick={logoutHandle}
                   className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}

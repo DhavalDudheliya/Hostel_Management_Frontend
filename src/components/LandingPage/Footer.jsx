@@ -26,11 +26,11 @@ const Footer = () => {
           </div> */}
           <div>
             <p>Address: Nutan Park Society, Nadiad, Gujarat 387001</p>
-            <p>Email: info@example.com | Phone: +1 (123) 456-7890</p>
+            <p>Email: apcnadiad13@gmail.com | Phone: +1 (123) 456-7890</p>
           </div>
           <div className="flex flex-col gap-2">
             <p>Socials</p>
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-row gap-4">
               <a className="cursor-pointer">
                 <Facebook />
               </a>
@@ -38,15 +38,12 @@ const Footer = () => {
                 <Instagram />
               </a>
               <a className="cursor-pointer">
-                <Twitter />
-              </a>
-              <a className="cursor-pointer">
-                <Youtube size={25} />
+                <Youtube size={28} />
               </a>
             </div>
           </div>
         </div>
-        <p className="mt-8 md:ml-14">
+        <p className="mt-8 md:ml-20">
           &copy; 2024 BAPS Swaminarayan Chhatralaya. All Rights Reserved.
         </p>
       </div>

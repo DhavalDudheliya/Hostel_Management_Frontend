@@ -169,7 +169,6 @@ const ManagerSidebar = () => {
                 Food&nbsp;Menu
               </span>
             </Link>
-
             <Link
               to="/manager/addmeal"
               onClick={() => handleItemClick("todayMeal")}
@@ -195,33 +194,6 @@ const ManagerSidebar = () => {
                 }`}
               >
                 Today's&nbsp;Meal
-              </span>
-            </Link>
-            <Link
-              to={"/manager/allnotices"}
-              onClick={() => handleItemClick("notice")}
-              className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
-                selectedItem === "notice"
-                  ? "bg-white duration-200"
-                  : "hover:bg-white hover:bg-opacity-20 hover:scale-95 transition-all duration-75"
-              }`}
-            >
-              {selectedItem === "notice" ? (
-                <img
-                  className={`h-6 rotate-[360deg] duration-500`}
-                  src={selected_notice}
-                />
-              ) : (
-                <img className="h-6" src={notice} />
-              )}
-              <span
-                className={`${!open && "hidden"} origin-left duration-75 ${
-                  selectedItem === "notice"
-                    ? "text-bg_dark_section font-semibold"
-                    : "text-bg_white"
-                }`}
-              >
-                Notice
               </span>
             </Link>
             <Link

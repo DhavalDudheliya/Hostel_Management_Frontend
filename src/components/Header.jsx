@@ -25,17 +25,17 @@ function Header() {
           <div className="flex justify-between items-center my-1">
             <Link
               to={"/"}
-              className="flex items-center gap-2 cursor-pointer px-2"
+              className="flex items-center gap-1  md:gap-2 cursor-pointer px-2"
             >
-              <img className="p-1 h-12 w-13 " src={logo} alt="" />
-              <span className="text-2xl font-semibold welcom_title">
+              <img className="p-1 h-9 w-10 md:h-12 md:w-13 " src={logo} alt="" />
+              <span className="text-xl md:text-2xl font-semibold welcom_title">
                 APC&nbsp;Nadiad
               </span>
             </Link>
           </div>
           <div>
             <a
-              className="py-2 px-4 gradient-border welcom_title duration-200 mx-4"
+              className="py-1 px-2 md:py-2 md:px-4 gradient-border welcom_title duration-200 mx-4"
               href={"/login"}
             >
               Log&nbsp;in

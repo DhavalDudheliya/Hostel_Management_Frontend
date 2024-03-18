@@ -1,6 +1,8 @@
 import React, { useContext, useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import index from "../../assets/Index.jpg";
+import { TypewriterEffectSmooth } from "@/components/ui/TypeWriteEffect";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3dCard";
 
 function Hero() {
   const ref = useRef(null);
@@ -63,6 +65,24 @@ function Hero() {
     }
   }, [isInViewPage6, controlsPage6]);
 
+  const words = [
+    {
+      text: `"Your`,
+    },
+    {
+      text: "Home",
+    },
+    {
+      text: "Away",
+    },
+    {
+      text: "From",
+    },
+    {
+      text: `Home"`,
+    },
+  ];
+
   return (
     <div className="py-10 lg:py-20 flex flex-col lg:flex-row gap-10 items-center">
       <motion.section className="flex flex-col gap-4 lg:w-1/2">
@@ -74,11 +94,11 @@ function Hero() {
           }}
           initial="hidden"
           animate={controlsPage}
-          transition={{ duration: 0.5,delay: 0.25  }}
-          className="text-2xl md:text-3xl lg:text-4xl lg:text-left text-center font-bold drop-shadow-text italic"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-3xl md:text-3xl lg:text-4xl lg:text-left text-center font-bold drop-shadow-text text-gray-800/90 "
         >
           Welcome to
-          <div className="">Swaminarayan Chhatralaya</div>
+          <div className="">Swaminarayan Chhatralaya 🎉</div>
         </motion.div>
         <motion.div
           ref={ref2}
@@ -89,9 +109,9 @@ function Hero() {
           initial="hidden"
           animate={controlsPage2}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="welcom_title text-3xl font-bold my-4 lg:text-left text-center"
+          className="text-3xl font-bold my-4 lg:text-left text-center flex justify-center lg:justify-start"
         >
-          "Your Home Away from Home!"
+          <TypewriterEffectSmooth words={words} />
         </motion.div>
         <motion.p
           ref={ref3}
@@ -143,23 +163,27 @@ function Hero() {
 
       {/* Image section */}
       <section className="flex items-center justify-center lg:w-1/2 md:pl-10">
-        <motion.div
-          ref={ref6}
-          variants={{
-            hidden: { opacity: 0, x: 100 },
-            visible: { opacity: 1, x: 0 },
-          }}
-          initial="hidden"
-          animate={controlsPage6}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="p-1 img-border rounded-full"
-        >
-          <motion.img
-            src={index}
-            alt="index"
-            className="rounded-full sm:h-60 md:h-80 shadow-xl"
-          />
-        </motion.div>
+        <CardContainer>
+          <CardBody className="w-full">
+            <motion.div
+              ref={ref6}
+              variants={{
+                hidden: { opacity: 0, x: 100 },
+                visible: { opacity: 1, x: 0 },
+              }}
+              initial="hidden"
+              animate={controlsPage6}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="p-1 img-border rounded-full"
+            >
+              <motion.img
+                src={index}
+                alt="index"
+                className="rounded-full sm:h-60 md:h-80 shadow-xl"
+              />
+            </motion.div>
+          </CardBody>
+        </CardContainer>
       </section>
     </div>
   );

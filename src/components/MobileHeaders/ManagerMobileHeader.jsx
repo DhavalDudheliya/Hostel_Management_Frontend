@@ -134,14 +134,7 @@ function ManagerMobileHeader() {
                   <img className="h-6" src={food} />
                   <span className="text-bg_white">Today's&nbsp;Meal</span>
                 </Link>
-                <Link
-                  onClick={menuToggel}
-                  to={"/admin/allnotices"}
-                  className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
-                >
-                  <img className="h-6" src={notice} />
-                  <span className="text-bg_white">Notice</span>
-                </Link>
+               
                 <Link
                   to={"/manager/report"}
                   onClick={menuToggel}

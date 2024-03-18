@@ -209,33 +209,6 @@ const AdminSideBar = () => {
               Report
             </span>
           </Link>
-          <Link
-            to={"/admin/allnotices"}
-            onClick={() => {
-              handleItemClick("notice");
-              setSubFeeSelectedItem("");
-            }}
-            className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
-              selectedItem === "notice"
-                ? "bg-white duration-200"
-                : "hover:bg-white hover:bg-opacity-20 transition-all duration-75"
-            }`}
-          >
-            {selectedItem === "notice" ? (
-              <img className={`h-6`} src={selected_notice} />
-            ) : (
-              <img className="h-6" src={notice} />
-            )}
-            <span
-              className={` origin-left duration-75 ${
-                selectedItem === "notice"
-                  ? "text-bg_dark_section font-semibold"
-                  : "text-bg_white"
-              }`}
-            >
-              Notice
-            </span>
-          </Link>
           <li
             onClick={logoutHandle}
             className="text-white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 hover:bg-white hover:bg-opacity-20 transition-all duration-75 rounded-md"

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3dCard";
 import reviews from "./reviews";
 
 function Testimonials() {
@@ -121,16 +122,28 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[29%]"
           >
             {secondPartL.map((review, index) => (
-              <div
-                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
-                key={index}
-              >
-                <p className="text-sm">"{review.review}"</p>
-                <div className="flex flex-row justify-between">
-                  <p className="font-semibold">⭐ {review.rating}/5</p>
-                  <p className="pr-2 font-semibold">- {review.name}</p>
-                </div>
-              </div>
+              <CardContainer className="inter-var">
+                <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
+                  <CardItem
+                    translateZ="30"
+                    className="text-sm text-neutral-600 dark:text-white"
+                  >
+                    "{review.review}"
+                  </CardItem>
+                  <div className="flex flex-row justify-between">
+                    <CardItem as="p" translateZ="30" className="font-semibold">
+                      ⭐ {review.rating}/5
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="30"
+                      className="pr-2 font-semibold"
+                    >
+                      - {review.name}
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
           </motion.section>
           <motion.section
@@ -145,16 +158,28 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[29%]"
           >
             {firstPartL.map((review, index) => (
-              <div
-                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
-                key={index}
-              >
-                <p className="text-sm">"{review.review}"</p>
-                <div className="flex flex-row justify-between">
-                  <p className="font-semibold">⭐ {review.rating}/5</p>
-                  <p className="pr-2 font-semibold">- {review.name}</p>
-                </div>
-              </div>
+              <CardContainer className="inter-var">
+                <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
+                  <CardItem
+                    translateZ="30"
+                    className="text-sm text-neutral-600 dark:text-white"
+                  >
+                    "{review.review}"
+                  </CardItem>
+                  <div className="flex flex-row justify-between">
+                    <CardItem as="p" translateZ="30" className="font-semibold">
+                      ⭐ {review.rating}/5
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="30"
+                      className="pr-2 font-semibold"
+                    >
+                      - {review.name}
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
           </motion.section>
           <motion.section
@@ -169,16 +194,28 @@ function Testimonials() {
             className="grid grid-cols-1 gap-10 w-full md:w-[40%] lg:w-[29%]"
           >
             {thirdPartL.map((review, index) => (
-              <div
-                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
-                key={index}
-              >
-                <p className="text-sm">"{review.review}"</p>
-                <div className="flex flex-row justify-between">
-                  <p className="font-semibold">⭐ {review.rating}/5</p>
-                  <p className="pr-2 font-semibold">- {review.name}</p>
-                </div>
-              </div>
+              <CardContainer className="inter-var">
+                <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
+                  <CardItem
+                    translateZ="30"
+                    className="text-sm text-neutral-600 dark:text-white"
+                  >
+                    "{review.review}"
+                  </CardItem>
+                  <div className="flex flex-row justify-between">
+                    <CardItem as="p" translateZ="30" className="font-semibold">
+                      ⭐ {review.rating}/5
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="30"
+                      className="pr-2 font-semibold"
+                    >
+                      - {review.name}
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
           </motion.section>
         </div>
@@ -195,16 +232,28 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[30%]"
           >
             {secondPartM.map((review, index) => (
-              <div
-                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
-                key={index}
-              >
-                <p className="text-sm">"{review.review}"</p>
-                <div className="flex flex-row justify-between">
-                  <p className="font-semibold">⭐ {review.rating}/5</p>
-                  <p className="pr-2 font-semibold">- {review.name}</p>
-                </div>
-              </div>
+              <CardContainer className="inter-var">
+                <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
+                  <CardItem
+                    translateZ="30"
+                    className="text-sm text-neutral-600 dark:text-white"
+                  >
+                    "{review.review}"
+                  </CardItem>
+                  <div className="flex flex-row justify-between">
+                    <CardItem as="p" translateZ="30" className="font-semibold">
+                      ⭐ {review.rating}/5
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="30"
+                      className="pr-2 font-semibold"
+                    >
+                      - {review.name}
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
           </motion.section>
           <motion.section
@@ -219,16 +268,28 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[30%]"
           >
             {firstPartM.map((review, index) => (
-              <div
-                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
-                key={index}
-              >
-                <p className="text-sm">"{review.review}"</p>
-                <div className="flex flex-row justify-between">
-                  <p className="font-semibold">⭐ {review.rating}/5</p>
-                  <p className="pr-2 font-semibold">- {review.name}</p>
-                </div>
-              </div>
+              <CardContainer className="inter-var">
+                <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
+                  <CardItem
+                    translateZ="30"
+                    className="text-sm text-neutral-600 dark:text-white"
+                  >
+                    "{review.review}"
+                  </CardItem>
+                  <div className="flex flex-row justify-between">
+                    <CardItem as="p" translateZ="30" className="font-semibold">
+                      ⭐ {review.rating}/5
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="30"
+                      className="pr-2 font-semibold"
+                    >
+                      - {review.name}
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
           </motion.section>
         </div>
@@ -245,16 +306,28 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[30%]"
           >
             {reviews.map((review, index) => (
-              <div
-                className="p-6 login_bg rounded-lg flex flex-col gap-4 w-full hover:scale-105 transition-all duration-300"
-                key={index}
-              >
-                <p className="text-sm">"{review.review}"</p>
-                <div className="flex flex-row justify-between">
-                  <p className="font-semibold">⭐ {review.rating}/5</p>
-                  <p className="pr-2 font-semibold">- {review.name}</p>
-                </div>
-              </div>
+              <CardContainer className="inter-var">
+                <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
+                  <CardItem
+                    translateZ="30"
+                    className="text-sm text-neutral-600 dark:text-white"
+                  >
+                    "{review.review}"
+                  </CardItem>
+                  <div className="flex flex-row justify-between">
+                    <CardItem as="p" translateZ="30" className="font-semibold">
+                      ⭐ {review.rating}/5
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="30"
+                      className="pr-2 font-semibold"
+                    >
+                      - {review.name}
+                    </CardItem>
+                  </div>
+                </CardBody>
+              </CardContainer>
             ))}
           </motion.section>
         </div>
