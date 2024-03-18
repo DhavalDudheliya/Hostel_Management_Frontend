@@ -14,6 +14,7 @@ import selected_fees from "../../assets/selected_fees.png";
 import fees from "../../assets/fees.png";
 import down from "../../assets/down.png";
 import selected_down from "../../assets/selected_down.png";
+import manager from "../../assets/manager.png";
 import { UserContext } from "../../../contexts/UserContext";
 
 const AdminSideBar = () => {
@@ -241,6 +242,14 @@ const AdminSideBar = () => {
           >
             <img className="h-6" src={logout} />
             <span className={` origin-left duration-500`}>Log&nbsp;out</span>
+          </li>
+          <li className="text-white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-1.5 mt-10  rounded-md">
+            <img className="h-6" src={manager} />
+            <span
+              className={` origin-left transition-all duration-500 user_text font-semibold text-lg `}
+            >
+              Accountant
+            </span>
           </li>
         </ul>
       </div>

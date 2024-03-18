@@ -46,7 +46,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="mt-8">
+        <p className="mt-8 md:ml-14">
           &copy; 2024 BAPS Swaminarayan Chhatralaya. All Rights Reserved.
         </p>
       </div>

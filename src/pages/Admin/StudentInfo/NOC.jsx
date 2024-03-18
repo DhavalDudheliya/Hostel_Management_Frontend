@@ -59,7 +59,20 @@ function NOC() {
             });
           }
         });
-    } catch (error) {}
+    } catch (error) {
+      if (error.response.status === 409) {
+        toast({
+          variant: "destructive",
+          title: "There are pending fees of student",
+        });
+      }
+      if (error.response.status === 400) {
+        toast({
+          variant: "destructive",
+          title: "NOC Apllication Failed!!",
+        });
+      }
+    }
   }
 
   return (

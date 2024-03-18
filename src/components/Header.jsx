@@ -20,7 +20,7 @@ function Header() {
 
   return (
     <>
-      <div className="sticky p-4 bg-transparent">
+      <div className="sticky px-4 pt-2 bg-transparent">
         <header className="flex justify-between items-center">
           <div className="flex justify-between items-center my-1">
             <Link
@@ -29,7 +29,7 @@ function Header() {
             >
               <img className="p-1 h-12 w-13 " src={logo} alt="" />
               <span className="text-2xl font-semibold welcom_title">
-                APC Nadiad
+                APC&nbsp;Nadiad
               </span>
             </Link>
           </div>
@@ -38,7 +38,7 @@ function Header() {
               className="py-2 px-4 gradient-border welcom_title duration-200 mx-4"
               href={"/login"}
             >
-              Log in
+              Log&nbsp;in
             </a>
           </div>
         </header>

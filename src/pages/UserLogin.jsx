@@ -152,7 +152,7 @@ function UserLogin() {
 
   return (
     <>
-      <div className="h-[calc(100vh-128px)] mt-10">
+      <div className="h-[calc(100vh-104px)] mt-10">
         {/* <Header /> */}
         <div className="container h-full lg:px-20">
           <motion.div
@@ -201,7 +201,7 @@ function UserLogin() {
                     to="/"
                     className="text-3xl font-semibold protest-riot-regular"
                   >
-                    APC Nadiad
+                    APC&nbsp;Nadiad
                   </Link>
                 </motion.div>
                 <div className="w-full px-2 py-10 lg:px-16 rounded-2xl">
@@ -216,16 +216,16 @@ function UserLogin() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="items-center justify-center flex flex-col"
                   >
-                    <div className="text-5xl text-black font-normal playfair mb-2">
+                    <div className="text-3xl md:text-4xl lg:text-5xl text-black font-normal playfair mb-2">
                       Welcome
                     </div>
-                    <p className="mb-4 text-center text-zinc-600 text-sm">
+                    <p className="mb-4 px-1 text-center text-zinc-600 text-sm">
                       Enter your email and password to access your account
                     </p>
                   </motion.div>
                   <form
                     onSubmit={formik.handleSubmit}
-                    className="px-7 py-3 flex flex-col justify-center items-center gap-2"
+                    className="px-4 py-3 flex flex-col justify-center items-center gap-2"
                   >
                     <motion.div
                       ref={ref}
@@ -337,7 +337,7 @@ function UserLogin() {
                                   <Loader height="h-1" width="w-6" />
                                 </>
                               )}
-                              Forgot Password?
+                              Forgot&nbsp;Password?
                             </p>
                           </div>
                         </div>

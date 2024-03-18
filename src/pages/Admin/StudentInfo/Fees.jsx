@@ -31,7 +31,7 @@ function Fees() {
   };
   return (
     <div>
-      {student.leaves && student.leaves.length !== 0 ? (
+      {student.fees && student.fees.length !== 0 ? (
         <>
           <Table className={cn("rounded-none")}>
             <TableCaption>

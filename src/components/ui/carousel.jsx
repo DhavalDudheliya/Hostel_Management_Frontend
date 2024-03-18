@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import useEmblaCarousel from "embla-carousel-react";
@@ -93,6 +92,26 @@ const Carousel = React.forwardRef(
       };
     }, [api, onSelect]);
 
+    // Inside Carousel component
+
+    React.useEffect(() => {
+      if (!api) {
+        return;
+      }
+
+      const interval = setInterval(() => {
+        if (!api.canScrollNext()) {
+          // If there's no next slide to scroll to, reset to the first slide
+          api.scrollTo(0);
+        } else {
+          // Otherwise, scroll to the next slide
+          api.scrollNext();
+        }
+      }, 3000);
+
+      return () => clearInterval(interval);
+    }, [api]);
+
     return (
       <CarouselContext.Provider
         value={{
@@ -132,7 +151,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
         ref={ref}
         className={cn(
           "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          orientation === "horizontal" ? "-ml-2" : "-mt-4 flex-col",
           className
         )}
         {...props}
@@ -152,7 +171,7 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
       aria-roledescription="slide"
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
+        orientation === "horizontal" ? "pl-2" : "pt-4",
         className
       )}
       {...props}
@@ -178,7 +197,7 @@ const CarouselPrevious = React.forwardRef(
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
           className
         )}
-        disabled={!canScrollPrev}
+        // disabled={!canScrollPrev}
         onClick={scrollPrev}
         {...props}
       >
@@ -207,7 +226,7 @@ const CarouselNext = React.forwardRef(
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
           className
         )}
-        disabled={!canScrollNext}
+        // disabled={!canScrollNext}
         onClick={scrollNext}
         {...props}
       >

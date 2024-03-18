@@ -52,7 +52,7 @@ function AddStudentPopup({
           setBlocks(res.data.UpdatedBlocks);
           setAllocatedRoomStudents(res.data.roomInfo.allocatedStudents);
           toast({
-            title: "Student allocated successfully.",
+            title: "Student allocated successfully ✔",
           });
           setRollNo("");
           setLoading(false);
@@ -66,7 +66,7 @@ function AddStudentPopup({
         <div>
           <Dialog>
             <DialogTrigger asChild>
-              <div className="flex justify-center text-2xl items-center border border-gray-400/50 rounded-lg h-[104px] cursor-pointer shadow hover:bg-gradient-to-t hover:from-blue-100 hover:to-white">
+              <div className="flex justify-center text-2xl items-center border border-gray-400 rounded-lg h-[104px] cursor-pointer shadow hover:bg-gradient-to-t hover:from-blue-100 hover:to-white hover:ring-1 hover:ring-black">
                 {loading && <Loader height={"200px"} />}
                 {!loading && "+"}
               </div>

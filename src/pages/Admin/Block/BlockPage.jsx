@@ -12,6 +12,7 @@ import * as myConstants from "../../../../myConstants";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/components/ui/use-toast";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const BlockPage = ({ blockId }) => {
   // const { id } = useParams();
@@ -19,7 +20,7 @@ const BlockPage = ({ blockId }) => {
   const [block, setBlock] = useState(null);
   const { user, setUser } = useContext(UserContext);
   const { blocks, setBlocks } = useBlockContext();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [AllocatedRoomStudents, setAllocatedRoomStudents] = useState([]);
   const [capacity, setCapacity] = useState("");
   const [room, setRoom] = useState("");
@@ -46,10 +47,6 @@ const BlockPage = ({ blockId }) => {
     return <Navigate to="/login" />;
   }
 
-  if (loading) {
-    return <Loader />;
-  }
-
   function roomOccupancy(capacity, allocatedStudents) {
     let boxes = [];
 
@@ -70,7 +67,9 @@ const BlockPage = ({ blockId }) => {
       }
     }
 
-    return <div className="flex flex-wrap items-center justify-center">{boxes}</div>;
+    return (
+      <div className="flex flex-wrap items-center justify-center">{boxes}</div>
+    );
   }
 
   async function deleteBlock() {
@@ -98,6 +97,32 @@ const BlockPage = ({ blockId }) => {
 
   return (
     <>
+      {loading && !block && (
+        <>
+          <Skeleton className="h-[35vh] p-4 rounded-none">
+            <div className="w-full flex justify-center mb-4">
+              <Skeleton className="h-10 w-28 justify-center" />
+            </div>
+            <div className="grid lg:grid-cols-7 grid-cols-2 md:grid-cols-4 gap-5 mb-4">
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+              <Skeleton className="h-16" />
+            </div>
+          </Skeleton>
+          <Skeleton className="h-20 rounded-none mt-3" />
+        </>
+      )}
       {block && (
         <div className="">
           <ScrollArea className="max-h-[35vh] bg-white border border-gray-300 px-4 overflow-auto">

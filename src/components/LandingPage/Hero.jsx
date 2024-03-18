@@ -13,6 +13,56 @@ function Hero() {
     }
   }, [isInViewPage, controlsPage]);
 
+  const ref2 = useRef(null);
+  const isInViewPage2 = useInView(ref2, { once: true });
+  const controlsPage2 = useAnimation();
+
+  useEffect(() => {
+    if (isInViewPage2) {
+      controlsPage2.start("visible");
+    }
+  }, [isInViewPage2, controlsPage2]);
+
+  const ref3 = useRef(null);
+  const isInViewPage3 = useInView(ref3, { once: true });
+  const controlsPage3 = useAnimation();
+
+  useEffect(() => {
+    if (isInViewPage3) {
+      controlsPage3.start("visible");
+    }
+  }, [isInViewPage3, controlsPage3]);
+
+  const ref4 = useRef(null);
+  const isInViewPage4 = useInView(ref4, { once: true });
+  const controlsPage4 = useAnimation();
+
+  useEffect(() => {
+    if (isInViewPage4) {
+      controlsPage4.start("visible");
+    }
+  }, [isInViewPage4, controlsPage4]);
+
+  const ref5 = useRef(null);
+  const isInViewPage5 = useInView(ref5, { once: true });
+  const controlsPage5 = useAnimation();
+
+  useEffect(() => {
+    if (isInViewPage5) {
+      controlsPage5.start("visible");
+    }
+  }, [isInViewPage5, controlsPage5]);
+
+  const ref6 = useRef(null);
+  const isInViewPage6 = useInView(ref6, { once: true });
+  const controlsPage6 = useAnimation();
+
+  useEffect(() => {
+    if (isInViewPage6) {
+      controlsPage6.start("visible");
+    }
+  }, [isInViewPage6, controlsPage6]);
+
   return (
     <div className="py-10 lg:py-20 flex flex-col lg:flex-row gap-10 items-center">
       <motion.section className="flex flex-col gap-4 lg:w-1/2">
@@ -24,33 +74,33 @@ function Hero() {
           }}
           initial="hidden"
           animate={controlsPage}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="text-4xl lg:text-left text-center font-bold drop-shadow-text italic"
+          transition={{ duration: 0.5,delay: 0.25  }}
+          className="text-2xl md:text-3xl lg:text-4xl lg:text-left text-center font-bold drop-shadow-text italic"
         >
           Welcome to
           <div className="">Swaminarayan Chhatralaya</div>
         </motion.div>
         <motion.div
-          ref={ref}
+          ref={ref2}
           variants={{
             hidden: { opacity: 0, x: -100 },
             visible: { opacity: 1, x: 0 },
           }}
           initial="hidden"
-          animate={controlsPage}
+          animate={controlsPage2}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="welcom_title text-3xl font-bold my-4 lg:text-left text-center"
         >
           "Your Home Away from Home!"
         </motion.div>
         <motion.p
-          ref={ref}
+          ref={ref3}
           variants={{
             hidden: { opacity: 0, x: -100 },
             visible: { opacity: 1, x: 0 },
           }}
           initial="hidden"
-          animate={controlsPage}
+          animate={controlsPage3}
           transition={{ duration: 0.5, delay: 0.35 }}
           className="mb-4 text-center lg:text-left"
         >
@@ -60,26 +110,26 @@ function Hero() {
           hospitality, and affordable luxury.
         </motion.p>
         <motion.div
-          ref={ref}
+          ref={ref4}
           variants={{
             hidden: { opacity: 0, x: -100 },
             visible: { opacity: 1, x: 0 },
           }}
           initial="hidden"
-          animate={controlsPage}
+          animate={controlsPage4}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-xl font-bold text-center lg:text-left"
         >
           🌟 Why Choose Swaminarayan Chhatralaya?
         </motion.div>
         <motion.ul
-          ref={ref}
+          ref={ref5}
           variants={{
             hidden: { opacity: 0, x: -100 },
             visible: { opacity: 1, x: 0 },
           }}
           initial="hidden"
-          animate={controlsPage}
+          animate={controlsPage5}
           transition={{ duration: 0.5, delay: 0.45 }}
           className="list-disc pl-12 flex flex-col items-center lg:items-start gap-2"
         >
@@ -94,13 +144,13 @@ function Hero() {
       {/* Image section */}
       <section className="flex items-center justify-center lg:w-1/2 md:pl-10">
         <motion.div
-          ref={ref}
+          ref={ref6}
           variants={{
             hidden: { opacity: 0, x: 100 },
             visible: { opacity: 1, x: 0 },
           }}
           initial="hidden"
-          animate={controlsPage}
+          animate={controlsPage6}
           transition={{ duration: 0.5, delay: 0.35 }}
           className="p-1 img-border rounded-full"
         >

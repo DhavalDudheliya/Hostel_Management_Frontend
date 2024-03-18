@@ -11,6 +11,7 @@ import Testimonials from "@/components/LandingPage/Testimonials";
 import Room from "@/components/LandingPage/Room";
 import FacilitiesAndAmenities from "@/components/LandingPage/FacilitiesAndAmenities";
 import Footer from "@/components/LandingPage/Footer";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 function IndexPage() {
   const { user, setUser } = useContext(UserContext);
@@ -31,31 +32,35 @@ function IndexPage() {
 
   return (
     <>
-      <div className="landing_background">
-        <motion.div
-          className="progress-bar bg-orange-400 z-10"
-          style={{
-            // position: isSticky ? "fixed" : "relative",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            width: "100%",
-            height: "5px",
-            transformOrigin: "0%",
-            scaleX: scrollYProgress,
-          }}
-        ></motion.div>
-      </div>
-      <div className="px-5 md:px-10 lg:px-20 overflow-x-hidden flex flex-col">
-        <Hero />
-        <AboutUs />
+      <ScrollArea>
+        <div className="landing_background">
+          <motion.div
+            className="progress-bar bg-orange-400 z-10"
+            style={{
+              // position: isSticky ? "fixed" : "relative",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              width: "100%",
+              height: "5px",
+              transformOrigin: "0%",
+              scaleX: scrollYProgress,
+            }}
+          ></motion.div>
+        </div>
+        <div className="px-5 md:px-10 lg:px-20 overflow-x-hidden flex flex-col">
+          <Hero />
+          <AboutUs />
+        </div>
         <PhotoGallery />
-        <Testimonials />
+        <div className="px-5 md:px-10 lg:px-20 flex flex-col">
+          <Testimonials />
+        </div>
         {/* <Room />
         <FacilitiesAndAmenities /> */}
-      </div>
-      <Footer />
+        <Footer />
+      </ScrollArea>
     </>
   );
 }

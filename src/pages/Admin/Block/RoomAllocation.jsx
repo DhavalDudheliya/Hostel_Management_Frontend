@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import BlockPage from "./BlockPage";
 import AddBlockPopUp from "./AddBlockPopUp";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function RoomAllocation() {
   const { user, setUser } = useContext(UserContext);
@@ -25,6 +26,8 @@ function RoomAllocation() {
       if (res.status === 200) {
         setBlocks(res.data);
         setLoading(false);
+      } else {
+        setLoading(false);
       }
     });
   }, []);
@@ -32,6 +35,17 @@ function RoomAllocation() {
   return (
     <div className="p-6 lg:p-6 h-screen md:h-full">
       <div className="w-full">
+        {loading && blocks.length === 0 && (
+          <>
+            <Skeleton className="h-16 flex flex-row justify-between items-center p-4 rounded-none">
+              <div className="flex flex-row items-center gap-3">
+                <Skeleton className="h-10 w-20 rounded-none" />
+                <Skeleton className="h-10 w-20 rounded-none" />
+              </div>
+              <Skeleton className="h-10 w-28" />
+            </Skeleton>
+          </>
+        )}
         {blocks && blocks.length > 0 && (
           <>
             <Tabs defaultValue={`${blocks[0].name}`} className="w-full">

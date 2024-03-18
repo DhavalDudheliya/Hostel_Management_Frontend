@@ -15,6 +15,7 @@ import selected_food_menu from "../../assets/selected_food_menu.png";
 import notice from "../../assets/notice.png";
 import selected_notice from "../../assets/selected_notice.png";
 import logout from "../../assets/logout.png";
+import manager from "../../assets/manager.png";
 import { UserContext } from "../../../contexts/UserContext";
 
 const ManagerSidebar = () => {
@@ -257,6 +258,16 @@ const ManagerSidebar = () => {
               <img className="h-6" src={logout} />
               <span className={`${!open && "hidden"} origin-left duration-500`}>
                 Log&nbsp;out
+              </span>
+            </li>
+            <li className="text-white text-sm flex items-center gap-x-4 cursor-pointer mb-3 mt-10 p-1.5 rounded-md">
+              <img className="h-6" src={manager} />
+              <span
+                className={`${
+                  !open && "hidden"
+                } origin-left transition-all duration-500 font-semibold text-lg user_text`}
+              >
+                Manager
               </span>
             </li>
           </ul>

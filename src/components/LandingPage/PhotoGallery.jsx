@@ -25,6 +25,16 @@ function PhotoGallery() {
     }
   }, [isInViewPage, controlsPage]);
 
+  const ref2 = useRef(null);
+  const isInViewPage2 = useInView(ref2, { once: true });
+  const controlsPage2 = useAnimation();
+
+  useEffect(() => {
+    if (isInViewPage2) {
+      controlsPage2.start("visible");
+    }
+  }, [isInViewPage2, controlsPage2]);
+
   return (
     <>
       <div className="py-10 lg:py-20 flex flex-col items-center justify-start">
@@ -37,65 +47,65 @@ function PhotoGallery() {
           initial="hidden"
           animate={controlsPage}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="welcom_title text-5xl font-bold my-4  text-center drop-shadow-text"
+          className="welcom_title text-4xl lg:text-5xl font-bold my-4  text-center drop-shadow-text "
         >
           Our Photo Gallary
         </motion.div>
         <div
-          ref={ref}
+          ref={ref2}
           variants={{
             hidden: { opacity: 0, x: -300 },
             visible: { opacity: 1, x: 0 },
           }}
           initial="hidden"
-          animate={controlsPage}
+          animate={controlsPage2}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="py-10 lg:py-20 flex items-center justify-center"
+          className="py-10 lg:py-20 flex"
         >
-          <Carousel className="w-full sm:max-w-lg md:max-w-2xl lg:max-w-3xl">
+          <Carousel className="">
             <CarouselContent>
-              <CarouselItem>
-                <div className="p-1 img-border rounded-3xl">
+              <CarouselItem className="lg:basis-1/2 ">
+                <div className="p-0.5 rounded-3xl gallary-photo-border">
                   <img
                     src={garden2}
                     alt="index"
-                    className="rounded-3xl w-full object-cover h-[250px] md:h-[470px] img-border"
+                    className="rounded-3xl w-full object-cover h-[250px] md:h-[450px] "
                   />
                 </div>
               </CarouselItem>
-              <CarouselItem>
-                <div className="p-1 img-border rounded-3xl">
+              <CarouselItem className="lg:basis-1/2 ">
+                <div className="p-0.5 rounded-3xl gallary-photo-border">
                   <img
                     src={garden1}
                     alt="index"
-                    className="rounded-3xl w-full h-[250px] md:h-[470px] img-border"
+                    className="rounded-3xl w-full object-cover h-[250px] md:h-[450px] "
                   />
                 </div>
               </CarouselItem>
-              <CarouselItem>
-                <div className="p-1 img-border rounded-3xl">
+              <CarouselItem className="lg:basis-1/2 ">
+                <div className="p-0.5 rounded-3xl gallary-photo-border">
                   <img
                     src={garden3}
                     alt="index"
-                    className="rounded-3xl w-full h-[250px] md:h-[470px] img-border"
+                    className="rounded-3xl w-full object-cover h-[250px] md:h-[450px] "
                   />
                 </div>
               </CarouselItem>
-              <CarouselItem>
-                <div className="p-1 img-border rounded-3xl">
+              <CarouselItem className="lg:basis-1/2 ">
+                <div className="p-0.5 rounded-3xl gallary-photo-border">
                   <img
                     src={index}
                     alt="index"
-                    className="rounded-3xl h-[250px] md:h-[470px] w-full object-cover img-border"
+                    className="rounded-3xl h-[250px] object-cover md:h-[450px]  w-full"
                   />
                 </div>
               </CarouselItem>
-              <CarouselItem>
-                <div className="p-1 img-border rounded-3xl">
+              <CarouselItem className="lg:basis-1/2 ">
+                <div className="p-0.5 rounded-3xl gallary-photo-border">
                   <img
                     src={garden1}
                     alt="index"
-                    className="rounded-3xl w-full h-[250px] md:h-[470px] img-border"
+                    className="rounded-3xl w-full object-cover h-[250px] md:h-[450px] "
                   />
                 </div>
               </CarouselItem>
