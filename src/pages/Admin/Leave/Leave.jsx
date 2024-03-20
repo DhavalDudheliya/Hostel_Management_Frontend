@@ -26,9 +26,6 @@ function Leave() {
             <TabsTrigger value="bulk">Bulk Leave</TabsTrigger>
             <Separator orientation="vertical" />
             <TabsTrigger value="student">On Leave Students</TabsTrigger>
-            <Separator orientation="vertical" />
-            <TabsTrigger value="log">Leave Log</TabsTrigger>
-            <div className="text-bg_dark_font opacity-0">22</div>
           </TabsList>
 
           <TabsContent value="personal">
@@ -39,9 +36,6 @@ function Leave() {
           </TabsContent>
           <TabsContent value="student">
             <LeaveStudents />
-          </TabsContent>
-          <TabsContent value="log">
-            <LeaveLog />
           </TabsContent>
         </Tabs>
         {/* <div>

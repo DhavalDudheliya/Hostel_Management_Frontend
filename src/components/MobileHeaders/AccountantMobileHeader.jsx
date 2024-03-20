@@ -100,7 +100,7 @@ function AccountantMobileHeader() {
               </div>
               <div className="mx-1 text-white flex items-center gap-2">
                 <FaRegUserCircle />
-                <p className="text-red-500">Accountant</p>
+                <p className="user_text">Accountant</p>
               </div>
             </div>
           </nav>

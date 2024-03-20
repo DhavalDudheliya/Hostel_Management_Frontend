@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStudentContext } from "../../../../contexts/StudentContext";
 
 import {
@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import moment from "moment/moment";
 
 function Leaves() {
   const { student } = useStudentContext();
@@ -38,10 +39,10 @@ function Leaves() {
                   <TableCell className={cn("bg-white")}>{index + 1}</TableCell>
 
                   <TableCell className={cn("bg-white text-center")}>
-                    {leave.startDate}
+                    {moment(leave.startDate).format("DD-MM-YYYY")}
                   </TableCell>
                   <TableCell className={cn("bg-white text-center")}>
-                    {leave.endDate}
+                    {moment(leave.endDate).format("DD-MM-YYYY")}
                   </TableCell>
                   <TableCell className={cn("bg-white text-center")}>
                     {leave.reason}

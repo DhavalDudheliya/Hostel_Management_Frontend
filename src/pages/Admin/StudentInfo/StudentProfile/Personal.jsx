@@ -20,6 +20,10 @@ function Personal({ formik }) {
     moment(formik.values.dateOfBirth).format("YYYY-MM-DD")
   );
 
+  useEffect(() => {
+    setBirthDate(moment(formik.values.dateOfBirth).format("YYYY-MM-DD"));
+  }, [formik.values.dateOfBirth]);
+
   const handleBloodGroupChange = (value) => {
     formik.setFieldValue("bloodGroup", value);
   };

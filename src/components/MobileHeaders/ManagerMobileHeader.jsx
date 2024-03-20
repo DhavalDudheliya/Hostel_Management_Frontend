@@ -102,7 +102,7 @@ function ManagerMobileHeader() {
               </div>
               <div className="mx-1 text-white flex items-center gap-2">
                 <FaRegUserCircle />
-                <p className="text-red-500">Manager</p>
+                <p className="user_text">Manager</p>
               </div>
             </div>
           </nav>

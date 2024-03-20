@@ -23,7 +23,7 @@ const data = [
   {
     name: "C",
     vacancy: 0,
-    filled: 60,
+    filled: 70,
   },
   {
     name: "D",

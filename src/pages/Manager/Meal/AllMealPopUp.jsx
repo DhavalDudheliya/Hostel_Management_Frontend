@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import * as myConstants from "../../../../myConstants";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
 
 function AllMealPopUp({ setMeal, meal }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,13 +30,14 @@ function AllMealPopUp({ setMeal, meal }) {
   return (
     <div>
       <div className="flex justify-center mx-auto w-full">
-        <button
-          className="flex items-center gap-2 mb-6  bg-bg_red px-4 py-1 text-bg_white_font rounded-md hover:bg-bg_dark_section duration-200"
+        <Button
+          variant="blue_btn"
+          className="w-fit"
           onClick={openModal}
         >
-          <div className="text-4xl">+</div>
-          <div className="font-bold">Add Food</div>
-        </button>
+          <div className="text-2xl">+</div>
+          <div className="font-semibold ml-1">Add Food</div>
+        </Button>
         {isModalOpen && (
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 ">
             <div className="bg-bg_white border-2 border-bg_dark_section fixed">

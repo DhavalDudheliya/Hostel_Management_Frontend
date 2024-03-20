@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import AllMealPopUp from "./AllMealPopUp";
 import Loader from "../../../components/Loader";
 import axios from "axios";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 function AddMeal() {
   const { user, setUser } = useContext(UserContext);
@@ -47,16 +49,18 @@ function AddMeal() {
   return (
     <>
       <div className="flex justify-center mb-6 mt-4">
-        <button
-          className="flex items-center gap-2 bg-bg_red px-4 py-2 text-bg_white_font rounded-md hover:bg-bg_dark_section duration-200"
+        <Button
+          size="lg"
+          variant="destructive"
+          className="w-fit"
           onClick={updateMeal}
         >
           <div className="font-bold">Update Meal</div>
-        </button>
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-6 max-w-7xl">
-        <div className="border-2 border-bg_dark_section p-4 rounded-md shadow-md shadow-bg_dark_section">
+        <Card className="p-4">
           <div className="mb-6 text-2xl font-bold text-center labels">
             Breakfast
           </div>
@@ -119,9 +123,9 @@ function AddMeal() {
                 </div>
               ))}
           </div>
-        </div>
+        </Card>
 
-        <div className="border-2 border-bg_dark_section p-4 rounded-md shadow-md shadow-bg_dark_section">
+        <Card className="p-4">
           <div className="mb-6 text-2xl font-bold text-center labels">
             Lunch
           </div>
@@ -184,9 +188,9 @@ function AddMeal() {
                 </div>
               ))}
           </div>
-        </div>
+        </Card>
 
-        <div className="border-2 border-bg_dark_section p-4 rounded-md shadow-md shadow-bg_dark_section">
+        <Card className="p-4">
           <div className="mb-6 text-2xl font-bold text-center labels">
             Dinner
           </div>
@@ -249,7 +253,7 @@ function AddMeal() {
                 </div>
               ))}
           </div>
-        </div>
+        </Card>
       </div>
     </>
   );

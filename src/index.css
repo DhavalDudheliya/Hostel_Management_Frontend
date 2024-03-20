@@ -185,6 +185,8 @@ textarea {
     #a5c7d1,
     #85a1bb42
   );
+  /* background-size: 400% 400%; */
+  /* animation: gradientAnimation 5s ease infinite; */
   /* background: rgb(12, 12, 12); */
 }
 
@@ -208,10 +210,23 @@ textarea {
 }
 
 .user_text {
-  background: -webkit-linear-gradient(45deg, #ff0055, #ffffff, #ff0055);
+  background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* line-height: 60px; */
+  animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .grd-text {
@@ -223,4 +238,8 @@ textarea {
 
 .gallary-photo-border {
   background: -webkit-linear-gradient(45deg, #09009f, #ff0095 80%);
+}
+
+.bordered-text {
+  -webkit-text-stroke: 0.3px white; /* Apply a 1px black stroke around the text */
 }

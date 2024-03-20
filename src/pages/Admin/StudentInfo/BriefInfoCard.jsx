@@ -52,7 +52,7 @@ function BriefInfoCard() {
             className="flex flex-row gap-2 items-center"
           >
             <GraduationCap size={20} />
-            <h6>
+            <h6 className="max-w-48">
               {student.branch === student.course ? (
                 <>{student.course}</>
               ) : (

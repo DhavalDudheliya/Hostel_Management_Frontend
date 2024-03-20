@@ -105,7 +105,7 @@ function AdminMobileHeader() {
               </div>
               <div className="mx-1 text-white flex items-center gap-2">
                 <FaRegUserCircle />
-                <p className="text-red-500">Admin</p>
+                <p className="user_text">Admin</p>
               </div>
             </div>
           </nav>

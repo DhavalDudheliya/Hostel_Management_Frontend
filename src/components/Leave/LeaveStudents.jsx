@@ -10,19 +10,24 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import axios from "axios";
+import moment from "moment/moment";
+import Loader from "../Loader";
 
 function LeaveStudents() {
+  const [isLoading, setIsLoading] = useState(true);
   const [leaves, setLeaves] = useState([]);
 
   const fetchData = async () => {
     try {
       await axios.get("/leave/findStudentsOnLeave").then((res) => {
+        setIsLoading(false);
         if (res.status === 200) {
           setLeaves(res.data.leaveApplications);
           console.log(res.data.leaveApplications);
         }
       });
     } catch (error) {
+      setIsLoading(false);
       if (error.response.status === 404) {
         toast({
           variant: "destructive",
@@ -35,6 +40,14 @@ function LeaveStudents() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <Loader  height={"h-[50vh]"}/>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-6">
@@ -67,9 +80,11 @@ function LeaveStudents() {
                     {leave.student.roomNumber}
                   </TableCell>
                   <TableCell className="text-center">
-                    {leave.startDate}
+                    {moment(leave.startDate).format("DD-MM-YYYY")}
                   </TableCell>
-                  <TableCell className="text-center">{leave.endDate}</TableCell>
+                  <TableCell className="text-center">
+                    {moment(leave.endDate).format("DD-MM-YYYY")}
+                  </TableCell>
                   <TableCell className="text-center">{leave.reason}</TableCell>
                 </TableRow>
               ))}
@@ -78,9 +93,11 @@ function LeaveStudents() {
         </>
       ) : (
         <>
-          <div className="text-center text-xl mt-10">
-            No students are on leave
-          </div>
+          {!isLoading && (
+            <div className="text-center text-xl mt-10">
+              No students are on leave
+            </div>
+          )}
         </>
       )}
     </div>

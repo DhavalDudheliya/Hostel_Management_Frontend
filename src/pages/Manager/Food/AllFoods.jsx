@@ -58,14 +58,14 @@ function AllFoods() {
                 <div className="rounded-2xl object-cover aspect-square mb-2 bg-gray-600">
                   {food.photo && (
                     <img
-                      className="rounded-2xl aspect-square object-cover"
+                      className="rounded-2xl aspect-square object-cover border-2 border-gray-400"
                       src={
                         myConstants.BACKEND_URL + "/uploadsFood/" + food.photo
                       }
                     ></img>
                   )}
                 </div>
-                <h2 className="text-sm font-bold mb-1 truncate">{food.name}</h2>
+                <h2 className="text-sm font-bold mb-1 truncate text-center">{food.name}</h2>
               </div>
               <div className="absolute bottom-9 right-1 bg-bg_dark_font bg-opacity-80 text-white p-1 rounded-xl hover:bg-bg_red cursor-pointer">
                 <svg

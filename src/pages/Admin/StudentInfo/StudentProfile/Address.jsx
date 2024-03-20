@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useStudentContext } from "../../../../../contexts/StudentContext";
+import React, { useEffect, useState } from "react";
 import districts from "@/assets/allDistricts";
 import talukasByDistrict from "@/assets/allTalukas";
 
@@ -20,14 +19,18 @@ function Address({ formik }) {
   const [talukas, setTalukas] = useState([]);
 
   const handleDistrictChange = (value) => {
-    formik.setFieldValue("district", value);
+    formik.setFieldValue("district", value, false, () => {
+      console.log(value);
+      console.log(formik.values.district);
+    });
     setSelectedDistrict(value);
     setTalukas(talukasByDistrict[value]);
   };
 
   useEffect(() => {
+    console.log(formik.values.district);
     setTalukas(talukasByDistrict[formik.values.district]);
-  }, []);
+  }, [selectedDistrict]);
 
   const handleTalukaChange = (value) => {
     formik.setFieldValue("taluka", value);
@@ -90,8 +93,8 @@ function Address({ formik }) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {districts.map((district) => (
-                      <SelectItem key={district} value={district}>
+                    {districts.map((district, index) => (
+                      <SelectItem key={index} value={district}>
                         {district}
                       </SelectItem>
                     ))}
@@ -133,11 +136,12 @@ function Address({ formik }) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {talukas.map((taluka) => (
-                      <SelectItem key={taluka} value={taluka}>
-                        {taluka}
-                      </SelectItem>
-                    ))}
+                    {talukas &&
+                      talukas.map((taluka, index) => (
+                        <SelectItem key={index} value={taluka}>
+                          {taluka}
+                        </SelectItem>
+                      ))}
                   </SelectGroup>
                 </SelectContent>
               </Select>

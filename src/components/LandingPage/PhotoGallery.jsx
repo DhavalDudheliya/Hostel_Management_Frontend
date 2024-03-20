@@ -60,9 +60,9 @@ function PhotoGallery() {
           initial="hidden"
           animate={controlsPage2}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="py-10 lg:py-20 flex"
+          className="py-10 lg:py-15 flex"
         >
-          <Carousel className="">
+          <Carousel className=" py-10">
             <CarouselContent>
               <CarouselItem className="lg:basis-1/2 ">
                 <div className="p-0.5 rounded-3xl gallary-photo-border">
