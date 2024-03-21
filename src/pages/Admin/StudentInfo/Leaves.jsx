@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import moment from "moment/moment";
+import LeaveCancleButton from "@/components/LeaveCancleButton";
 
 function Leaves() {
   const { student } = useStudentContext();
@@ -46,6 +47,15 @@ function Leaves() {
                   </TableCell>
                   <TableCell className={cn("bg-white text-center")}>
                     {leave.reason}
+                  </TableCell>
+                  <TableCell
+                    className={cn(
+                      "bg-white text-center flex flex-row justify-center"
+                    )}
+                  >
+                    <LeaveCancleButton
+                      leaveId={leave._id}
+                    />
                   </TableCell>
                 </TableRow>
               ))}

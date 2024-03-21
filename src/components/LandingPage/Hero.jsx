@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import index from "../../assets/Index.jpg";
 import { TypewriterEffectSmooth } from "@/components/ui/TypeWriteEffect";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3dCard";
+import { CardBody, CardContainer } from "@/components/ui/3dCard";
 
 function Hero() {
   const ref = useRef(null);

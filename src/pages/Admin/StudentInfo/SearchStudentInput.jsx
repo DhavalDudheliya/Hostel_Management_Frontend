@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Search } from "lucide-react";
 
 import BriefStudentProfileCard from "@/components/BriefStudentProfileCard";

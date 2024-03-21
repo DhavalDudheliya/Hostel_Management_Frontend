@@ -22,7 +22,7 @@ function RevertFeeAlertDialogue({ subFeeAmount, subFeeId, feeId }) {
   const { student, setStudent, setSubFees } = useStudentContext();
 
   async function handleSubmit(ev, subFeeAmount, subFeeId, feeId) {
-    // ev.preventDefault();
+    ev.preventDefault();
     try {
       await axios
         .post("/accountant/revertFee", {

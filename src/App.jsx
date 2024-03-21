@@ -32,7 +32,7 @@ import StudentReport from "./pages/Student/Report/StudentReport";
 import StudentFeesPaymentDashboard from "./pages/Student/FeesPayment/StudentFeesPaymentDashboard";
 
 // Accountant
-import AccountantDashboard from "./pages/Accountant/AccountantDashboard";
+import AccountantDashboard from "./pages/Accountant/Dashboard/AccountantDashboard";
 import CollectFees from "./pages/Accountant/Fees/CollectFees";
 import DueFees from "./pages/Accountant/Fees/DueFees";
 import AddFee from "./pages/Accountant/Fees/AddFee";

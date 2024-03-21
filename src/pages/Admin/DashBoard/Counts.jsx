@@ -25,10 +25,10 @@ function Counts() {
           <CardBody className="bg-gradient-to-r from-[#8884d8] to-[#82ca9d] mt-6 p-6 rounded-xl text-white shadow-lg h-fit border-2 border-purple-500 ">
             <CardItem translateZ="30">
               <div className="flex flex-col gap-4">
-                <p className="font-medium text-xl">Fees Partial</p>
+                <p className="font-medium text-xl">Due Fees</p>
                 {/* <ReceiptIndianRupee size={35} /> */}
                 <p className="text-3xl font-bold text-red-500 bordered-text">
-                  45
+                  17
                 </p>
               </div>
             </CardItem>
