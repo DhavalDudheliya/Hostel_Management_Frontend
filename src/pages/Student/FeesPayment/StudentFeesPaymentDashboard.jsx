@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import * as myConst from "../../../../myConstants";
 
 function StudentFeesPaymentDashboard() {
   const [amount, setAmount] = useState(10000);
@@ -28,7 +29,7 @@ function StudentFeesPaymentDashboard() {
         description: "Test Transaction",
         image: "",
         order_id: response.data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: "http://localhost:4004/api/paymentverification",
+        callback_url: myConst.BACKEND_URL + "/api/paymentverification",
         prefill: {
           email: "gaurav.kumar@example.com",
           contact: "9000090000",
@@ -51,9 +52,9 @@ function StudentFeesPaymentDashboard() {
   return (
     <>
       <div>StudentFeesPaymentDashboard</div>
-      {/* <button className="btn" onClick={checkoutHandler}>
+      <button className="btn" onClick={checkoutHandler}>
         <p>{amount}</p>
-      </button> */}
+      </button>
     </>
   );
 }
