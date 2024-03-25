@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,7 +15,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { IndianRupee, Send } from "lucide-react";
-import axios from "axios";
 import { useStudentContext } from "../../../contexts/StudentContext";
 
 function CollectFeeDialog({ fee }) {

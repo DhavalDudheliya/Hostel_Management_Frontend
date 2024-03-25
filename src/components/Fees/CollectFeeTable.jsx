@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
+import axios from "axios";
 
 import { useStudentContext } from "../../../contexts/StudentContext";
 import CollectFeeDialog from "./CollectFeeDialog";
@@ -8,7 +9,6 @@ import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
 import AddPaneltyDialog from "./AddPaneltyDialog";
 import ClearPaneltyAler from "./ClearPaneltyAler";
 import DeleteFee from "./DeleteFee";
-import axios from "axios";
 
 function CollectFeeTable() {
   const today = moment();
