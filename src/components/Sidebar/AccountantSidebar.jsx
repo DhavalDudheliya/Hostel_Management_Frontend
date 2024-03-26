@@ -31,15 +31,15 @@ const AdminSideBar = () => {
     const lastWord = words[words.length - 1]; // Get the last element from the array
     const storedItem = localStorage.getItem("selectedItem");
     if (storedItem) {
-      if (lastWord === "home") {
-        setSelectedItem("home");
-        localStorage.setItem("selectedItem", "home");
+      if (lastWord === "dashboard") {
+        setSelectedItem("dashboard");
+        localStorage.setItem("selectedItem", "dashboard");
       } else {
         setSelectedItem(storedItem);
       }
     } else {
-      setSelectedItem("home");
-      localStorage.setItem("selectedItem", "home");
+      setSelectedItem("dashboard");
+      localStorage.setItem("selectedItem", "dashboard");
     }
   }, []);
 
@@ -77,23 +77,23 @@ const AdminSideBar = () => {
           <Link
             to="/accountant/dashboard"
             onClick={() => {
-              handleItemClick("home");
+              handleItemClick("dashboard");
               setSubFeeSelectedItem("");
             }}
             className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md ${
-              selectedItem === "home"
+              selectedItem === "dashboard"
                 ? "bg-white "
                 : "hover:bg-white hover:bg-opacity-20 transition-all duration-75"
             }`}
           >
-            {selectedItem === "home" ? (
+            {selectedItem === "dashboard" ? (
               <img className={`h-6`} src={selected_home} />
             ) : (
               <img className="h-6" src={home} />
             )}
             <span
               className={`origin-left duration-75 ${
-                selectedItem === "home"
+                selectedItem === "dashboard"
                   ? "text-bg_dark_section font-semibold"
                   : "text-bg_white"
               }`}

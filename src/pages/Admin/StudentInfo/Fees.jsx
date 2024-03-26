@@ -43,9 +43,10 @@ function Fees() {
                 <TableHead className="text-center">Semester</TableHead>
                 <TableHead className="text-center">Amount</TableHead>
                 <TableHead className="text-center">Penalty</TableHead>
-                <TableHead className="text-center">Paid Amount</TableHead>
                 <TableHead className="text-center">Due Date</TableHead>
+                <TableHead className="text-center">Paid Amount</TableHead>
                 <TableHead className="text-center">Payment Date</TableHead>
+                <TableHead className="text-center">Method</TableHead>
                 <TableHead className="text-center">Status </TableHead>
               </TableRow>
             </TableHeader>
@@ -71,11 +72,6 @@ function Fees() {
                       ₹{fee.penalty}
                     </TableCell>
                     <TableCell
-                      className={cn("bg-white text-center font-semibold")}
-                    >
-                      ₹{fee.totalAmountPaid}
-                    </TableCell>
-                    <TableCell
                       className={cn(
                         `bg-white text-center ${
                           moment(fee.dueDate).isBefore(today) &&
@@ -87,6 +83,14 @@ function Fees() {
                     >
                       {moment(fee.dueDate).format("DD-MM-YYYY")}
                     </TableCell>
+                    <TableCell
+                      className={cn("bg-white text-center font-semibold")}
+                    >
+                      ₹{fee.totalAmountPaid}
+                    </TableCell>
+                    <TableCell
+                      className={cn(`bg-white text-center`)}
+                    ></TableCell>
                     <TableCell
                       className={cn(`bg-white text-center`)}
                     ></TableCell>
@@ -118,14 +122,17 @@ function Fees() {
                         <TableCell
                           className={cn("bg-gray-100 text-center")}
                         ></TableCell>
-                        <TableCell className={cn("bg-gray-100 text-center")}>
-                          ₹{subFee.amount}
-                        </TableCell>
                         <TableCell
                           className={cn("bg-gray-100 text-center")}
                         ></TableCell>
                         <TableCell className={cn("bg-gray-100 text-center")}>
+                          ₹{subFee.amount}
+                        </TableCell>
+                        <TableCell className={cn("bg-gray-100 text-center")}>
                           {moment(subFee.date).format("DD-MM-YYYY")}
+                        </TableCell>
+                        <TableCell className={cn("bg-gray-100 text-center")}>
+                          {subFee.method}
                         </TableCell>
                         <TableCell
                           className={cn("bg-gray-100 text-center")}

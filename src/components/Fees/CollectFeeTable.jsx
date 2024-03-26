@@ -90,17 +90,20 @@ function CollectFeeTable() {
               <th scope="col" className="px-6 py-3">
                 Due Date
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-2 py-3">
                 Penalty
               </th>
               <th scope="col" className="px-6 py-3">
                 Paid
               </th>
               <th scope="col" className="px-6 py-3">
+                Balance
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Paid Date
               </th>
               <th scope="col" className="px-6 py-3">
-                Balance
+                Method
               </th>
               <th scope="col" className="px-6 py-3">
                 Status
@@ -117,13 +120,13 @@ function CollectFeeTable() {
                   <tr className="bg-white border-b border-gray-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 cursor-pointer">
                     <td
                       scope="row"
-                      className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                      className="py-4 text-gray-900 whitespace-nowrap dark:text-white"
                       onClick={() => handleRowClick(index, fee)}
                     >
                       {fee.year}
                     </td>
                     <td
-                      className="px-6 py-3"
+                      className="py-3"
                       onClick={() => handleRowClick(index, fee)}
                     >
                       {fee.semester}
@@ -146,7 +149,7 @@ function CollectFeeTable() {
                       {moment(fee.dueDate).format("DD-MM-YYYY")}
                     </td>
                     <td
-                      className="px-6 py-2"
+                      className="py-2"
                       // onClick={() => handleRowClick(index, fee)}
                     >
                       <div className="flex flex-row justify-center items-center gap-2">
@@ -158,18 +161,19 @@ function CollectFeeTable() {
                       </div>
                     </td>
                     <td
+                      className="px-6 py-4"
+                      onClick={() => handleRowClick(index, fee)}
+                    >
+                      ₹{fee.amount - fee.totalAmountPaid}
+                    </td>
+                    <td
                       className="px-6 py-4 font-semibold"
                       onClick={() => handleRowClick(index, fee)}
                     >
                       ₹{fee.totalAmountPaid}
                     </td>
                     <td onClick={() => handleRowClick(index, fee)}></td>
-                    <td
-                      className="px-6 py-4"
-                      onClick={() => handleRowClick(index, fee)}
-                    >
-                      ₹{fee.amount - fee.totalAmountPaid}
-                    </td>
+                    <td onClick={() => handleRowClick(index, fee)}></td>
                     <td
                       className="uppercase px-6 py-4"
                       onClick={() => handleRowClick(index, fee)}
@@ -202,8 +206,9 @@ function CollectFeeTable() {
                         <td></td>
                         <td></td>
                         <td>₹{subFee.amount}</td>
-                        <td>{moment(subFee.date).format("DD-MM-YYYY")}</td>
                         <td></td>
+                        <td>{moment(subFee.date).format("DD-MM-YYYY")}</td>
+                        <td>{subFee.method}</td>
                         <td></td>
                         <td className="pr-2 py-4 flex flex-row items-center justify-start gap-1">
                           <RevertFeeAlertDialogue

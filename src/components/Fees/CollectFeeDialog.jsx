@@ -72,7 +72,7 @@ function CollectFeeDialog({ fee }) {
           <button
             disabled={buttonDisable}
             size="sm"
-            className={`bg-blue-500 cursor-pointer text-white text-xs h-8 rounded-md px-2 hover:bg-blue-500/90 hover:ring-2 hover:ring-blue-700 flex items-center ${
+            className={`bg-blue-500 cursor-pointer text-white text-xs h-10 rounded-md px-2 hover:bg-blue-500/90 hover:ring-2 hover:ring-blue-700 flex items-center ${
               buttonDisable ? "hover:cursor-not-allowed" : ""
             }`}
           >
