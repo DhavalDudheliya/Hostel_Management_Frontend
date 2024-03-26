@@ -32,9 +32,6 @@ function AddFee() {
 
   const { user, setUser } = useContext(UserContext);
 
-  if (!user || (user && user.role !== "Accountant")) {
-    return <Navigate to="/login" />;
-  }
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
@@ -85,6 +82,10 @@ function AddFee() {
     setClearSuggestions(true);
     setQuery(student.rollNumber);
     setSuggestionStudents([]); // This will be called after setQuery finishes
+  }
+  
+  if (!user || (user && user.role !== "Accountant")) {
+    return <Navigate to="/login" />;
   }
 
   return (

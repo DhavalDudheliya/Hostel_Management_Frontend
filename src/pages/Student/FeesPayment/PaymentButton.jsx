@@ -4,10 +4,12 @@ import * as myConst from "../../../../myConstants";
 import { useStudentContext } from "../../../../contexts/StudentContext";
 
 import { Button } from "@/components/ui/button";
+import Loader from "@/components/Loader";
 
 function PaymentButton({ fee }) {
   const [feeData, setFeeData] = useState();
   const [payableAmount, setPayableAmount] = useState(0);
+  const [loading, setLoading] = useState(false);
   const { student, setStudent } = useStudentContext();
 
   useEffect(() => {
@@ -45,15 +47,15 @@ function PaymentButton({ fee }) {
     } = await axios.get("/api/getkey");
 
     try {
+      setLoading(true);
       const response = await axios.post("/api/checkout", {
         payableAmount,
       });
-
       setFeeData(response.data.fee);
       console.log("Fee Data", feeData);
 
       const options = {
-        key: "rzp_test_GjeNSnSR1T7nzF", // Enter the Key ID generated from the Dashboard
+        key: "rzp_test_i3xNVjNQutiV0I", // Enter the Key ID generated from the Dashboard
         amount: response.data.fee.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Nadiad APC",
@@ -77,6 +79,7 @@ function PaymentButton({ fee }) {
       console.log("Order Amount : ", options.amount);
       const razorpay = new window.Razorpay(options);
       razorpay.open();
+      setLoading(false);
     } catch (error) {
       console.error("Error during checkout: ", error);
     }
@@ -90,8 +93,16 @@ function PaymentButton({ fee }) {
         onClick={checkoutHandler}
         className="flex flex-col h-10 gap-y-0.5"
       >
-        <span>Pay</span>
-        <span>₹{payableAmount}</span>
+        {loading ? (
+          <>
+            <Loader width={"w-8"} />
+          </>
+        ) : (
+          <>
+            <span>Pay</span>
+            <span>₹{payableAmount}</span>
+          </>
+        )}
       </Button>
     </div>
   );

@@ -12,70 +12,54 @@ import {
 
 const data = [
   {
-    date: "1 Jun",
-    present: 220,
-    absent: 30,
+    date: "16 March",
+    amount: 100000,
   },
   {
-    date: "Today",
-    present: 222,
-    absent: 28,
+    date: "17 March",
+    amount: 0,
   },
   {
-    date: "3 Jun",
-    present: 180,
-    absent: 70,
+    date: "18 March",
+    amount: 25000,
   },
   {
-    date: "4 Jun",
-    present: 190,
-    absent: 60,
+    date: "19 March",
+    amount: 75000,
   },
   {
-    date: "1 Jun",
-    present: 220,
-    absent: 30,
+    date: "20 March",
+    amount: 50000,
   },
   {
-    date: "Today",
-    present: 222,
-    absent: 28,
+    date: "21 March",
+    amount: 200000,
   },
   {
-    date: "3 Jun",
-    present: 180,
-    absent: 70,
+    date: "22 March",
+    amount: 0,
   },
   {
-    date: "4 Jun",
-    present: 190,
-    absent: 60,
+    date: "23 March",
+    amount: 150000,
   },
   {
-    date: "1 Jun",
-    present: 220,
-    absent: 30,
+    date: "24 March",
+    amount: 0,
   },
   {
-    date: "Today",
-    present: 222,
-    absent: 28,
+    date: "25 March",
+    amount: 25000,
   },
   {
-    date: "3 Jun",
-    present: 180,
-    absent: 70,
-  },
-  {
-    date: "4 Jun",
-    present: 190,
-    absent: 60,
+    date: "26 March",
+    amount: 35000,
   },
 ];
 
 export default function FeesLineChart() {
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={350}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
@@ -84,15 +68,9 @@ export default function FeesLineChart() {
         <Legend />
         <Line
           type="monotone"
-          dataKey="present"
+          dataKey="amount"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
-        />
-        <Line
-          type="monotone"
-          dataKey="absent"
-          activeDot={{ r: 8 }}
-          stroke="#82ca9d"
         />
       </LineChart>
     </ResponsiveContainer>

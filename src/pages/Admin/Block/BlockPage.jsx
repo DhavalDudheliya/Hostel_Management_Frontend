@@ -16,9 +16,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const BlockPage = ({ blockId }) => {
   // const { id } = useParams();
+  const { user, setUser } = useContext(UserContext);
   const { toast } = useToast();
   const [block, setBlock] = useState(null);
-  const { user, setUser } = useContext(UserContext);
   const { blocks, setBlocks } = useBlockContext();
   const [loading, setLoading] = useState(true);
   const [AllocatedRoomStudents, setAllocatedRoomStudents] = useState([]);
@@ -43,9 +43,7 @@ const BlockPage = ({ blockId }) => {
     }
   }, [fetch]);
 
-  if (!user || (user && user.role !== "Admin")) {
-    return <Navigate to="/login" />;
-  }
+
 
   function roomOccupancy(capacity, allocatedStudents) {
     let boxes = [];
@@ -93,6 +91,10 @@ const BlockPage = ({ blockId }) => {
         }
       }
     }
+  }
+
+  if (!user || (user && user.role !== "Admin")) {
+    return <Navigate to="/login" />;
   }
 
   return (

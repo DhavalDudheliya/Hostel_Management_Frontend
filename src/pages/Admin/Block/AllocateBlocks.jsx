@@ -3,8 +3,7 @@ import { UserContext } from "../../../../contexts/UserContext";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import AddBlockPopUp from "./AddBlockPopUp";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useToast } from "@/components/ui/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
 
 function AllocateBlocks() {
@@ -12,6 +11,7 @@ function AllocateBlocks() {
   const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [fetch, setFetch] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setLoading(true);
@@ -23,10 +23,6 @@ function AllocateBlocks() {
       }
     });
   }, [fetch]);
-
-  if (!user || (user && user.role !== "Admin")) {
-    return <Navigate to="/login" />;
-  }
 
   // Function to calculate the empty spaces in a block
   const calculateEmptySpaces = (rooms) => {
@@ -46,10 +42,16 @@ function AllocateBlocks() {
       await axios.delete("/admin/delete-block/" + id).then((res) => {
         if (res.status === 200) {
           setFetch(true);
-          toast.success("Deleted Successfully");
+          toast({
+            title: "Block deleted successfully",
+          });
         }
       });
     }
+  }
+
+  if (!user || (user && user.role !== "Admin")) {
+    return <Navigate to="/login" />;
   }
 
   return (

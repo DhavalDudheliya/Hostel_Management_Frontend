@@ -35,8 +35,8 @@ const data = [
 
 export default function StackedBarChart() {
   return (
-    <ResponsiveContainer width="80%" height={250}>
-      <BarChart width={300} height={250} data={data}>
+    <ResponsiveContainer width="100%" height={250}>
+      <BarChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

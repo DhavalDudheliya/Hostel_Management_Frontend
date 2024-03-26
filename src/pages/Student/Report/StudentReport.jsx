@@ -9,7 +9,6 @@ import Loader from "../../../components/Loader";
 import StudentAddReportPopUp from "./StudentAddReportPopUp";
 
 function StudentReport() {
-  const [fetch, setFetch] = useState(false);
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(UserContext);

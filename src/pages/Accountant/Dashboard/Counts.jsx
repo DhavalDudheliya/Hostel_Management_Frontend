@@ -46,7 +46,7 @@ function Counts() {
             <p className="font-medium text-xl">Number of Payments</p>
             <p className="font-medium text-sm opacity-70">(This Semester)</p>
           </span>
-          <p className="text-4xl font-bold">45</p>
+          <p className="text-4xl font-bold">68</p>
         </div>
       </div>
       <div className="w-full h-full bg-gradient-to-r  from-[#8884d8] to-[#82ca9d] p-6 rounded-xl text-white shadow-lg border-2 border-purple-500 ">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
 import axios from "axios";
@@ -24,6 +24,9 @@ function CollectFeeTable() {
       setExpandedRow(null);
     } else {
       // If a different row is clicked, show the sub-row
+      setReceiptLoading(
+        fee.paidAmount ? new Array(fee.paidAmount.length).fill(false) : []
+      );
       setSubFees(fee.paidAmount);
       setExpandedRow(index);
     }
@@ -34,8 +37,6 @@ function CollectFeeTable() {
       setReceiptLoading((prevLoading) =>
         prevLoading.map((_, i) => (i === index ? true : _))
       );
-
-      console.log(receiptLoading[index]);
 
       const response = await axios.post(
         "/accountant/generateReceipt",
@@ -161,16 +162,16 @@ function CollectFeeTable() {
                       </div>
                     </td>
                     <td
-                      className="px-6 py-4"
-                      onClick={() => handleRowClick(index, fee)}
-                    >
-                      ₹{fee.amount - fee.totalAmountPaid}
-                    </td>
-                    <td
                       className="px-6 py-4 font-semibold"
                       onClick={() => handleRowClick(index, fee)}
                     >
                       ₹{fee.totalAmountPaid}
+                    </td>
+                    <td
+                      className="px-6 py-4"
+                      onClick={() => handleRowClick(index, fee)}
+                    >
+                      ₹{fee.amount - fee.totalAmountPaid}
                     </td>
                     <td onClick={() => handleRowClick(index, fee)}></td>
                     <td onClick={() => handleRowClick(index, fee)}></td>
@@ -192,7 +193,10 @@ function CollectFeeTable() {
                       </button>
                     </td>
                     <td className="flex flex-row justify-center items-center gap-2 px-2 py-4">
-                      <CollectFeeDialog fee={fee} />
+                      <CollectFeeDialog
+                        fee={fee}
+                        setReceiptLoading={setReceiptLoading}
+                      />
                       <DeleteFee fee={fee} />
                     </td>
                   </tr>
@@ -215,6 +219,7 @@ function CollectFeeTable() {
                             subFeeAmount={subFee.amount}
                             subFeeId={subFee._id}
                             feeId={fee._id}
+                            setReceiptLoading={setReceiptLoading}
                           />
                           <button
                             size="sm"

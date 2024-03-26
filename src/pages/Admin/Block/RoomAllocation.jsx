@@ -9,6 +9,7 @@ import BlockPage from "./BlockPage";
 import AddBlockPopUp from "./AddBlockPopUp";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Navigate } from "react-router-dom";
 
 function RoomAllocation() {
   const { user, setUser } = useContext(UserContext);
@@ -16,10 +17,7 @@ function RoomAllocation() {
   const [loading, setLoading] = useState(false);
   const { blocks, setBlocks } = useBlockContext();
 
-  if (!user || (user && user.role !== "Admin")) {
-    return <Navigate to="/login" />;
-  }
-
+  
   useEffect(() => {
     setLoading(true);
     axios.get("/admin/get-blocks").then((res) => {
@@ -31,6 +29,10 @@ function RoomAllocation() {
       }
     });
   }, []);
+  
+  if (!user || (user && user.role !== "Admin")) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="p-6 lg:p-6 h-screen md:h-full">

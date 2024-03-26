@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import StackedBarChart from "./StackedBarChart";
 import PieChart from "./VacancyPieChart";
 import LeavePieChart from "./LeavePieChart";
@@ -13,14 +13,13 @@ import BirthdayList from "./BirthdayList";
 
 function AdminDashBoard() {
   const { user, setUser } = useContext(UserContext);
-  const navigate = useNavigate();
 
   if (!user || (user && user.role !== "Admin")) {
-    navigate("/login");
+    return <Navigate to="/login" />;
   }
 
   return (
-    <div className="gap-x-8 p-6 lg:p-8">
+    <div className="gap-x-8 p-6 lg:p-8 containerX">
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 w-full">
         <section className="md:col-span-2 h-full">
           <Card className="w-full h-full login_bg border-none">

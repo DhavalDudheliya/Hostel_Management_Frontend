@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
@@ -18,15 +18,12 @@ import { Button } from "@/components/ui/button";
 import Loader from "@/components/Loader";
 
 function AddStudent() {
+  const { toast } = useToast();
   const { user, setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const navigate = useNavigate();
-  const { toast } = useToast();
 
-  if (!user || (user && user.role !== "Admin")) {
-    navigate("/login");
-  }
+ 
 
   const formik = useFormik({
     initialValues: {
@@ -156,6 +153,10 @@ function AddStudent() {
       formik.handleSubmit();
     }
   };
+
+  if (!user || (user && user.role !== "Admin")) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <>

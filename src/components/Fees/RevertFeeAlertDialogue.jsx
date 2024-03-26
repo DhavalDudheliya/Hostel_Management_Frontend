@@ -16,7 +16,12 @@ import { useStudentContext } from "../../../contexts/StudentContext";
 
 import { useToast } from "@/components/ui/use-toast";
 
-function RevertFeeAlertDialogue({ subFeeAmount, subFeeId, feeId }) {
+function RevertFeeAlertDialogue({
+  subFeeAmount,
+  subFeeId,
+  feeId,
+  setReceiptLoading,
+}) {
   const { toast } = useToast();
 
   const { student, setStudent, setSubFees } = useStudentContext();
@@ -37,6 +42,12 @@ function RevertFeeAlertDialogue({ subFeeAmount, subFeeId, feeId }) {
             });
             setStudent(res.data.updatedStudent);
             setSubFees(res.data.fee.paidAmount);
+            // seting states for loading for receipt generation
+            setReceiptLoading(
+              res.data.fee.paidAmount
+                ? new Array(res.data.fee.paidAmount.length).fill(false)
+                : []
+            );
           }
         });
     } catch (error) {

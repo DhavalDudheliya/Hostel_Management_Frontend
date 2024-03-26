@@ -17,7 +17,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { IndianRupee, Send } from "lucide-react";
 import { useStudentContext } from "../../../contexts/StudentContext";
 
-function CollectFeeDialog({ fee }) {
+function CollectFeeDialog({ fee, setReceiptLoading }) {
   const { toast } = useToast();
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState("");
@@ -48,7 +48,12 @@ function CollectFeeDialog({ fee }) {
           if (res.status === 200) {
             setStudent(res.data.updatedStudent);
             setSubFees(res.data.feeObject.paidAmount);
-            // toast.success("Payment updated successfully");
+            // seting states for loading for receipt generation
+            setReceiptLoading(
+              res.data.feeObject.paidAmount
+                ? new Array(res.data.feeObject.paidAmount.length).fill(false)
+                : []
+            );
             toast({
               title: "Payment Added successfully.",
             });

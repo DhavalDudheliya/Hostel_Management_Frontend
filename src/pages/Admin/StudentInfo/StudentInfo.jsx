@@ -1,5 +1,5 @@
 import { React, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../../../contexts/UserContext";
 import { useStudentContext } from "../../../../contexts/StudentContext";
@@ -17,11 +17,6 @@ function StudentsProfile() {
   const [clearSuggestions, setClearSuggestions] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate();
-
-  if (!user || (user && user.role !== "Admin")) {
-    navigate("/login");
-  }
 
   useEffect(() => {
     // Cleanup function to clear student data when the component is unmounted
@@ -55,6 +50,11 @@ function StudentsProfile() {
     setQuery(student.rollNumber);
     setSuggestionStudents([]); // This will be called after setQuery finishes
   }
+
+  if (!user || (user && user.role !== "Admin")) {
+    return <Navigate to="/login" />;
+   }
+ 
 
   return (
     <>

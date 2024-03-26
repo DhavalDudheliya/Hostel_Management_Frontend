@@ -26,12 +26,6 @@ function AddBlockPopUp() {
   const [end, setEnd] = useState(0);
   const [capacity, setCapacity] = useState(0);
 
-  const { user } = useContext(UserContext);
-
-  if (!user || (user && user.role !== "Admin")) {
-    return <Navigate to="/login" />;
-  }
-
   async function addBlock(ev) {
     ev.preventDefault();
     if (start > end) {

@@ -30,14 +30,9 @@ function StudentFeesPaymentDashboard() {
   const [receiptLoading, setReceiptLoading] = useState(
     subFees ? new Array(subFees.length).fill(false) : []
   );
-
   const today = moment();
   const [expandedRow, setExpandedRow] = useState(null);
-  // const [subFees, setSubFees] = useState([]);
 
-  if (!user || (user && user.role !== "Student")) {
-    return <Navigate to="/login" />;
-  }
 
   useEffect(() => {
     try {
@@ -104,6 +99,10 @@ function StudentFeesPaymentDashboard() {
       );
     }
   };
+
+  if (!user || (user && user.role !== "Student")) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <>

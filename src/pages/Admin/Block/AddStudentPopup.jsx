@@ -1,11 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 // Components
 import Loader from "../../../components/Loader";
 import { Input } from "@/components/ui/input";
-import { UserContext } from "../../../../contexts/UserContext";
 import { useBlockContext } from "../../../../contexts/BlocksContext";
 import {
   Dialog,
@@ -31,33 +29,39 @@ function AddStudentPopup({
   const { toast } = useToast();
   const { setBlocks } = useBlockContext();
   const [rollNo, setRollNo] = useState("");
-  const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-
-  if (!user || (user && user.role !== "Admin")) {
-    return <Navigate to="/login" />;
-  }
 
   async function addStudent(ev) {
     ev.preventDefault();
     setLoading(true);
-    axios
-      .post("/admin/allocate-student/" + blockId, {
-        rollNo,
-        roomNumber: roomNo,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setFetch(true);
-          setBlocks(res.data.UpdatedBlocks);
-          setAllocatedRoomStudents(res.data.roomInfo.allocatedStudents);
-          toast({
-            title: "Student allocated successfully ✔",
-          });
-          setRollNo("");
-          setLoading(false);
-        }
-      });
+    try {
+      axios
+        .post("/admin/allocate-student/" + blockId, {
+          rollNo,
+          roomNumber: roomNo,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            setFetch(true);
+            setBlocks(res.data.UpdatedBlocks);
+            setAllocatedRoomStudents(res.data.roomInfo.allocatedStudents);
+            toast({
+              title: "Student allocated successfully ✔",
+            });
+            setRollNo("");
+            setLoading(false);
+          }
+        });
+    } catch (error) {
+      if (error.response.status === 404) {
+        setRollNo("");
+        setLoading(false);
+        toast({
+          variant: "destructive",
+          title: "Student not found",
+        });
+      }
+    }
   }
 
   return (

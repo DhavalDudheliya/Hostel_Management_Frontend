@@ -17,15 +17,12 @@ import Loader from "../../components/Loader";
 import moment from "moment/moment";
 
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 function StudentProfile() {
-  const { student, setStudent } = useStudentContext();
   const { user } = useContext(UserContext);
+  const { student, setStudent } = useStudentContext();
   const [loading, setLoading] = useState(true);
-
-  if (!user || (user && user.role !== "Student")) {
-    return <Navigate to="/login" />;
-  }
 
   useEffect(() => {
     try {
@@ -39,6 +36,10 @@ function StudentProfile() {
         });
     } catch (error) {}
   }, []);
+  
+  if (!user || (user && user.role !== "Student")) {
+    return <Navigate to="/login" />;
+  }
 
   if (loading) {
     return <Loader />;
@@ -48,7 +49,7 @@ function StudentProfile() {
     <>
       {student && (
         <div className="flex justify-center items-center give_height ">
-          <div className="bg-gray-50 inline-flex p-7 rounded-lg  shadow-md shadow-indigo-500/50   m-auto w-fit flex-col gap-2 justify-center items-center">
+          <Card className="inline-flex p-7 m-auto w-fit flex-col gap-2 justify-center items-center">
             <div>
               {student.profilePhoto ? (
                 <>
@@ -124,7 +125,7 @@ function StudentProfile() {
                 </h6>
               </Badge>
             </div>
-          </div>
+          </Card>
         </div>
       )}
     </>
