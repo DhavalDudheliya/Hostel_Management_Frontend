@@ -24,7 +24,6 @@ import Leave from "./pages/Admin/Leave/Leave";
 // import AllocateBlocks from "./pages/Admin/Block/AllocateBlocks";
 
 // Student
-import StudentDashboard from "./pages/Student/StudentDashboard";
 import StudentProfile from "./pages/Student/StudentProfile";
 import TodayMeal from "./components/TodayMeal";
 import StudentNotices from "./pages/Student/Notice/StudentNotices";
@@ -111,10 +110,6 @@ function App() {
                 <Route path="/manager/allnotices" element={<AllNotices />} />
                 // Student
                 <Route path="/student/profile" element={<StudentProfile />} />
-                <Route
-                  path="/student/dashboard"
-                  element={<StudentDashboard />}
-                />
                 <Route path="/student/report" element={<StudentReport />} />
                 <Route path="/student/notices" element={<StudentNotices />} />
                 <Route

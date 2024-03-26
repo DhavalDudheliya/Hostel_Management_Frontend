@@ -40,7 +40,7 @@ function UserLogin() {
 
   if (user) {
     if (user.role === "Student") {
-      navigate("/student/dashboard");
+      navigate("/student/profile");
     } else if (user.role === "Manager") {
       navigate("/manager/dashboard");
     } else if (user.role === "Accountant") {
@@ -85,7 +85,7 @@ function UserLogin() {
                 setIsLoginLoding(false);
                 if (user) {
                   if (user.role === "Student") {
-                    navigate("/student/dashboard");
+                    navigate("/student/profile");
                   } else if (user.role === "Manager") {
                     navigate("/manager/dashboard");
                   } else if (user.role === "Accountant") {

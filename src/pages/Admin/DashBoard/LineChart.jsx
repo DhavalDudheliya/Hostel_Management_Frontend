@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -34,30 +35,29 @@ const data = [
 
 export default function StudentCountLineChart() {
   return (
-    <LineChart
-      width={360}
-      height={250}
-      // isAnimationActive={true}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="date" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="present"
-        stroke="#8884d8"
-        activeDot={{ r: 8}}
-      />
-      <Line type="monotone" dataKey="absent" activeDot={{ r: 8}} stroke="#82ca9d" />
-    </LineChart>
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart
+        // isAnimationActive={true}
+        data={data}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="present"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+        />
+        <Line
+          type="monotone"
+          dataKey="absent"
+          activeDot={{ r: 8 }}
+          stroke="#82ca9d"
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }

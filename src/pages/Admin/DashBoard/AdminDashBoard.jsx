@@ -22,8 +22,8 @@ function AdminDashBoard() {
   return (
     <div className="gap-x-8 p-6 lg:p-8">
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 w-full">
-        <section className="md:col-span-2">
-          <Card className="w-full login_bg border-none">
+        <section className="md:col-span-2 h-full">
+          <Card className="w-full h-full login_bg border-none">
             <CardContent>
               <div className="pr-6  flex flex-row flex-wrap gap-x-8 items-center justify-center lg:justify-evenly">
                 <div className="">
@@ -42,38 +42,34 @@ function AdminDashBoard() {
             </CardContent>
           </Card>
         </section>
-        <section>
+        <section className="w-full mb-4">
           <Counts />
         </section>
         <section>
-          <Card className="w-full login_bg border-none flex justify-center">
+          <Card className="w-full h-full login_bg border-none flex justify-center">
             <CardContent>
-              <div className="pr-6 pt-5 flex flex-row flex-wrap gap-x-8 items-center justify-center lg:justify-between">
-                <div className="">
-                  <StackedBarChart />
-                  <p className="text-center mt-4 font-medium ml-10">
-                    Block Vacancy Graph
-                  </p>
-                </div>
+              <div className="pr-6 pt-5 flex flex-row flex-wrap gap-x-8 items-center justify-center ">
+                <StackedBarChart />
+                <p className="text-center mt-4 font-medium">
+                  Block Vacancy Graph
+                </p>
               </div>
             </CardContent>
           </Card>
         </section>
         <section>
-          <Card className="w-full login_bg border-none flex justify-center">
+          <Card className="w-full h-full login_bg border-none flex justify-center">
             <CardContent>
-              <div className="pr-6 pt-5 flex flex-row flex-wrap gap-x-8 items-center justify-center lg:justify-between">
-                <div className="">
-                  <LineChart />
-                  <p className="text-center mt-4 font-medium ml-10">
-                    Present Students Count
-                  </p>
-                </div>
+              <div className="pr-6 pt-5 flex flex-row flex-wrap gap-x-8 items-center justify-center">
+                <LineChart />
+                <p className="text-center mt-4 font-medium">
+                  Present Students Count
+                </p>
               </div>
             </CardContent>
           </Card>
         </section>
-        <div>
+        <div className="">
           <BirthdayList />
         </div>
       </div>

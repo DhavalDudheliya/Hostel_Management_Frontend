@@ -7,14 +7,12 @@ import report from "../../assets/report.png";
 import selected_report from "../../assets/selected_report.png";
 import food from "../../assets/food.png";
 import selected_food from "../../assets/selected_food.png";
-import notice from "../../assets/notice.png";
-import selected_notice from "../../assets/selected_notice.png";
 import logout from "../../assets/logout.png";
 import fine from "../../assets/fine.png";
 import selected_fine from "../../assets/selected_fine.png";
 import { UserContext } from "../../../contexts/UserContext";
 import * as myConst from "../../../myConstants";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 
 const StudentSidebar = () => {
   const [open, setOpen] = useState(true);
@@ -29,15 +27,15 @@ const StudentSidebar = () => {
     const lastWord = words[words.length - 1]; // Get the last element from the array
     const storedItem = localStorage.getItem("selectedItem");
     if (storedItem) {
-      if (lastWord === "meal") {
-        setSelectedItem("meal");
-        localStorage.setItem("selectedItem", "meal");
+      if (lastWord === "profile") {
+        setSelectedItem("");
+        localStorage.setItem("selectedItem", "");
       } else {
         setSelectedItem(storedItem);
       }
     } else {
-      setSelectedItem("meal");
-      localStorage.setItem("selectedItem", "meal");
+      setSelectedItem("profile");
+      localStorage.setItem("selectedItem", "");
     }
   }, []);
 

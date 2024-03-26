@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -34,14 +35,16 @@ const data = [
 
 export default function StackedBarChart() {
   return (
-    <BarChart width={300} height={250} data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="filled" stackId="a" fill="#8884d8" />
-      <Bar dataKey="vacancy" stackId="a" fill="#82ca9d" />
-    </BarChart>
+    <ResponsiveContainer width="80%" height={250}>
+      <BarChart width={300} height={250} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="filled" stackId="a" fill="#8884d8" />
+        <Bar dataKey="vacancy" stackId="a" fill="#82ca9d" />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
