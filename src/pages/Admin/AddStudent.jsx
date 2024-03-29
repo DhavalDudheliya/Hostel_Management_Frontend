@@ -23,8 +23,6 @@ function AddStudent() {
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
- 
-
   const formik = useFormik({
     initialValues: {
       rollNumber: "",
@@ -160,7 +158,7 @@ function AddStudent() {
 
   return (
     <>
-      <div className="p-6 lg:p-8">
+      <div className="p-6 lg:p-8 containerX">
         <h1 className="lg:text-3xl text-2xl font-bold text-bg_dark_section mb-5 mx-2">
           📝 New Admission Form
         </h1>

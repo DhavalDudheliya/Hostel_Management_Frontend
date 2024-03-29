@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ReceiptIndianRupee } from "lucide-react";
+import { Info, ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
 import axios from "axios";
 
@@ -9,6 +9,13 @@ import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
 import AddPaneltyDialog from "./AddPaneltyDialog";
 import ClearPaneltyAler from "./ClearPaneltyAler";
 import DeleteFee from "./DeleteFee";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 function CollectFeeTable() {
   const today = moment();
@@ -212,7 +219,25 @@ function CollectFeeTable() {
                         <td>₹{subFee.amount}</td>
                         <td></td>
                         <td>{moment(subFee.date).format("DD-MM-YYYY")}</td>
-                        <td>{subFee.method}</td>
+                        <td className="text-center flex items-center gap-1 justify-center">
+                          {subFee.method}
+                          {subFee.method === "Online" && (
+                            <TooltipProvider>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <Info
+                                    size={16}
+                                    color="red"
+                                    className="cursor-pointer"
+                                  />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Paymet Id: {subFee.razorpay_payment_id}</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          )}
+                        </td>
                         <td></td>
                         <td className="pr-2 py-4 flex flex-row items-center justify-start gap-1">
                           <RevertFeeAlertDialogue

@@ -7,7 +7,6 @@ import { Info, ReceiptIndianRupee } from "lucide-react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -32,7 +31,6 @@ function StudentFeesPaymentDashboard() {
   );
   const today = moment();
   const [expandedRow, setExpandedRow] = useState(null);
-
 
   useEffect(() => {
     try {
@@ -106,7 +104,7 @@ function StudentFeesPaymentDashboard() {
 
   return (
     <>
-      <div className="p-6 lg:p-8 min-h-screen">
+      <div className="p-6 lg:p-8 min-h-screen containerX">
         <h1 className="w-full text-center mb-8 text-2xl font-semibold">
           Your Fee Details
         </h1>

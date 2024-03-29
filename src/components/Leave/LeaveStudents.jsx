@@ -17,9 +17,12 @@ function LeaveStudents() {
   const [isLoading, setIsLoading] = useState(true);
   const [leaves, setLeaves] = useState([]);
 
-  const fetchData = async () => {
+  const fetchData = async () => {};
+
+  useEffect(() => {
+    // fetchData();
     try {
-      await axios.get("/leave/findStudentsOnLeave").then((res) => {
+      axios.get("/leave/findStudentsOnLeave").then((res) => {
         setIsLoading(false);
         if (res.status === 200) {
           setLeaves(res.data.leaveApplications);
@@ -35,23 +38,19 @@ function LeaveStudents() {
         });
       }
     }
-  };
-
-  useEffect(() => {
-    fetchData();
   }, []);
 
   if (isLoading) {
     return (
       <div>
-        <Loader  height={"h-[50vh]"}/>
+        <Loader height={"h-[50vh]"} />
       </div>
     );
   }
 
   return (
     <div className="mt-6">
-      {leaves && leaves.length !== 0 ? (
+      {leaves ? (
         <>
           <Table>
             <TableCaption>A list of all on leave students</TableCaption>

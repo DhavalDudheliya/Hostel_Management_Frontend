@@ -183,7 +183,7 @@ const AdminSideBar = () => {
             </ul>
           </div>
           <Link
-            to={"/admin/report"}
+            to={"/accountant/report"}
             onClick={() => {
               handleItemClick("report");
               setSubFeeSelectedItem("");

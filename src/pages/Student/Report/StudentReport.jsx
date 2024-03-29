@@ -38,7 +38,7 @@ function StudentReport() {
 
   return (
     <>
-      <div className="h-[90vh] md:h-auto">
+      <div className="h-[90vh] md:h-auto containerX">
         <div className="flex justify-center text-2xl font-bold labels mx-4 mt-6">
           All Reports
         </div>

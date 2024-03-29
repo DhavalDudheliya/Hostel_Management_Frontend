@@ -17,7 +17,6 @@ function StudentsProfile() {
   const [clearSuggestions, setClearSuggestions] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-
   useEffect(() => {
     // Cleanup function to clear student data when the component is unmounted
     return () => {
@@ -53,12 +52,11 @@ function StudentsProfile() {
 
   if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
-   }
- 
+  }
 
   return (
     <>
-      <div className="p-6 lg:p-8">
+      <div className="p-6 lg:p-8 containerX">
         <div>
           <SearchStudentInput
             query={query}

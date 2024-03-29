@@ -3,7 +3,7 @@ import Report from "../../../components/Report/Report";
 
 function AdminReport() {
   return (
-    <div>
+    <div className="containerX">
       <Report role="Admin" />
     </div>
   );

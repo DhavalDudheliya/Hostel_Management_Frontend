@@ -6,7 +6,6 @@ import Counts from "./Counts";
 import FeesLineChart from "./LineChart";
 import { Card, CardContent } from "@/components/ui/card";
 
-
 function AccountantDashboard() {
   const { user, setUser } = useContext(UserContext);
 
@@ -15,7 +14,7 @@ function AccountantDashboard() {
   }
 
   return (
-    <div className="space-y-8 p-6 lg:px-8">
+    <div className="space-y-8 p-6 lg:px-8 containerX">
       <Counts />
       <div>
         <Card className="w-full h-full login_bg border-none flex justify-center">

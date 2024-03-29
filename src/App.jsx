@@ -49,6 +49,7 @@ import ManagerReport from "./pages/Manager/Report/ManagerReport";
 import ResetPassword from "./components/ResetPassword";
 import Layout2 from "./Layout2";
 import { BlockProvider } from "../contexts/BlocksContext";
+import AccountantReport from "./pages/Accountant/AccountantReport";
 
 axios.defaults.baseURL = myContants.BACKEND_URL;
 axios.defaults.withCredentials = true;
@@ -93,6 +94,7 @@ function App() {
                 />
                 <Route path="/accountant/fee/dueFees" element={<DueFees />} />
                 <Route path="/accountant/fee/addFee" element={<AddFee />} />
+                <Route path="/accountant/report" element={<AccountantReport />} />
                 // Manager
                 <Route
                   path="/manager/dashboard"

@@ -18,7 +18,7 @@ function Leave() {
   }
   return (
     <>
-      <div className="p-6 lg:p-8">
+      <div className="p-6 lg:p-8 containerX">
         <Tabs defaultValue="personal" className="w-full">
           <TabsList className="ml-auto">
             <TabsTrigger value="personal">Personal Leave</TabsTrigger>

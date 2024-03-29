@@ -17,7 +17,6 @@ function RoomAllocation() {
   const [loading, setLoading] = useState(false);
   const { blocks, setBlocks } = useBlockContext();
 
-  
   useEffect(() => {
     setLoading(true);
     axios.get("/admin/get-blocks").then((res) => {
@@ -29,13 +28,13 @@ function RoomAllocation() {
       }
     });
   }, []);
-  
+
   if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;
   }
 
   return (
-    <div className="p-6 lg:p-6 h-screen md:h-full">
+    <div className="p-6 lg:p-6 h-screen md:h-full containerX">
       <div className="w-full">
         {loading && blocks.length === 0 && (
           <>
