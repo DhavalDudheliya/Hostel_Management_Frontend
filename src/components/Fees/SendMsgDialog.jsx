@@ -30,7 +30,7 @@ function SendMsgDialog({ WhatAppNumber }) {
     try {
       await axios
         .post("/message/sendMessage", {
-          WhatAppNumber: 935264000,
+          WhatAppNumber: WhatAppNumber,
           message: message,
         })
         .then((res) => {
@@ -47,7 +47,11 @@ function SendMsgDialog({ WhatAppNumber }) {
           title: "There is some problem on server.",
         });
       }
-      if (error.response.status === 400) toast.error("Message was not sent.");
+      if (error.response.status === 400)
+        toast({
+          variant: "destructive",
+          title: "There is some problem on server.",
+        });
     }
   }
 
