@@ -1,23 +1,7 @@
-import { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../contexts/UserContext";
 
 function Header() {
-  const { user } = useContext(UserContext);
-  const [menuButtonToggel, setMenuButtonToggel] = useState(false);
-
-  function menuToggel() {
-    let list = document.querySelector("ul");
-
-    // For menu button -> close button
-    menuButtonToggel === true
-      ? (setMenuButtonToggel(false), list.classList.remove("top-[56px]"))
-      : (setMenuButtonToggel(true),
-        list.classList.add("top-[56px]"),
-        list.classList.add("opacity-100"));
-  }
-
   return (
     <>
       <div className="sticky px-4 pt-2 bg-transparent">

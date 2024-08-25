@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -26,7 +27,10 @@ CardHeader.displayName = "CardHeader";
 const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn("font-semibold text-lg leading-none tracking-tight", className)}
+    className={cn(
+      "font-semibold text-lg leading-none tracking-tight",
+      className
+    )}
     {...props}
   />
 ));

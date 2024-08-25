@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
@@ -12,7 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "../ui/button";
 
 function Card5({ formik, submitted }) {
   // const [photo, setPhoto] = useState("");

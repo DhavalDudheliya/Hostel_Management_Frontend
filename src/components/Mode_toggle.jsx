@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 import { Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
+  // DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 // import { useTheme } from "@/components/theme-provider";
@@ -22,7 +23,7 @@ function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        {/* <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
@@ -30,7 +31,7 @@ function ModeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           System
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { Button } from "@/components/ui/button";
@@ -78,9 +79,9 @@ function AddPaneltyDialog({ fee }) {
           <Tooltip>
             <TooltipTrigger>
               <DialogTrigger asChild>
-                <span className="bg-green-400 text-white p-0.5 space-y-1 rounded-sm hover:ring-2 hover:ring-green-600">
+                <button disabled className="bg-green-400 text-white p-0.5 space-y-1 rounded-sm hover:ring-2 hover:ring-green-600">
                   <Plus size={16} />
-                </span>
+                </button>
               </DialogTrigger>
             </TooltipTrigger>
             <TooltipContent>

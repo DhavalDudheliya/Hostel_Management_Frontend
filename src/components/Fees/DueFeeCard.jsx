@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useStudentContext } from "../../../contexts/StudentContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

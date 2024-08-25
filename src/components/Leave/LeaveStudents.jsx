@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 
 import {
   Table,
@@ -12,12 +13,13 @@ import {
 import axios from "axios";
 import moment from "moment/moment";
 import Loader from "../Loader";
+import { useToast } from "@/components/ui/use-toast";
 
 function LeaveStudents() {
+  const { toast } = useToast();
+
   const [isLoading, setIsLoading] = useState(true);
   const [leaves, setLeaves] = useState([]);
-
-  const fetchData = async () => {};
 
   useEffect(() => {
     // fetchData();

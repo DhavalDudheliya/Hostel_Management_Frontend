@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from "react";
+/* eslint-disable react/no-unknown-property */
+import { useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import index from "../../assets/Index.jpg";
 import garden1 from "../../assets/garden1.jpg";
 import garden2 from "../../assets/garden2.jpg";
 import garden3 from "../../assets/garden3.jpg";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,

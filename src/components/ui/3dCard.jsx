@@ -1,13 +1,8 @@
+/* eslint-disable react/prop-types */
 "use client";
 
 import { cn } from "../../lib/utils";
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useRef,
-  useEffect,
-} from "react";
+import { createContext, useState, useContext, useRef, useEffect } from "react";
 
 const MouseEnterContext = createContext([false, () => {}]);
 
@@ -24,12 +19,12 @@ export const CardContainer = ({ children, className, containerClassName }) => {
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   };
 
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
     setIsMouseEntered(true);
     if (!containerRef.current) return;
   };
 
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = () => {
     if (!containerRef.current) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;

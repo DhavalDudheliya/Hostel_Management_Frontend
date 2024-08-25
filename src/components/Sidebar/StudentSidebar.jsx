@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -12,7 +12,6 @@ import fine from "../../assets/fine.png";
 import selected_fine from "../../assets/selected_fine.png";
 import { UserContext } from "../../../contexts/UserContext";
 import * as myConst from "../../../myConstants";
-
 
 const StudentSidebar = () => {
   const [open, setOpen] = useState(true);
@@ -121,7 +120,7 @@ const StudentSidebar = () => {
                   : "text-bg_white"
               }`}
             >
-              Today's&nbsp;Meal
+              Today&apos;s&nbsp;Meal
             </span>
           </Link>
           <Link

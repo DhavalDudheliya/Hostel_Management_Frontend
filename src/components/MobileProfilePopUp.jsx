@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as myConst from "../../myConstants";
 import logout from "../assets/logout.png";

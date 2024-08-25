@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 // import * as myConst from "../../myConstants";
 import axios from "axios";
 import logo from "../../assets/logo2.png";
@@ -7,18 +7,16 @@ import { UserContext } from "../../../contexts/UserContext";
 import food from "../../assets/food.png";
 import home from "../../assets/home.png";
 import logout from "../../assets/logout.png";
-import notice from "../../assets/notice.png";
 import report from "../../assets/report.png";
 import food_menu from "../../assets/food_menu.png";
 import { FaRegUserCircle } from "react-icons/fa";
 
 function ManagerMobileHeader() {
-  const { user } = useContext(UserContext);
+  const { setUser, user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const [menuButtonToggel, setMenuButtonToggel] = useState(false);
 
   function menuToggel() {
-    let list = document.querySelector("ul");
     setOpen((open) => !open);
 
     // For menu button -> close button
@@ -132,9 +130,9 @@ function ManagerMobileHeader() {
                   className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
                 >
                   <img className="h-6" src={food} />
-                  <span className="text-bg_white">Today's&nbsp;Meal</span>
+                  <span className="text-bg_white">Today&apos;s&nbsp;Meal</span>
                 </Link>
-               
+
                 <Link
                   to={"/manager/report"}
                   onClick={menuToggel}

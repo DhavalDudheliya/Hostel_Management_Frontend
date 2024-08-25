@@ -1,6 +1,5 @@
-import React from "react";
-
-import {  CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+/* eslint-disable react/prop-types */
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -21,7 +20,7 @@ function Card2({ formik, submitted }) {
     <div>
       {/* <Card> */}
       <CardHeader>
-        <CardTitle>Father's Details</CardTitle>
+        <CardTitle>Father&apos;s Details</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid lg:grid-cols-3 gap-y-6 gap-x-16 pb-2">
@@ -120,14 +119,16 @@ function Card2({ formik, submitted }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={`mt-1 mb-1 ${
-                  formik.touched.fatherWhatsappNo && formik.errors.fatherWhatsappNo
+                  formik.touched.fatherWhatsappNo &&
+                  formik.errors.fatherWhatsappNo
                     ? "outline outline-1 outline-red-500 "
                     : ""
                 }`}
                 {...formik.getFieldProps("fatherWhatsappNo")}
               />
               <div className="absolute top-10">
-                {formik.touched.fatherWhatsappNo && formik.errors.fatherWhatsappNo ? (
+                {formik.touched.fatherWhatsappNo &&
+                formik.errors.fatherWhatsappNo ? (
                   <div className="ml-1 text-xs text-red-600 font-medium">
                     {formik.errors.fatherWhatsappNo}
                   </div>

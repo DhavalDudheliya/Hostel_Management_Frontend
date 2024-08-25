@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 "use client";
 
 import * as React from "react";
@@ -110,7 +111,7 @@ const SelectLabel = React.forwardRef(({ className, ...props }, ref) => (
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
 const SelectItem = React.forwardRef(
-  ({ className, children,value, ...props }, ref) => (
+  ({ className, children, value, ...props }, ref) => (
     <SelectPrimitive.Item
       ref={ref}
       className={cn(

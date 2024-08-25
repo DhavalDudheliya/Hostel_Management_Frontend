@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../contexts/UserContext";
 import axios from "axios";
 
 import report from "../../assets/report.png";
-import notice from "../../assets/bell-plus.png";
 import home from "../../assets/home.png";
 import logout from "../../assets/logout.png";
 import fees from "../../assets/fees.png";
@@ -25,7 +24,6 @@ function AccountantMobileHeader() {
   }
 
   function menuToggel() {
-    let list = document.querySelector("ul");
     setOpen((open) => !open);
 
     // For menu button -> close button

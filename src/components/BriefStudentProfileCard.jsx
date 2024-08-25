@@ -1,5 +1,4 @@
-import React from "react";
-
+/* eslint-disable react/prop-types */
 import * as myConstants from "../../myConstants";
 import { Badge } from "@/components/ui/badge";
 import { Home, User } from "lucide-react";

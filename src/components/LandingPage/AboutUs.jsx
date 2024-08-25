@@ -1,6 +1,5 @@
-import React, { useContext, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import garden1 from "../../assets/garden1.jpg";
 import garden2 from "../../assets/garden2.jpg";
 import garden3 from "../../assets/garden3.jpg";
 
@@ -143,10 +142,10 @@ function AboutUs() {
           className="mb-4 text-center lg:text-left"
         >
           At The BAPS Swaminarayan Chhatralaya, we believe in{" "}
-          <span className="grd-text guj">'સત્સંગ સાથે શિક્ષણ'</span> . Our
-          journey began in 1991, and since then, we have been provided the right
-          mix of comfort, inspiration, and guidance for students to progress
-          academically and spiritually.
+          <span className="grd-text guj">&apos;સત્સંગ સાથે શિક્ષણ&apos;</span> .
+          Our journey began in 1991, and since then, we have been provided the
+          right mix of comfort, inspiration, and guidance for students to
+          progress academically and spiritually.
         </motion.p>
         <motion.div
           ref={ref6}

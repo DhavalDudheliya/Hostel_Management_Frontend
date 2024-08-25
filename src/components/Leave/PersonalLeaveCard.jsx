@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 
@@ -41,7 +43,6 @@ function PersonalLeaveCard() {
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
- 
       await axios
         .post("/leave/applyPersonalLeave", {
           rollNumber,

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 // Components
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";

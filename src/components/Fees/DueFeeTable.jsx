@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import { ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
-import axios from "axios";
 
 import { useStudentContext } from "../../../contexts/StudentContext";
-import RevertFeeAlertDialogue from "./RevertFeeAlertDialogue";
-import AddPaneltyDialog from "./AddPaneltyDialog";
-import ClearPaneltyAler from "./ClearPaneltyAler";
-import { Button } from "@/components/ui/button";
+import SendMsgDialog from "./SendMsgDialog";
 
 function DueFeeTable() {
   const today = moment();
   const [expandedRow, setExpandedRow] = useState(null);
-  const { dueFees, setSubFees, subFees } = useStudentContext();
+  const { dueFees, setSubFees } = useStudentContext();
 
   const handleRowClick = (index, fee) => {
     if (expandedRow === index) {
@@ -132,7 +127,10 @@ function DueFeeTable() {
                     </td>
 
                     <td className="flex flex-row justify-center items-center gap-2 px-2 py-4">
-                      <Button>Send</Button>
+                      <SendMsgDialog
+                        WhatAppNumber={fee.student.whatsappNumber}
+                      />
+                      {/* {fee.student.whatsappNumber} */}
                     </td>
                   </tr>
                 </React.Fragment>

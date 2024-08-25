@@ -1,8 +1,5 @@
-import React from "react";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
-import { FaceIcon } from "@radix-ui/react-icons";
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 // import * as myConst from "../../myConstants";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
@@ -6,18 +6,15 @@ import { UserContext } from "../../../contexts/UserContext";
 import fine from "../../assets/fine.png";
 import report from "../../assets/report.png";
 import food from "../../assets/food.png";
-import notice from "../../assets/notice.png";
 // import logout from "../../assets/logout.png";
 import MobileProfilePopup from "../MobileProfilePopUp";
 
 function StudentMobileHeader() {
   const { user } = useContext(UserContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [menuButtonToggel, setMenuButtonToggel] = useState(false);
 
   function menuToggel() {
-    let list = document.querySelector("ul");
     setOpen((open) => !open);
 
     // For menu button -> close button
@@ -106,7 +103,7 @@ function StudentMobileHeader() {
                   className={`text-bg_white text-sm flex items-center gap-x-4 cursor-pointer mb-3 p-2 rounded-md`}
                 >
                   <img className="h-6" src={food} />
-                  <span className="text-bg_white">Today's&nbsp;Meal</span>
+                  <span className="text-bg_white">Today&apos;s&nbsp;Meal</span>
                 </Link>
                 <Link
                   to={"/student/fees"}

@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
@@ -37,7 +37,9 @@ const ProfileUpdatePopUp = () => {
               toast.error("User not found");
             }
           });
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 

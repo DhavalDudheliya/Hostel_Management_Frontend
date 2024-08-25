@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../../assets/logo2.png";
 import report from "../../assets/report.png";
 import selected_report from "../../assets/selected_report.png";
-import notice from "../../assets/bell-plus.png";
-import selected_notice from "../../assets/bell-plus_selected.png";
 import home from "../../assets/home.png";
 import selected_home from "../../assets/selected_home.png";
 import logout from "../../assets/logout.png";

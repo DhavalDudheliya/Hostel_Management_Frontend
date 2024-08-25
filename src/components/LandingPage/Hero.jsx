@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import index from "../../assets/Index.jpg";
 import { TypewriterEffectSmooth } from "@/components/ui/TypeWriteEffect";

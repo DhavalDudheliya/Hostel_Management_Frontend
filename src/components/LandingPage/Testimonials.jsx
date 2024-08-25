@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3dCard";
 import reviews from "./reviews";
@@ -122,13 +122,13 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[29%]"
           >
             {secondPartL.map((review, index) => (
-              <CardContainer className="inter-var">
+              <CardContainer key={index} className="inter-var">
                 <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
                   <CardItem
                     translateZ="30"
                     className="text-sm text-neutral-600 dark:text-white"
                   >
-                    "{review.review}"
+                    &quot;{review.review}&quot;
                   </CardItem>
                   <div className="flex flex-row justify-between">
                     <CardItem as="p" translateZ="30" className="font-semibold">
@@ -158,13 +158,13 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[29%]"
           >
             {firstPartL.map((review, index) => (
-              <CardContainer className="inter-var">
+              <CardContainer key={index} className="inter-var">
                 <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
                   <CardItem
                     translateZ="30"
                     className="text-sm text-neutral-600 dark:text-white"
                   >
-                    "{review.review}"
+                    &quot;{review.review}&quot;
                   </CardItem>
                   <div className="flex flex-row justify-between">
                     <CardItem as="p" translateZ="30" className="font-semibold">
@@ -194,13 +194,13 @@ function Testimonials() {
             className="grid grid-cols-1 gap-10 w-full md:w-[40%] lg:w-[29%]"
           >
             {thirdPartL.map((review, index) => (
-              <CardContainer className="inter-var">
+              <CardContainer key={index} className="inter-var">
                 <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
                   <CardItem
                     translateZ="30"
                     className="text-sm text-neutral-600 dark:text-white"
                   >
-                    "{review.review}"
+                    &quot;{review.review}&quot;
                   </CardItem>
                   <div className="flex flex-row justify-between">
                     <CardItem as="p" translateZ="30" className="font-semibold">
@@ -232,13 +232,13 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[30%]"
           >
             {secondPartM.map((review, index) => (
-              <CardContainer className="inter-var">
+              <CardContainer key={index} className="inter-var">
                 <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
                   <CardItem
                     translateZ="30"
                     className="text-sm text-neutral-600 dark:text-white"
                   >
-                    "{review.review}"
+                    &quot;{review.review}&quot;
                   </CardItem>
                   <div className="flex flex-row justify-between">
                     <CardItem as="p" translateZ="30" className="font-semibold">
@@ -268,13 +268,13 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[30%]"
           >
             {firstPartM.map((review, index) => (
-              <CardContainer className="inter-var">
+              <CardContainer key={index} className="inter-var">
                 <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
                   <CardItem
                     translateZ="30"
                     className="text-sm text-neutral-600 dark:text-white"
                   >
-                    "{review.review}"
+                    &quot;{review.review}&quot;
                   </CardItem>
                   <div className="flex flex-row justify-between">
                     <CardItem as="p" translateZ="30" className="font-semibold">
@@ -306,13 +306,13 @@ function Testimonials() {
             className="grid gap-10 w-full md:w-[40%] lg:w-[30%]"
           >
             {reviews.map((review, index) => (
-              <CardContainer className="inter-var">
+              <CardContainer key={index} className="inter-var">
                 <CardBody className=" relative group/card p-6 login_bg rounded-lg flex flex-col gap-4 w-full transition-all duration-300 h-fit hover:scale-105">
                   <CardItem
                     translateZ="30"
                     className="text-sm text-neutral-600 dark:text-white"
                   >
-                    "{review.review}"
+                    &quot;{review.review}&quot;
                   </CardItem>
                   <div className="flex flex-row justify-between">
                     <CardItem as="p" translateZ="30" className="font-semibold">

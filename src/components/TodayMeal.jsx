@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import * as myConstants from "../../myConstants";
-import { ToastContainer } from "react-toastify";
 import { UserContext } from "../../contexts/UserContext";
 import Loader from "../components/Loader";
 import axios from "axios";
 
 function TodayMeal() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [breakfast, setBreakfast] = useState([]);
   const [lunch, setLunch] = useState([]);
   const [dinner, setDinner] = useState([]);

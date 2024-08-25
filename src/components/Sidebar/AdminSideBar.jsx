@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -11,17 +11,13 @@ import users from "../../assets/users.png";
 import selected_users from "../../assets/selected_users.png";
 import fine from "../../assets/fine.png";
 import selected_fine from "../../assets/selected_fine.png";
-import notice from "../../assets/bell-plus.png";
-import selected_notice from "../../assets/bell-plus_selected.png";
 import home from "../../assets/home.png";
 import selected_home from "../../assets/selected_home.png";
 import addStudent from "../../assets/user-plus.png";
 import selected_addStudent from "../../assets/user-plus_selected.png";
 import logout from "../../assets/logout.png";
 import adminuser from "../../assets/adminuser.png";
-import { FaRegUserCircle } from "react-icons/fa";
 import { UserContext } from "../../../contexts/UserContext";
-import { CircleUserRound } from "lucide-react";
 
 const AdminSideBar = () => {
   const [open, setOpen] = useState(true);

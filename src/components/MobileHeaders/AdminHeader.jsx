@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 
 // import * as myConst from "../../myConstants";
@@ -10,7 +10,6 @@ import report from "../../assets/report.png";
 import fine from "../../assets/fine.png";
 import logout from "../../assets/logout.png";
 import users from "../../assets/users.png";
-import notice from "../../assets/bell-plus.png";
 import addStudent from "../../assets/user-plus.png";
 import room from "../../assets/room.png";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -27,7 +26,6 @@ function AdminMobileHeader() {
   }
 
   function menuToggel() {
-    let list = document.querySelector("ul");
     setOpen((open) => !open);
 
     // For menu button -> close button

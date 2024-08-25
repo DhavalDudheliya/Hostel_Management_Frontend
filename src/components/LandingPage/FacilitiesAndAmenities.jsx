@@ -1,9 +1,5 @@
-import React from 'react'
-
 function FacilitiesAndAmenities() {
-  return (
-    <div>FacilitiesAndAmenities</div>
-  )
+  return <div>FacilitiesAndAmenities</div>;
 }
 
-export default FacilitiesAndAmenities
+export default FacilitiesAndAmenities;

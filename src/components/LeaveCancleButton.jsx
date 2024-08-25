@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import axios from "axios";
 
 import {
@@ -62,11 +62,7 @@ function LeaveCancleButton({ leaveId }) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>No</AlertDialogCancel>
-          <AlertDialogAction
-            onClick={handleSubmit}
-          >
-            Yes
-          </AlertDialogAction>
+          <AlertDialogAction onClick={handleSubmit}>Yes</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

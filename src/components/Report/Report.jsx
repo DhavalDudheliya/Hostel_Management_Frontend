@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import Loader from "../Loader";
 import "react-toastify/dist/ReactToastify.css";
@@ -53,7 +54,9 @@ function Report({ role }) {
           <div className="text-center md:col-span-2">Date</div>
         </div>
         {reports.length > 0 &&
-          reports.map((report) => <ViewPopUp report={report} />)}
+          reports.map((report, index) => (
+            <ViewPopUp key={index} report={report} />
+          ))}
       </div>
     </div>
   );

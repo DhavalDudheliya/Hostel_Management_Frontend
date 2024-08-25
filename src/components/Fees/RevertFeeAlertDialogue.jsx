@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,7 +24,7 @@ function RevertFeeAlertDialogue({
 }) {
   const { toast } = useToast();
 
-  const { student, setStudent, setSubFees } = useStudentContext();
+  const { setStudent, setSubFees } = useStudentContext();
 
   async function handleSubmit(ev, subFeeAmount, subFeeId, feeId) {
     ev.preventDefault();

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import districts from "@/assets/allDistricts";
 import talukasByDistrict from "@/assets/allTalukas";
 
-import {  CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {

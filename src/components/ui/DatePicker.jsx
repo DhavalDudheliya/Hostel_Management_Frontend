@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React from "react";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -13,7 +15,7 @@ function Datepicker() {
     }
     return result;
   };
-  
+
   const years = range(1990, getYear(new Date()) + 1, 1);
   const months = [
     "January",

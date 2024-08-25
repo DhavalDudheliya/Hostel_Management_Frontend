@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo2.png";
 import axios from "axios";
@@ -12,8 +13,6 @@ import report from "../../assets/report.png";
 import selected_report from "../../assets/selected_report.png";
 import food_menu from "../../assets/food_menu.png";
 import selected_food_menu from "../../assets/selected_food_menu.png";
-import notice from "../../assets/notice.png";
-import selected_notice from "../../assets/selected_notice.png";
 import logout from "../../assets/logout.png";
 import manager from "../../assets/manager.png";
 import { UserContext } from "../../../contexts/UserContext";
@@ -22,7 +21,7 @@ const ManagerSidebar = () => {
   const [open, setOpen] = useState(true);
   const [selectedItem, setSelectedItem] = useState("home");
 
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const location = useLocation();
 
   useEffect(() => {
@@ -193,7 +192,7 @@ const ManagerSidebar = () => {
                     : "text-bg_white"
                 }`}
               >
-                Today's&nbsp;Meal
+                Today&apos;s&nbsp;Meal
               </span>
             </Link>
             <Link

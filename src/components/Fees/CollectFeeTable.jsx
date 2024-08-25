@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Info, ReceiptIndianRupee } from "lucide-react";
 import moment from "moment";
 import axios from "axios";
@@ -210,7 +210,10 @@ function CollectFeeTable() {
                   {expandedRow === index &&
                     subFees &&
                     subFees.map((subFee, index) => (
-                      <tr className="bg-gray-200 border-b border-gray-300">
+                      <tr
+                        key={index}
+                        className="bg-gray-200 border-b border-gray-300"
+                      >
                         <td className="px-6 py-4"></td>
                         <td></td>
                         <td></td>

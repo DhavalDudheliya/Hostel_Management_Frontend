@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import * as myConstants from "../../../myConstants";
 import axios from "axios";
 import { useReportContext } from "../../../contexts/ReportContext";

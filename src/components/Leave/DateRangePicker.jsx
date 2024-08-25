@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
 import moment from "moment";
