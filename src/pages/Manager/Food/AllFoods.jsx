@@ -1,7 +1,7 @@
-import { React, useState, useEffect } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
@@ -12,7 +12,7 @@ import Loader from "../../../components/Loader";
 
 function AllFoods() {
   const [foods, setFoods] = useState([]);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const [fetch, setFetch] = useState(false);
   const [count, setCount] = useState(0);
@@ -65,7 +65,9 @@ function AllFoods() {
                     ></img>
                   )}
                 </div>
-                <h2 className="text-sm font-bold mb-1 truncate text-center">{food.name}</h2>
+                <h2 className="text-sm font-bold mb-1 truncate text-center">
+                  {food.name}
+                </h2>
               </div>
               <div className="absolute bottom-9 right-1 bg-bg_dark_font bg-opacity-80 text-white p-1 rounded-xl hover:bg-bg_red cursor-pointer">
                 <svg
@@ -75,7 +77,7 @@ function AllFoods() {
                   strokeWidth="1.5"
                   stroke="currentColor"
                   className="w-5 h-5"
-                  onClick={(ev) => {
+                  onClick={() => {
                     deleteFood(food._id);
                   }}
                 >

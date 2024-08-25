@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../../../contexts/UserContext";
@@ -28,7 +28,7 @@ function StudentAddReportPopUp() {
   const [receiver, setReceiver] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (!user || (user && user.role !== "Student")) {
     return <Navigate to="/login" />;

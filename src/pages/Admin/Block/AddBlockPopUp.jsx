@@ -1,7 +1,5 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../../../../contexts/UserContext";
+import { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 import { useBlockContext } from "../../../../contexts/BlocksContext";
 
 import { Input } from "@/components/ui/input";

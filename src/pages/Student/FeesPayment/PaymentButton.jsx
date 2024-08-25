@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import axios from "axios";
 import * as myConst from "../../../../myConstants";
 import { useStudentContext } from "../../../../contexts/StudentContext";
@@ -10,11 +13,11 @@ function PaymentButton({ fee }) {
   const [feeData, setFeeData] = useState();
   const [payableAmount, setPayableAmount] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { student, setStudent } = useStudentContext();
+  const { student } = useStudentContext();
 
   useEffect(() => {
     setPayableAmount(Number(fee.amount) - Number(fee.totalAmountPaid));
-  });
+  }, []);
 
   function loadScript(src) {
     return new Promise((resolve) => {

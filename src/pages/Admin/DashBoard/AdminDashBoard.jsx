@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
@@ -12,7 +11,7 @@ import Counts from "./Counts";
 import BirthdayList from "./BirthdayList";
 
 function AdminDashBoard() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (!user || (user && user.role !== "Admin")) {
     return <Navigate to="/login" />;

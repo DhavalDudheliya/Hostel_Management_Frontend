@@ -1,4 +1,3 @@
-import React from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
@@ -7,7 +6,7 @@ import FeesLineChart from "./LineChart";
 import { Card, CardContent } from "@/components/ui/card";
 
 function AccountantDashboard() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (!user || (user && user.role !== "Accountant")) {
     return <Navigate to="/login" />;

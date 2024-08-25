@@ -1,10 +1,10 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GraduationCap, Home, User } from "lucide-react";
 import { Navigate } from "react-router-dom";
 
 import AddStudentPopup from "./AddStudentPopup";
-import Loader from "../../../components/Loader";
 import { UserContext } from "../../../../contexts/UserContext";
 import { useBlockContext } from "../../../../contexts/BlocksContext";
 import * as myConstants from "../../../../myConstants";
@@ -16,14 +16,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const BlockPage = ({ blockId }) => {
   // const { id } = useParams();
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { toast } = useToast();
   const [block, setBlock] = useState(null);
-  const { blocks, setBlocks } = useBlockContext();
+  const { setBlocks } = useBlockContext();
   const [loading, setLoading] = useState(true);
   const [AllocatedRoomStudents, setAllocatedRoomStudents] = useState([]);
   const [capacity, setCapacity] = useState("");
-  const [room, setRoom] = useState("");
+  const [setRoom] = useState("");
   const [selectedRoomNumber, setSelectedRoomNumber] = useState("");
   const [fetch, setFetch] = useState(false);
 
@@ -42,8 +42,6 @@ const BlockPage = ({ blockId }) => {
       });
     }
   }, [fetch]);
-
-
 
   function roomOccupancy(capacity, allocatedStudents) {
     let boxes = [];
@@ -131,7 +129,6 @@ const BlockPage = ({ blockId }) => {
             <div className="flex justify-center mb-4 text-2xl font-bold bg-white w-full relative">
               <p className="pt-2">Block {block.name}</p>
               <button
-                variant="destructive"
                 className="absolute right-2 -top-2 bg-red-500 text-white text-sm font-normal px-4 pt-3 pb-1 rounded-lg hover:ring-1 hover:ring-red-700 hover:bg-red-500/90"
                 onClick={deleteBlock}
               >

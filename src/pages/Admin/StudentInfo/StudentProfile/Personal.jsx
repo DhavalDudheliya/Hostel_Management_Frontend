@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useStudentContext } from "../../../../../contexts/StudentContext";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import moment from "moment";
 
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/select";
 
 function Personal({ formik }) {
-  const { student, setStudent } = useStudentContext();
   const [birthDate, setBirthDate] = useState(
     moment(formik.values.dateOfBirth).format("YYYY-MM-DD")
   );

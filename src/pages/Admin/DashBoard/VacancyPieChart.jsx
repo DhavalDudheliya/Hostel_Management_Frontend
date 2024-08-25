@@ -1,4 +1,3 @@
-import React from "react";
 import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
 
 const data01 = [
@@ -15,7 +14,6 @@ const renderCustomizedLabel = ({
   innerRadius,
   outerRadius,
   percent,
-  index,
 }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);

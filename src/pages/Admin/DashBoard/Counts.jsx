@@ -1,5 +1,3 @@
-import React from "react";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3dCard";
 import { UsersRound } from "lucide-react";
 
 function Counts() {

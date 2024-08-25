@@ -68,7 +68,7 @@ function App() {
                 <Route path="/login" element={<UserLogin />} />
               </Route>
               <Route path="/" element={<Layout />}>
-                // Admin
+                {/* // Admin */}
                 <Route path="/admin/dashboard" element={<AdminDashBoard />} />
                 <Route path="/admin/studentInfo" element={<StudentInfo />} />
                 <Route path="/admin/allnotices" element={<AllNotices />} />
@@ -83,7 +83,7 @@ function App() {
                   element={<RoomAllocation />}
                 />
                 <Route path="/admin/leave" element={<Leave />} />
-                // Accountant
+                {/* // Accountant */}
                 <Route
                   path="/accountant/dashboard"
                   element={<AccountantDashboard />}
@@ -94,8 +94,11 @@ function App() {
                 />
                 <Route path="/accountant/fee/dueFees" element={<DueFees />} />
                 <Route path="/accountant/fee/addFee" element={<AddFee />} />
-                <Route path="/accountant/report" element={<AccountantReport />} />
-                // Manager
+                <Route
+                  path="/accountant/report"
+                  element={<AccountantReport />}
+                />
+                {/* // Manager */}
                 <Route
                   path="/manager/dashboard"
                   element={<ManagerDashboard />}
@@ -110,7 +113,7 @@ function App() {
                 <Route path="/manager/profile" element={<ManagerProfile />} />
                 <Route path="/manager/report" element={<ManagerReport />} />
                 <Route path="/manager/allnotices" element={<AllNotices />} />
-                // Student
+                {/* // Student */}
                 <Route path="/student/profile" element={<StudentProfile />} />
                 <Route path="/student/report" element={<StudentReport />} />
                 <Route path="/student/notices" element={<StudentNotices />} />

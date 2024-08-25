@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { useFormik } from "formik";
@@ -19,7 +19,7 @@ import Loader from "@/components/Loader";
 
 function AddStudent() {
   const { toast } = useToast();
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -56,7 +56,7 @@ function AddStudent() {
       profilePhoto: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async ({ resetForm }) => {
+    onSubmit: async () => {
       try {
         const formData = new FormData();
         formData.append("rollNumber", formik.values.rollNumber);
@@ -115,6 +115,8 @@ function AddStudent() {
             }
           })
           .catch((err) => {
+            console.log(err);
+
             toast({
               variant: "destructive",
               title: "Failed to create student",

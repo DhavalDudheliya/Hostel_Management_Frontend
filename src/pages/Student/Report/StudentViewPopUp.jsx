@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { format } from "date-fns";
 import * as myConstants from "../../../../myConstants";
 

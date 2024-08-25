@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import * as myConstants from "../../../../myConstants";
 import { Navigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AllMealPopUp from "./AllMealPopUp";
 import Loader from "../../../components/Loader";
@@ -11,7 +11,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 function AddMeal() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [breakfast, setBreakfast] = useState([]);
   const [lunch, setLunch] = useState([]);
   const [dinner, setDinner] = useState([]);

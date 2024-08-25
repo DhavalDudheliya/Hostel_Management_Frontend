@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-undef */
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import axios from "axios";
@@ -13,7 +14,7 @@ import * as myConstants from "../../../../myConstants";
 
 function AllNotices() {
   const [notices, setNotices] = useState([]);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -120,7 +121,7 @@ function AllNotices() {
                     strokeWidth="1.5"
                     stroke="currentColor"
                     className="w-5 h-5"
-                    onClick={(ev) => {
+                    onClick={() => {
                       deleteNotice(notice._id);
                     }}
                   >

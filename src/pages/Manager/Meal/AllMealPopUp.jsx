@@ -1,14 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import * as myConstants from "../../../../myConstants";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import { Navigate } from "react-router-dom";
 
 function AllMealPopUp({ setMeal, meal }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [foods, setFoods] = useState(null);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
+  useEffect(() => {
+    axios.get("/food/get-foods").then((res) => {
+      setFoods(res.data);
+    });
+  }, []);
+  
   if (!user || (user && user.role !== "Manager")) {
     return <Navigate to="/login" />;
   }
@@ -21,20 +29,10 @@ function AllMealPopUp({ setMeal, meal }) {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    axios.get("/food/get-foods").then((res) => {
-      setFoods(res.data);
-    });
-  }, []);
-
   return (
     <div>
       <div className="flex justify-center mx-auto w-full">
-        <Button
-          variant="blue_btn"
-          className="w-fit"
-          onClick={openModal}
-        >
+        <Button variant="blue_btn" className="w-fit" onClick={openModal}>
           <div className="text-2xl">+</div>
           <div className="font-semibold ml-1">Add Food</div>
         </Button>

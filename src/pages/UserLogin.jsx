@@ -1,5 +1,5 @@
 // Libraries
-import React, { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,7 +24,6 @@ function UserLogin() {
   const [loading, setLoading] = useState(false);
   const [isLoginLoding, setIsLoginLoding] = useState(false);
   const [showPassword, setshowPassword] = useState(false);
-  
 
   const ref = useRef(null);
   const isInViewPage = useInView(ref, { once: true });

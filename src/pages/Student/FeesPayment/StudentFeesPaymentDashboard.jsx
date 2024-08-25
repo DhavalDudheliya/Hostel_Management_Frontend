@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useStudentContext } from "../../../../contexts/StudentContext";
 import { UserContext } from "../../../../contexts/UserContext";
 import { Info, ReceiptIndianRupee } from "lucide-react";
@@ -25,7 +26,7 @@ import {
 
 function StudentFeesPaymentDashboard() {
   const { student, setStudent, subFees, setSubFees } = useStudentContext();
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [receiptLoading, setReceiptLoading] = useState(
     subFees ? new Array(subFees.length).fill(false) : []
   );
@@ -41,7 +42,9 @@ function StudentFeesPaymentDashboard() {
             setStudent(res.data.student);
           }
         });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const handleRowClick = (index, fee) => {

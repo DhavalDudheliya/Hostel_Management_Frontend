@@ -1,10 +1,9 @@
-import { React, useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
-import SideBar from "../../components/Sidebar/SideBar";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { UserContext } from "../../../contexts/UserContext";
 
 function ManagerDashboard() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (!user || (user && user.role !== "Manager")) {
     return <Navigate to="/login" />;

@@ -1,5 +1,4 @@
-import React from "react";
-
+/* eslint-disable react/prop-types */
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,7 +18,7 @@ function Family({ formik }) {
   return (
     <div className="border-2">
       <CardHeader>
-        <CardTitle>Father's Details</CardTitle>
+        <CardTitle>Father&apos;s Details</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid lg:grid-cols-3 gap-y-6 gap-x-16 pb-2">

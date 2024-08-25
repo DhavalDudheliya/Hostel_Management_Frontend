@@ -1,14 +1,11 @@
 import { Outlet } from "react-router-dom";
 import SideBar from "./components/Sidebar/SideBar";
-import React, { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../contexts/UserContext";
 import Loader from "./components/Loader";
 import MobileHeader from "./components/MobileHeaders/MobileHeader";
-import Footer from "./components/LandingPage/Footer";
 
 function Layout() {
-  const { user, setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

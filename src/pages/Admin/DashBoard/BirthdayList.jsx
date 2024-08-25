@@ -1,11 +1,10 @@
-import React from "react";
 import { Gift } from "lucide-react";
 
 function BirthdayList() {
   return (
     <div className="px-6 py-4 login_bg w-full h-full max-h-[335px] overflow-y-auto rounded-xl">
       <div className="text-lg inline-flex gap-2 font-semibold text-[#8884d8]">
-        Today's Birthdays <Gift color="#82ca9d" />
+        Today&apos;s Birthdays <Gift color="#82ca9d" />
       </div>
       <div className="flex flex-col gap-2 mt-4 w-full">
         <div className="flex flex-row items-center gap-4 border border-gray-300 rounded-xl px-2 py-1">

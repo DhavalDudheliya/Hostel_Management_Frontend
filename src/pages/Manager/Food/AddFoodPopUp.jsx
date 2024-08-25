@@ -1,16 +1,17 @@
-import React, { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../../../contexts/UserContext";
 
-function AddFoodPopUp({ count, setCount }) {
+function AddFoodPopUp({ setCount }) {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (!user || (user && user.role !== "Manager")) {
     return <Navigate to="/login" />;

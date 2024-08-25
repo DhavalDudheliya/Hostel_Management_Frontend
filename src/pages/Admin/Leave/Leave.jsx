@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
@@ -6,11 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PersonalLeaveCard from "@/components/Leave/PersonalLeaveCard";
 import BulkLeaveCard from "@/components/Leave/BulkLeaveCard";
 import LeaveStudents from "@/components/Leave/LeaveStudents";
-import LeaveLog from "@/components/Leave/LeaveLog";
 import { Separator } from "@/components/ui/separator";
 
 function Leave() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   if (!user || (user && user.role !== "Admin")) {

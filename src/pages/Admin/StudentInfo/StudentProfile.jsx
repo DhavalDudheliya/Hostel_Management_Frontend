@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment";
 import axios from "axios";
 import { useFormik } from "formik";
@@ -93,7 +93,9 @@ function StudentProfile() {
               });
             }
           });
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 

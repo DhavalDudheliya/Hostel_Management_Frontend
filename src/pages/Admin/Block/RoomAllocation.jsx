@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import axios from "axios";
 import { useBlockContext } from "../../../../contexts/BlocksContext";
@@ -12,7 +13,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Navigate } from "react-router-dom";
 
 function RoomAllocation() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   // const [blocks, setBlocks] = useState([]);
   const [loading, setLoading] = useState(false);
   const { blocks, setBlocks } = useBlockContext();

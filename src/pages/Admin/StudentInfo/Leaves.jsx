@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useStudentContext } from "../../../../contexts/StudentContext";
 
 import {
@@ -53,9 +52,7 @@ function Leaves() {
                       "bg-white text-center flex flex-row justify-center"
                     )}
                   >
-                    <LeaveCancleButton
-                      leaveId={leave._id}
-                    />
+                    <LeaveCancleButton leaveId={leave._id} />
                   </TableCell>
                 </TableRow>
               ))}

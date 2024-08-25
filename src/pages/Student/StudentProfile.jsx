@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState, useContext } from "react";
 import { useStudentContext } from "../../../contexts/StudentContext";
 import { UserContext } from "../../../contexts/UserContext";
 import axios from "axios";
@@ -17,7 +18,7 @@ import Loader from "../../components/Loader";
 import moment from "moment/moment";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 function StudentProfile() {
   const { user } = useContext(UserContext);
@@ -34,9 +35,11 @@ function StudentProfile() {
             setLoading(false);
           }
         });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
-  
+
   if (!user || (user && user.role !== "Student")) {
     return <Navigate to="/login" />;
   }

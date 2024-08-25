@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../contexts/UserContext";
 import { motion, useScroll } from "framer-motion";
@@ -8,13 +8,11 @@ import Hero from "@/components/LandingPage/Hero";
 import AboutUs from "@/components/LandingPage/AboutUs";
 import PhotoGallery from "@/components/LandingPage/PhotoGallery";
 import Testimonials from "@/components/LandingPage/Testimonials";
-import Room from "@/components/LandingPage/Room";
-import FacilitiesAndAmenities from "@/components/LandingPage/FacilitiesAndAmenities";
 import Footer from "@/components/LandingPage/Footer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 function IndexPage() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { scrollYProgress } = useScroll();
 
   if (user) {

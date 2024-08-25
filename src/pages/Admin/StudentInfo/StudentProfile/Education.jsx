@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import universities from "@/assets/universities";
 import branches from "@/assets/branches";
 import courses from "@/assets/courses";

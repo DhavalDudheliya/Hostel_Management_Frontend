@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
-import { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import Loader from "../../components/Loader";
 import ProfilePhoto from "../../components/ProfilePhoto";
 import ProfileUpadePopUp from "../../components/ProfileUpdatePopUp";
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { properties } from "./properties";
 import { useStudentContext } from "../../../../contexts/StudentContext";
 

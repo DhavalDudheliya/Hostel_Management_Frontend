@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -9,7 +9,7 @@ function AddNoticePopUp() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (
     !user ||

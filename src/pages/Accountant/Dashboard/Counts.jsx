@@ -1,6 +1,3 @@
-import React from "react";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3dCard";
-
 function Counts() {
   function formatNumber(number) {
     // Check if the number is greater than or equal to 1 crore

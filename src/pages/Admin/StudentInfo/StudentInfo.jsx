@@ -1,4 +1,5 @@
-import { React, useContext, useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../../../contexts/UserContext";
@@ -11,7 +12,7 @@ import FullInfoCard from "./FullInfoCard";
 
 function StudentsProfile() {
   const { student, setStudent } = useStudentContext();
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [query, setQuery] = useState("");
   const [suggestionStudents, setSuggestionStudents] = useState([]);
   const [clearSuggestions, setClearSuggestions] = useState(false);

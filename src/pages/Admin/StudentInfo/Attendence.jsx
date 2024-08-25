@@ -1,9 +1,5 @@
-import React from 'react'
-
 function Attendence() {
-  return (
-    <div>Attendence</div>
-  )
+  return <div>Attendence</div>;
 }
 
-export default Attendence
+export default Attendence;

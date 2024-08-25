@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../../../../contexts/UserContext";
 
@@ -30,7 +30,7 @@ function AddFee() {
   const [searchedStudent, setSearchedStudent] = useState();
   const [clearSuggestions, setClearSuggestions] = useState(false);
 
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   async function handleSubmit(ev) {
     ev.preventDefault();
@@ -83,7 +83,7 @@ function AddFee() {
     setQuery(student.rollNumber);
     setSuggestionStudents([]); // This will be called after setQuery finishes
   }
-  
+
   if (!user || (user && user.role !== "Accountant")) {
     return <Navigate to="/login" />;
   }
@@ -187,6 +187,7 @@ function AddFee() {
                                 .slice(0, 3)
                                 .map((student, index) => (
                                   <div
+                                    key={index}
                                     className="cursor-pointer"
                                     onClick={() => {
                                       handleSeachedStudent(student);

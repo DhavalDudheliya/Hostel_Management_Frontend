@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 function AllocateBlocks() {
   const [blocks, setBlocks] = useState([]);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [fetch, setFetch] = useState(false);
   const { toast } = useToast();
@@ -104,7 +104,7 @@ function AllocateBlocks() {
                     </h2>
                     <div
                       className="absolute bottom-1 right-1 bg-white bg-opacity-20 text-white p-1 rounded-xl hover:bg-bg_red cursor-pointer"
-                      onClick={(ev) => {
+                      onClick={() => {
                         deleteBlock(block._id);
                       }}
                     >

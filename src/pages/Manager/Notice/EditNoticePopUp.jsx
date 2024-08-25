@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +10,7 @@ function EditNoticePopUp({ notice }) {
   const [title, setTitle] = useState(notice.title);
   const [description, setDescription] = useState(notice.description);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   if (
     !user ||

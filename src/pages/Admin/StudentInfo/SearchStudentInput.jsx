@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { Search } from "lucide-react";
 
 import BriefStudentProfileCard from "@/components/BriefStudentProfileCard";
@@ -69,6 +69,7 @@ function SearchStudentInput({
               query.length != 0 &&
               suggestionStudents.slice(0, 3).map((student, index) => (
                 <div
+                  key={index}
                   className="cursor-pointer"
                   onClick={() => {
                     handleSeachedStudent(student);
